@@ -1,5 +1,4 @@
 package ru.nsu.fitkulin;
-import java.util.Scanner;
 
 public class Main {
     static void printArray(int[] arr) {
