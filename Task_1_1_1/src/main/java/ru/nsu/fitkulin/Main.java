@@ -10,7 +10,8 @@ public class Main {
         }
         System.out.println();
     }
-    void HeapSort(int[] arr, int N) {
+    static int[] HeapSort(int[] arr) {
+        int N = arr.length;
         for (int i = N / 2 - 1; i >= 0; i--)
         {
             heapify(arr, N, i);  // выносим макс элемент в верх дерева
@@ -22,9 +23,9 @@ public class Main {
             arr[i] = tmp;
             heapify(arr, i, 0); // находим наиб. элемент
         }
-
+        return arr;
     }
-    void heapify(int[] arr, int N, int k)
+    static void heapify(int[] arr, int N, int k)
     {
         int curr = k;                           //        curr         //
         int left = 2 * k + 1;                   //       /    \        //
