@@ -1,13 +1,6 @@
 package ru.nsu.fitkulin;
 
 public class Main {
-    static void printArray(int[] arr) {
-        int n = arr.length;
-        for (int j : arr) {
-            System.out.print(j + " ");
-        }
-        System.out.println();
-    }
     static int[] HeapSort(int[] arr) {
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
