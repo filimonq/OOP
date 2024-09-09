@@ -2,7 +2,7 @@ package ru.nsu.fitkulin;
 
 public class Main {
     /**
-     * heapSort
+     * heapSort.
      *
      * @param arr tree
      *
@@ -23,7 +23,7 @@ public class Main {
     }
 
     /**
-     * execution of heap properties
+     * execution of heap properties.
      *
      * @param arr tree
      *
