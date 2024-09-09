@@ -1,6 +1,13 @@
 package ru.nsu.fitkulin;
 
 public class Main {
+    /**
+     * heapSort
+     *
+     * @param arr tree
+     *
+     * @return sorted array
+     */
     static int[] heapSort(int[] arr) {
         int n = arr.length;
         for (int i = n / 2 - 1; i >= 0; i--) {
@@ -16,9 +23,12 @@ public class Main {
     }
 
     /**
+     * execution of heap properties
      *
      * @param arr tree
+     *
      * @param n number of elements
+     *
      * @param k index
      *
      */

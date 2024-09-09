@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class MainTest {
     @Test
+    // https://www.desmos.com/calculator/3ujfopftsu?lang=ru
     void sampleTest() {
         assertArrayEquals(new int[] {1, 2, 3},  Main.heapSort(new int[] {1, 2, 3}));
         assertArrayEquals(new int[] {1, 1, 1},  Main.heapSort(new int[] {1, 1, 1}));
