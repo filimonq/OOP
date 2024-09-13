@@ -1,10 +1,10 @@
 package ru.nsu.fitkulin;
 
+import java.util.Scanner;
+
 public class Main {
-    public static int sum(int a, int b) {
-        return a + b;
-    }
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Добро пожаловать в Блэкджек!");
     }
 }
