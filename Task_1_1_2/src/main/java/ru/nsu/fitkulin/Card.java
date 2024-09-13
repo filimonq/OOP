@@ -9,8 +9,4 @@ public class Card {
         this.cardSuit = cardSuit;
     }
 
-    public String initCard() {
-
-    }
-
 }
