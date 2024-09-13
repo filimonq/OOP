@@ -1,12 +1,33 @@
 package ru.nsu.fitkulin;
 
+/**
+ * class for card.
+ */
 public class Card {
-    CardValue cardValue;
-    CardSuit cardSuit;
+    int value;
+    String name;
+    String suit;
 
-    public Card(CardValue cardValue, CardSuit cardSuit) {
-        this.cardValue = cardValue;
-        this.cardSuit = cardSuit;
+    /**
+     * constructor.
+     *
+     * @param value int
+     * @param name string
+     * @param suit suit of card
+     */
+    Card (int value, String name, String suit) {
+        this.value = value;
+        this.name = name;
+        this.suit = suit;
     }
 
+    /**
+     * print card.
+     *
+     * @return all card info
+     */
+    @Override // аннотация для переопределения метода
+    public String toString() {
+        return name + " " + suit + " (" + value + ")";
+    }
 }
