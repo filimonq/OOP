@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10};
+var data = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -88,7 +88,7 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -122,7 +122,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
+<li><a href="Hand.html" title="class in ru.nsu.fitkulin">ru.nsu.fitkulin.Hand</a></li>
+<li>
+<ul class="inheritance">
 <li>ru.nsu.fitkulin.Dealer</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -131,13 +136,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <hr>
 <pre>public class <span class="typeNameLabel">Dealer</span>
-extends java.lang.Object</pre>
+extends <a href="Hand.html" title="class in ru.nsu.fitkulin">Hand</a></pre>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a id="fields.inherited.from.class.ru.nsu.fitkulin.Hand">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;ru.nsu.fitkulin.<a href="Hand.html" title="class in ru.nsu.fitkulin">Hand</a></h3>
+<code><a href="Hand.html#cards">cards</a></code></li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -152,7 +174,8 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Dealer</a></span>()</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(ru.nsu.fitkulin.Card,ru.nsu.fitkulin.Card)">Dealer</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card1,
+      <a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card2)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -174,22 +197,24 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addCardToHand(ru.nsu.fitkulin.Card)">addCardToHand</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHand()">getHand</a></span>()</code></th>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.ru.nsu.fitkulin.Hand">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;ru.nsu.fitkulin.<a href="Hand.html" title="class in ru.nsu.fitkulin">Hand</a></h3>
+<code><a href="Hand.html#AceValue()">AceValue</a>, <a href="Hand.html#sumCards()">sumCards</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -207,13 +232,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;()">
+<a id="&lt;init&gt;(ru.nsu.fitkulin.Card,ru.nsu.fitkulin.Card)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Dealer</h4>
-<pre>public&nbsp;Dealer()</pre>
+<pre>public&nbsp;Dealer&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card1,
+              <a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card2)</pre>
 </li>
 </ul>
 </li>
@@ -226,22 +252,17 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addCardToHand(ru.nsu.fitkulin.Card)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>addCardToHand</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addCardToHand&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card)</pre>
-</li>
-</ul>
-<a id="getHand()">
+<a id="toString()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getHand</h4>
-<pre class="methodSignature">public&nbsp;java.util.ArrayList&lt;<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&gt;&nbsp;getHand()</pre>
+<h4>toString</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -295,7 +316,7 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
