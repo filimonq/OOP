@@ -15,12 +15,7 @@ public class Game {
         this.deck = cards.getDeck();
     }
 
-    public void dealInitialCards() {
-        player.addCardToHand(deck.removeFirst());
-        dealer.addCardToHand(deck.removeFirst());
-        player.addCardToHand(deck.removeFirst());
-        player.addCardToHand(deck.removeFirst());
-    }
+
 
     public void printHands() {
         System.out.println("    Ваши карты: " + player.getHand() + " > " + "sum");
