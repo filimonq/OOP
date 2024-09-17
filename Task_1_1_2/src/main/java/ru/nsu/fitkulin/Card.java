@@ -21,6 +21,7 @@ public class Card {
         this.suit = suit;
     }
 
+    /*
     public int getValue() {
         return value;
     }
@@ -32,6 +33,7 @@ public class Card {
     public void setValue(int newValue) {
         value = newValue;
     }
+    */
 
     /**
      * print card.

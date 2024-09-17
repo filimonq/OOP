@@ -20,6 +20,7 @@ public class Cards {
         }
         Collections.shuffle(deck);
     }
+
     public ArrayList<Card> getDeck() {
         return deck;
     }

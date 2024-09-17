@@ -2,20 +2,23 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 
-public class Dealer {
-    ArrayList<Card> hand;
-
-    public Dealer() {
-        this.hand = new ArrayList<>();
+public class Dealer extends Hand {
+    public Dealer(Card card1, Card card2) {
+        super(card1, card2);
     }
 
-    public void addCardToHand(Card card) {
-        hand.add(card);
+    @Override
+    public String toString() {
+        ArrayList<String> res = new ArrayList<>();
+        int curr = AceValue();
+        for (Card card: cards) {
+            if (card.value != 11) {
+                res.add(card.name + " " + card.suit + " (" + card.value + ")");
+            } else {
+                res.add(card.name + " " + card.suit + " (" + curr + ")");
+            }
+        }
+        return res.toString();
     }
-
-    public ArrayList<Card> getHand() {
-        return hand;
-    }
-
 }
 
