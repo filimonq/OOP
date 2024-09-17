@@ -15,7 +15,7 @@ public class Card {
      * @param name string
      * @param suit suit of card
      */
-    Card (int value, String name, String suit) {
+    Card(int value, String name, String suit) {
         this.value = value;
         this.name = name;
         this.suit = suit;

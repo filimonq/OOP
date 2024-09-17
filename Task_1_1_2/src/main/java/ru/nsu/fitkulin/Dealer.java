@@ -11,7 +11,7 @@ public class Dealer extends Hand {
     public String toString() {
         ArrayList<String> res = new ArrayList<>();
         int curr = AceValue();
-        for (Card card: cards) {
+        for (Card card : cards) {
             if (card.value != 11) {
                 res.add(card.name + " " + card.suit + " (" + card.value + ")");
             } else {
