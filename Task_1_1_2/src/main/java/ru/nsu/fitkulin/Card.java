@@ -21,6 +21,18 @@ public class Card {
         this.suit = suit;
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setValue(int newValue) {
+        value = newValue;
+    }
+
     /**
      * print card.
      *
