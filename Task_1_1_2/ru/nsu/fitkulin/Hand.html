@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -203,13 +203,24 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#AceValue()">AceValue</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#aceValue()">aceValue</a></span>()</code></th>
+<td class="colLast">
+<div class="block">processes the value of an ace.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addCard(ru.nsu.fitkulin.Card)">addCard</a></span>&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card)</code></th>
+<td class="colLast">
+<div class="block">add card to hand</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sumCards()">sumCards</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">counts the amount of cards.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -274,22 +285,46 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="AceValue()">
+<a id="aceValue()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>AceValue</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;AceValue()</pre>
+<h4>aceValue</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;aceValue()</pre>
+<div class="block">processes the value of an ace.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ace value</dd>
+</dl>
 </li>
 </ul>
 <a id="sumCards()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>sumCards</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;sumCards()</pre>
+<div class="block">counts the amount of cards.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>sum of cards</dd>
+</dl>
+</li>
+</ul>
+<a id="addCard(ru.nsu.fitkulin.Card)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addCard</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addCard&#8203;(<a href="Card.html" title="class in ru.nsu.fitkulin">Card</a>&nbsp;card)</pre>
+<div class="block">add card to hand</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>card</code> - card to add</dd>
+</dl>
 </li>
 </ul>
 </li>
