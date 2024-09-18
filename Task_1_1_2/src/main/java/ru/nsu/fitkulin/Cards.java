@@ -27,10 +27,6 @@ public class Cards {
         Collections.shuffle(deck);
     }
 
-    public ArrayList<Card> getDeck() {
-        return deck;
-    }
-
     /**
      * draw a card from the deck.
      *
