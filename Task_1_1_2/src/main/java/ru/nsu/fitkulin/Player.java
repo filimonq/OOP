@@ -7,10 +7,15 @@ public class Player extends Hand {
         super(card1, card2);
     }
 
+    /**
+     * print of player hand.
+     *
+     * @return result of output
+     */
     @Override
     public String toString() {
         ArrayList<String> res = new ArrayList<>();
-        int curr = AceValue();
+        int curr = aceValue();
         for (Card card : cards) {
             if (card.value != 11) {
                 res.add(card.name + " " + card.suit + " (" + card.value + ")");

@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Добро пожаловать в Блэкджек!");
-        Cards cards = new Cards();
-        ArrayList<Card> deck;
-        deck = cards.getDeck();
-        System.out.println(deck.toString());
+        for (int i = 0; i < 100; i++) {
+            Game.round();
+
+        }
+
     }
 }

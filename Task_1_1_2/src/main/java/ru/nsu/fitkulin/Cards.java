@@ -3,9 +3,15 @@ package ru.nsu.fitkulin;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * class for creating a deck.
+ */
 public class Cards {
     ArrayList<Card> deck;
 
+    /**
+     * constructor.
+     */
     public Cards() {
         deck = new ArrayList<>();
         String[] suits = {"Червы", "Трефы", "Бубны", "Пики"};
@@ -23,5 +29,14 @@ public class Cards {
 
     public ArrayList<Card> getDeck() {
         return deck;
+    }
+
+    /**
+     * draw a card from the deck.
+     *
+     * @return card from the beginning of the deck
+     */
+    public Card getCard() {
+        return deck.remove(0);
     }
 }

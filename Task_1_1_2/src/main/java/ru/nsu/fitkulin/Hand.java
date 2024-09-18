@@ -11,7 +11,12 @@ public class Hand {
         this.cards.add(card2);
     }
 
-    public int AceValue() {
+    /**
+     * processes the value of an ace.
+     *
+     * @return ace value
+     */
+    public int aceValue() {
         int sum = 0;
         int countOfAce = 0;
         for (Card card : cards) {
@@ -27,10 +32,15 @@ public class Hand {
         return 11;
     }
 
+    /**
+     * counts the amount of cards.
+     *
+     * @return sum of cards
+     */
     public int sumCards() {
         int sum = 0;
         int countOfAce = 0;
-        int curr = AceValue();
+        int curr = aceValue();
         for (Card card : cards) {
             if (card.value == 11) {
                 sum += curr;
@@ -39,5 +49,14 @@ public class Hand {
             }
         }
         return sum;
+    }
+
+    /**
+     * add card to hand
+     *
+     * @param card card to add
+     */
+    public void addCard(Card card) {
+        cards.add(card);
     }
 }
