@@ -18,12 +18,11 @@ public class Game {
         playerHand = new Player(deck.getCard(), deck.getCard());
         dealerHand = new Dealer(deck.getCard(), deck.getCard());
 
-        System.out.println("Раунд" + roundValue);
+        System.out.println("Раунд " + roundValue);
         System.out.println("Дилер раздал карты");
-        System.out.println(playerHand.toString());
+        System.out.println(playerHand.toString() + " => " + playerHand.sumCards());
         System.out.println(dealerHand.toString());
-        boolean flag = playersTurn();
-        if (!flag) {
+        if (!playersTurn()) {
             dealersTurn();
         }
     }
@@ -31,17 +30,19 @@ public class Game {
         int playerSum = playerHand.sumCards();
         int dealerSum = dealerHand.sumCards();
 
-        if (flag) {
-            System.out.println("Ничья! Счет " + playerScore + ":" + dealerScore);
-        } else if ((flag && playerSum > dealerSum && playerSum <= 21) || dealerSum > 21) {
+        if ((flag && playerSum > dealerSum && playerSum <= 21) || dealerSum > 21) {
             playerScore++;
             System.out.println("Вы выиграли раунд! Счет " + playerScore + ":" + dealerScore);
             return true;
-        } else if (playerSum > 21 || (flag && playerSum < dealerSum)
+        }
+        if (playerSum > 21 || (flag && playerSum < dealerSum)
                 || (dealerHand.handChanged && dealerScore == 21)) {
             dealerScore++;
             System.out.println("Раунд выиграл дилер! Счет " + playerScore + ":" + dealerScore);
             return true;
+        }
+        if (flag) {
+            System.out.println("Ничья! Счет " + playerScore + ":" + dealerScore);
         }
         return false;
     }
@@ -57,8 +58,8 @@ public class Game {
         while (input == 1) {
             Card nextCard = deck.getCard();
             playerHand.addCard(nextCard);
-            System.out.println("Вы открыли карту" + nextCard.toString());
-            System.out.println("Ваши карты" + playerHand.toString());
+            System.out.println("Вы открыли карту " + nextCard.toString());
+            System.out.println("Ваши карты" + playerHand.toString() + " => " + playerHand.sumCards());
             System.out.println("Карты дилера" + dealerHand.toString() + "\n");
 
             if (playerHand.sumCards() > 21) {
@@ -72,17 +73,18 @@ public class Game {
     static void dealersTurn() {
         dealerHand.handChanged = true;
         System.out.println("Дилер открывает закрытую карту ");
-        System.out.println(playerHand.toString());
-        System.out.println(dealerHand.toString() + "\n");
+        System.out.println(playerHand.toString() + " => " + playerHand.sumCards());
+        System.out.println(dealerHand.toString() + " => " + dealerHand.sumCards() + "\n");
         if (blackJack()) {
             return;
         }
         while (dealerHand.sumCards() < 17) {
             Card nextCard = deck.getCard();
             dealerHand.addCard(nextCard);
-            System.out.println("Дилер открывает закрытую карту " + nextCard.toString());
-            System.out.println("Ваши карты" + playerHand.toString());
-            System.out.println("Карты дилера" + dealerHand.toString() + "\n");
+            System.out.println("Дилер открывает карту " + nextCard.toString());
+            System.out.println("Ваши карты" + playerHand.toString() + " => " + playerHand.sumCards());
+            System.out.println("Карты дилера" + dealerHand.toString() +
+                    " => " + dealerHand.sumCards() + "\n");
         }
         finish(true);
     }

@@ -15,7 +15,6 @@ public class Dealer extends Hand {
     @Override
     public String toString() {
         ArrayList<String> res = new ArrayList<>();
-        boolean handChanged = false;
         int curr = aceValue();
         if (handChanged) {
             for (Card card : cards) {
