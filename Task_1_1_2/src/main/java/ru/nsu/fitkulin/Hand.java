@@ -2,6 +2,9 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 
+/**
+ * cards on hand.
+ */
 public class Hand {
     public ArrayList<Card> cards;
 

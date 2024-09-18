@@ -2,13 +2,16 @@ package ru.nsu.fitkulin;
 
 import java.util.Scanner;
 
+/**
+ * main implementation of the game.
+ */
 public class Game {
     static Player playerHand;
     static Dealer dealerHand;
     static Cards deck;
     static Scanner scanner;
     int input = scanner.nextInt();
-    static int roundValue = 1;
+    static int roundValue = 0;
     static int playerScore = 0;
     static int dealerScore = 0;
 
@@ -17,8 +20,8 @@ public class Game {
         deck = new Cards();
         playerHand = new Player(deck.getCard(), deck.getCard());
         dealerHand = new Dealer(deck.getCard(), deck.getCard());
-
-        System.out.println("Раунд " + roundValue);
+        roundValue++;
+        System.out.println("\n === Раунд " + roundValue + " ===");
         System.out.println("Дилер раздал карты");
         System.out.println(playerHand.toString() + " => " + playerHand.sumCards());
         System.out.println(dealerHand.toString());
