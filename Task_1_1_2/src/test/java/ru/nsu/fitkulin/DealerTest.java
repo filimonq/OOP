@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Dealer Test
+ * Dealer Test.
  */
 public class DealerTest {
     Card card1;
@@ -14,6 +14,7 @@ public class DealerTest {
     Card card3;
     Card card4;
     Dealer dealerHand;
+
     @BeforeEach
     void beforeEach() {
         card1 = new Card(3, "Три", "Червы");
@@ -22,6 +23,7 @@ public class DealerTest {
         card4 = new Card(11, "Туз", "Бубны");
         dealerHand = new Dealer(card1, card2);
     }
+
     @Test
     void testToString() {
         assertEquals("[Три Червы (3), <закрытая карта>]", dealerHand.toString());
@@ -45,6 +47,13 @@ public class DealerTest {
     void testHandChangedTrue() {
         dealerHand.handChanged = true;
         assertEquals("[Три Червы (3), Король Пики (10)]", dealerHand.toString());
+    }
+
+    @Test
+    void testAceValue() {
+        dealerHand.addCard(card2);
+        dealerHand.addCard(card4);
+        assertEquals(1, dealerHand.aceValue());
     }
 
 }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Player Test
+ * Player Test.
  */
 public class PlayerTest {
     Card card1;
@@ -44,6 +44,7 @@ public class PlayerTest {
         assertEquals("[Три Червы (3), Три Червы (3), Король Пики (10), "
                 + "Туз Трефы (1), Туз Бубны (1)]", playerHand.toString());
     }
+
     @Test
     void testTwoAce() {
         playerHand.addCard(card3);

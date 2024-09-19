@@ -35,6 +35,7 @@ public class CardTest {
         String expectedStr = "Тройка Бубны (3)";
         assertEquals(expectedStr, res);
     }
+
     /**
      * Check for card structure.
      */

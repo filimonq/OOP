@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class Hand {
     public ArrayList<Card> cards;
 
+    /**
+     * constructor.
+     */
     public Hand(Card card1, Card card2) {
         this.cards = new ArrayList<Card>();
         this.cards.add(card1);
