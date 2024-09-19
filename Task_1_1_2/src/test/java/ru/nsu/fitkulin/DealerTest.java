@@ -23,4 +23,19 @@ public class DealerTest {
     void testToString() {
         assertEquals("[Три Червы (3), <закрытая карта>]", dealerHand.toString());
     }
+
+    @Test
+    void testSum() {
+        assertEquals(13, dealerHand.sumCards());
+        dealerHand.addCard(card3);
+        dealerHand.addCard(card4);
+        assertEquals(15, dealerHand.sumCards());
+    }
+
+    @Test
+    void testHandChanged() {
+        dealerHand.handChanged = true;
+        assertEquals("[Три Червы (3), Король Пики (10)]", dealerHand.toString());
+    }
+
 }
