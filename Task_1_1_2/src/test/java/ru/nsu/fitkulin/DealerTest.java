@@ -45,9 +45,11 @@ public class DealerTest {
     void testSum() {
         dealerHand.handChanged = true;
         assertEquals(13, dealerHand.sumCards());
+        dealerHand.addCard(card5);
+        assertEquals(18, dealerHand.sumCards());
         dealerHand.addCard(card3);
         dealerHand.addCard(card4);
-        assertEquals(15, dealerHand.sumCards());
+        assertEquals(20, dealerHand.sumCards());
     }
 
     @Test
