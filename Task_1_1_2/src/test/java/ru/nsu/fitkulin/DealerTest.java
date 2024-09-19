@@ -1,10 +1,13 @@
 package ru.nsu.fitkulin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Dealer Test
+ */
 public class DealerTest {
     Card card1;
     Card card2;
@@ -33,7 +36,13 @@ public class DealerTest {
     }
 
     @Test
-    void testHandChanged() {
+    void testHandChangedFalse() {
+        dealerHand.handChanged = false;
+        assertEquals("[Три Червы (3), <закрытая карта>]", dealerHand.toString());
+    }
+
+    @Test
+    void testHandChangedTrue() {
         dealerHand.handChanged = true;
         assertEquals("[Три Червы (3), Король Пики (10)]", dealerHand.toString());
     }

@@ -3,7 +3,7 @@ package ru.nsu.fitkulin;
 import java.util.ArrayList;
 
 /**
- * class for Dealer Hand
+ * class for Dealer Hand.
  */
 public class Dealer extends Hand {
     public Dealer(Card card1, Card card2) {

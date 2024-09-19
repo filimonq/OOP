@@ -35,6 +35,7 @@ public class Game {
 
     /**
      * end of the round.
+     *
      * @param flag - true if no one is over 21.
      */
     static boolean finish(boolean flag) {
@@ -112,6 +113,7 @@ public class Game {
 
     /**
      * check for sum equal 21 points.
+     *
      * @return blackjack or not.
      */
     static boolean blackJack() {
