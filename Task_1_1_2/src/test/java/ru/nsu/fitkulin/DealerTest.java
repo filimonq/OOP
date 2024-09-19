@@ -38,7 +38,7 @@ public class DealerTest {
         dealerHandForAceTest = new Dealer(card1, card5);
         dealerHandForAceTest.addCard(card3);
         assertEquals(19, dealerHandForAceTest.sumCards());
-
+        assertEquals(11, dealerHandForAceTest.aceValue());
     }
 
     @Test
@@ -60,6 +60,9 @@ public class DealerTest {
     void testHandChangedTrue() {
         dealerHand.handChanged = true;
         assertEquals("[Три Червы (3), Король Пики (10)]", dealerHand.toString());
+        dealerHand.addCard(card5);
+        assertEquals("[Три Червы (3), Король Пики (10), "
+                + "Пятерка Пики (5)]", dealerHand.toString());
     }
 
     @Test
