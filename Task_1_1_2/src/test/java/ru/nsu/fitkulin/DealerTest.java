@@ -13,7 +13,9 @@ public class DealerTest {
     Card card2;
     Card card3;
     Card card4;
+    Card card5;
     Dealer dealerHand;
+    Dealer dealerHandForAceTest;
 
     @BeforeEach
     void beforeEach() {
@@ -21,6 +23,8 @@ public class DealerTest {
         card2 = new Card(10, "Король", "Пики");
         card3 = new Card(11, "Туз", "Трефы");
         card4 = new Card(11, "Туз", "Бубны");
+        card5 = new Card(5, "Пятерка", "Пики");
+
         dealerHand = new Dealer(card1, card2);
     }
 
@@ -30,7 +34,16 @@ public class DealerTest {
     }
 
     @Test
+    void testAce11() {
+        dealerHandForAceTest = new Dealer(card1, card5);
+        dealerHandForAceTest.addCard(card3);
+        assertEquals(19, dealerHandForAceTest.sumCards());
+
+    }
+
+    @Test
     void testSum() {
+        dealerHand.handChanged = true;
         assertEquals(13, dealerHand.sumCards());
         dealerHand.addCard(card3);
         dealerHand.addCard(card4);
