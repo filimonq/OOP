@@ -15,6 +15,9 @@ public class Game {
     static int playerScore = 0;
     static int dealerScore = 0;
 
+    /**
+     * start of the round.
+     */
     public static void round() {
         scanner = new Scanner(System.in);
         deck = new Cards();
@@ -29,6 +32,11 @@ public class Game {
             dealersTurn();
         }
     }
+
+    /**
+     * end of the round.
+     * @param flag - true if no one is over 21.
+     */
     static boolean finish(boolean flag) {
         int playerSum = playerHand.sumCards();
         int dealerSum = dealerHand.sumCards();
@@ -50,6 +58,9 @@ public class Game {
         return false;
     }
 
+    /**
+     * player`s turn while scanner == 1.
+     */
     static boolean playersTurn() {
         if (blackJack()) {
             return true;
@@ -62,7 +73,8 @@ public class Game {
             Card nextCard = deck.getCard();
             playerHand.addCard(nextCard);
             System.out.println("Вы открыли карту " + nextCard.toString());
-            System.out.println("Ваши карты" + playerHand.toString() + " => " + playerHand.sumCards());
+            System.out.println("Ваши карты" + playerHand.toString()
+                    + " => " + playerHand.sumCards());
             System.out.println("Карты дилера" + dealerHand.toString() + "\n");
 
             if (playerHand.sumCards() > 21) {
@@ -73,11 +85,16 @@ public class Game {
         }
         return finish(false);
     }
+
+    /**
+     * dealer`s turn while sum < 17.
+     */
     static void dealersTurn() {
         dealerHand.handChanged = true;
         System.out.println("Дилер открывает закрытую карту ");
         System.out.println(playerHand.toString() + " => " + playerHand.sumCards());
         System.out.println(dealerHand.toString() + " => " + dealerHand.sumCards() + "\n");
+
         if (blackJack()) {
             return;
         }
@@ -85,13 +102,18 @@ public class Game {
             Card nextCard = deck.getCard();
             dealerHand.addCard(nextCard);
             System.out.println("Дилер открывает карту " + nextCard.toString());
-            System.out.println("Ваши карты" + playerHand.toString() + " => " + playerHand.sumCards());
-            System.out.println("Карты дилера" + dealerHand.toString() +
-                    " => " + dealerHand.sumCards() + "\n");
+            System.out.println("Ваши карты" + playerHand.toString()
+                    + " => " + playerHand.sumCards());
+            System.out.println("Карты дилера" + dealerHand.toString()
+                    + " => " + dealerHand.sumCards() + "\n");
         }
         finish(true);
     }
 
+    /**
+     * check for sum equal 21 points.
+     * @return blackjack or not.
+     */
     static boolean blackJack() {
         if (!dealerHand.handChanged) {
             if (playerHand.sumCards() == 21) {
@@ -100,7 +122,7 @@ public class Game {
                 return true;
             }
         } else {
-            if (dealerHand.sumCards() == 1) {
+            if (dealerHand.sumCards() == 21) {
                 dealerScore++;
                 System.out.println("Раунд выиграл дилер! Счет " + playerScore + ":" + dealerScore);
                 return true;

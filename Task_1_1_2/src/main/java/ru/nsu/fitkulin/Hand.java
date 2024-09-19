@@ -55,7 +55,7 @@ public class Hand {
     }
 
     /**
-     * add card to hand
+     * add card to hand.
      *
      * @param card card to add
      */

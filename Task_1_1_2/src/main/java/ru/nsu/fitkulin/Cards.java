@@ -10,7 +10,7 @@ public class Cards {
     ArrayList<Card> deck;
 
     /**
-     * constructor.
+     * constructor for deck.
      */
     public Cards() {
         deck = new ArrayList<>();

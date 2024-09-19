@@ -49,7 +49,7 @@ public class HandTest {
     }
 
     /**
-     * test ace value
+     * test ace value.
      */
     @Test
     void testValueAce() {

@@ -2,6 +2,9 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 
+/**
+ * class for Player hand
+ */
 public class Player extends Hand {
     public Player(Card card1, Card card2) {
         super(card1, card2);

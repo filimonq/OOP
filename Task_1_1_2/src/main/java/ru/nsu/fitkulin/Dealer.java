@@ -2,11 +2,16 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 
+/**
+ * class for Dealer Hand
+ */
 public class Dealer extends Hand {
     public Dealer(Card card1, Card card2) {
         super(card1, card2);
     }
+
     boolean handChanged = false;
+
     /**
      * print of dealer hand.
      *
