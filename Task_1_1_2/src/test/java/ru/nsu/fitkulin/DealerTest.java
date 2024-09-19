@@ -36,6 +36,8 @@ public class DealerTest {
     @Test
     void testAce11() {
         dealerHandForAceTest = new Dealer(card1, card5);
+
+        dealerHandForAceTest.handChanged = true;
         dealerHandForAceTest.addCard(card3);
         assertEquals(19, dealerHandForAceTest.sumCards());
         assertEquals(11, dealerHandForAceTest.aceValue());
