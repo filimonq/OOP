@@ -31,7 +31,7 @@ public class Dealer extends Hand {
             }
         } else {
             res.add(this.cards.get(0).toString());
-            res.add(", <закрытая карта>");
+            res.add("<закрытая карта>");
         }
         return res.toString();
     }
