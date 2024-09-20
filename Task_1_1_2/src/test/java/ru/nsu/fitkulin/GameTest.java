@@ -12,10 +12,9 @@ import org.junit.jupiter.api.Test;
 /**
  * Test Game class.
  */
-class GameTest {
+public class GameTest {
     /**
-     * Skip test for blackjack class.
-     * All inner logic is already, so it just checks if it runs successfully.
+     * checks if it runs successfully.
      */
     @Test
     public void testDealInitialCards() {
