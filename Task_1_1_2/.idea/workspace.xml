@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dacc8fd7-8dd2-4587-a4d7-e3f1c26fa4a4" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Task_1_1_2" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2lurS0Ha7wMCBmSxMU8nYA2hz4d" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build Task_1_1_2.executor": "Run",
+    "Gradle.CardsTest.getCard.executor": "Run",
+    "Gradle.DealerTest.executor": "Run",
+    "Gradle.DealerTest.test.executor": "Run",
+    "Gradle.DealerTest.testAce11.executor": "Run",
+    "Gradle.DealerTest.testAceValue.executor": "Run",
+    "Gradle.DealerTest.testAces.executor": "Run",
+    "Gradle.DealerTest.testHandChanged.executor": "Run",
+    "Gradle.DealerTest.testHandChangedFalse.executor": "Run",
+    "Gradle.DealerTest.testHandChangedTrue.executor": "Run",
+    "Gradle.DealerTest.testSum.executor": "Run",
+    "Gradle.DealerTest.testToString.executor": "Run",
+    "Gradle.GameTest.executor": "Coverage",
+    "Gradle.GameTest.testBlackJackPlayerWins.executor": "Run",
+    "Gradle.GameTest.testBlackJack_DealerWins.executor": "Run",
+    "Gradle.GameTest.testDealInitialCards.executor": "Run",
+    "Gradle.GameTest.testFinishDealerWins.executor": "Run",
+    "Gradle.GameTest.testFinishDraw.executor": "Run",
+    "Gradle.GameTest.testGameStarts.executor": "Run",
+    "Gradle.HandTest.testAddAce.executor": "Run",
+    "Gradle.HandTest.testAddCard.executor": "Run",
+    "Gradle.HandTest.testCard1.executor": "Run",
+    "Gradle.HandTest.testValueAce.executor": "Run",
+    "Gradle.MainTest.executor": "Run",
+    "Gradle.MainTest.testDealInitialCards.executor": "Debug",
+    "Gradle.MainTest.testMain.executor": "Run",
+    "Gradle.PlayerTest.testAce.executor": "Run",
+    "Gradle.PlayerTest.testAces.executor": "Run",
+    "Gradle.PlayerTest.testAllCards.executor": "Run",
+    "Gradle.PlayerTest.testToString.executor": "Run",
+    "Gradle.PlayerTest.testTwoAce.executor": "Run",
+    "Gradle.Task_1_1_2 [:ru.nsu.fitkulin.Main.main()].executor": "Run",
+    "Gradle.Task_1_1_2.executor": "Run",
+    "JUnit.All in Task_1_1_2.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "Task__1__1__2",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/filimonqqq/java/OOP/Task_1_1_2",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.nsu.fitkulin" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="addCard" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.DealerTest">
+    <configuration name="DealerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.fitkulin.DealerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="GameTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.fitkulin.GameTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="GameTest.testDealInitialCards" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.fitkulin.GameTest.testDealInitialCards&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.fitkulin.MainTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.testDealInitialCards" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.fitkulin.MainTest.testDealInitialCards&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.DealerTest" />
+        <item itemvalue="Gradle.MainTest" />
+        <item itemvalue="Gradle.MainTest.testDealInitialCards" />
+        <item itemvalue="Gradle.GameTest.testDealInitialCards" />
+        <item itemvalue="Gradle.GameTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dacc8fd7-8dd2-4587-a4d7-e3f1c26fa4a4" name="Changes" comment="" />
+      <created>1726040803227</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726040803227</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Task_1_1_2$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1726755854033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Task_1_1_2$All_in_Task_1_1_2_main.ic" NAME="All in Task_1_1_2.main Coverage Results" MODIFIED="1726226973216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Task_1_1_2$DealerTest.ic" NAME="DealerTest Coverage Results" MODIFIED="1726756107314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>

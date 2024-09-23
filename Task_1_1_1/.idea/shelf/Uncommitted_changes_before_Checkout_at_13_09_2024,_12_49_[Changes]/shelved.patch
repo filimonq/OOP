@@ -1,0 +1,154 @@
+Index: ../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardValue.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardValue.java b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardValue.java
+new file mode 100644
+--- /dev/null	(date 1726147490779)
++++ b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardValue.java	(date 1726147490779)
+@@ -0,0 +1,28 @@
++package ru.nsu.fitkulin;
++
++/**
++ * enum for information about card.
++ */
++public enum CardValue {
++    TWO("Двойка", 2),
++    THREE("Тройка", 3),
++    FOUR("Четверка", 4),
++    FIVE("Пятерка", 5),
++    SIX("Шестерка", 6),
++    SEVEN("Семерка", 7),
++    EIGHT("Восьмерка", 8),
++    NINE("Девятка", 9),
++    TEN("Десятка", 10),
++    JACK("Валет", 10),
++    QUEEN("Дама", 10),
++    KING("Король", 10),
++    ACE("Туз", 11);
++
++    final int valueOfCard;
++    final String nameOfCard;
++
++    CardValue (String nameOfCard, int valueOfCard) {
++        this.nameOfCard = nameOfCard;
++        this.valueOfCard = valueOfCard;
++    }
++}
+\ No newline at end of file
+Index: ../Task_1_1_2/.idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleHome\" value=\"\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n          </set>\n        </option>\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/.idea/gradle.xml b/../Task_1_1_2/.idea/gradle.xml
+--- a/../Task_1_1_2/.idea/gradle.xml	(revision f238be02468ccd1bfb9858dcbccc55b5951824f6)
++++ b/../Task_1_1_2/.idea/gradle.xml	(date 1726121120001)
+@@ -1,5 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+Index: ../Task_1_1_2/src/test/java/ru/nsu/fitkulin/MainTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.nsu.fitkulin;\n\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.*;\nclass MainTest {\n    @Test\n    void SampleTest() {\n        assertEquals(3, Main.sum(1, 2));\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/src/test/java/ru/nsu/fitkulin/MainTest.java b/../Task_1_1_2/src/test/java/ru/nsu/fitkulin/MainTest.java
+--- a/../Task_1_1_2/src/test/java/ru/nsu/fitkulin/MainTest.java	(revision f238be02468ccd1bfb9858dcbccc55b5951824f6)
++++ b/../Task_1_1_2/src/test/java/ru/nsu/fitkulin/MainTest.java	(date 1726145428359)
+@@ -6,6 +6,6 @@
+ class MainTest {
+     @Test
+     void SampleTest() {
+-        assertEquals(3, Main.sum(1, 2));
++
+     }
+ }
+\ No newline at end of file
+Index: ../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardSuit.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardSuit.java b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardSuit.java
+new file mode 100644
+--- /dev/null	(date 1726147490771)
++++ b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/CardSuit.java	(date 1726147490771)
+@@ -0,0 +1,17 @@
++package ru.nsu.fitkulin;
++
++/**
++ * enum for information about suit.
++ */
++public enum CardSuit {
++    SPADES("Пики"),
++    CLUBS("Крести"),
++    DIAMONDS("Буби"),
++    HEARTS("Черви");
++
++    final String nameOfSuit;
++
++    CardSuit (String nameOfSuit) {
++        this.nameOfSuit = nameOfSuit;
++    }
++}
+Index: ../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ru.nsu.fitkulin;\n\npublic class Main {\n    public static int sum(int a, int b) {\n        return a + b;\n    }\n    public static void main(String[] args) {\n        System.out.println(\"Hello world!\");\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Main.java b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Main.java
+--- a/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Main.java	(revision f238be02468ccd1bfb9858dcbccc55b5951824f6)
++++ b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Main.java	(date 1726145338954)
+@@ -1,10 +1,10 @@
+ package ru.nsu.fitkulin;
+ 
++import java.util.Scanner;
++
+ public class Main {
+-    public static int sum(int a, int b) {
+-        return a + b;
+-    }
++
+     public static void main(String[] args) {
+-        System.out.println("Hello world!");
++        System.out.println("Добро пожаловать в Блэкджек!");
+     }
+ }
+\ No newline at end of file
+Index: ../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Card.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Card.java b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Card.java
+new file mode 100644
+--- /dev/null	(date 1726148612664)
++++ b/../Task_1_1_2/src/main/java/ru/nsu/fitkulin/Card.java	(date 1726148612664)
+@@ -0,0 +1,16 @@
++package ru.nsu.fitkulin;
++
++public class Card {
++    CardValue cardValue;
++    CardSuit cardSuit;
++
++    public Card(CardValue cardValue, CardSuit cardSuit) {
++        this.cardValue = cardValue;
++        this.cardSuit = cardSuit;
++    }
++
++    public String initCard() {
++
++    }
++
++}

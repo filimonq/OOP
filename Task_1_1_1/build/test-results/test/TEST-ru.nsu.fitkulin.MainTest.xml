@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.fitkulin.MainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-09-11T03:54:06" hostname="minicompik" time="0.021">
+  <properties/>
+  <testcase name="sampleTest()" classname="ru.nsu.fitkulin.MainTest" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
