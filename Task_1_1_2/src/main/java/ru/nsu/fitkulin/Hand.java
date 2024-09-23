@@ -39,7 +39,7 @@ public class Hand {
     }
 
     /**
-     * counts the amount of cards.
+     * Counts the amount of cards.
      *
      * @return sum of cards
      */
