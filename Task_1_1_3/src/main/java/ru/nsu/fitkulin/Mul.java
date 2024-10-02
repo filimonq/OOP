@@ -1,6 +1,15 @@
 package ru.nsu.fitkulin;
 
 public class Mul extends Expression {
+    Expression left;
+    Expression right;
+
+    Mul (Expression left, Expression right) {
+        super();
+        this.left = left;
+        this.right = right;
+    }
+
     @Override
     public void print() {
 
@@ -8,11 +17,12 @@ public class Mul extends Expression {
 
     @Override
     public Expression derivative(String variable) {
-        return null;
+        return new Add(new Mul(left, right.derivative(variable)),
+                       new Mul(left.derivative(variable), right));
     }
 
     @Override
     public int eval(String assignments) {
-        return 0;
+        return left.eval(assignments) * right.eval(assignments);
     }
 }

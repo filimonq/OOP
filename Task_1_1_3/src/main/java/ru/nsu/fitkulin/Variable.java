@@ -4,8 +4,10 @@ public class Variable extends Expression {
 
     String name;
     public Variable(String name) {
+        super();
         this.name = name;
     }
+
     @Override
     public void print() {
 
