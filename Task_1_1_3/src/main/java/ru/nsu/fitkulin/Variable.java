@@ -9,17 +9,33 @@ public class Variable extends Expression {
     }
 
     @Override
-    public void print() {
-
+    public String toString() {
+        return this.name;
     }
 
-    @Override
     public Expression derivative(String variable) {
-        return null;
+        if (variable.equals(this.name)) {
+            return new Number(1); // производная переменной по самой себе равна 1
+        } else {
+            return new Number(0); // производная переменной по другой переменной или константе
+        }
     }
 
+
+
     @Override
-    public int eval(String assignments) {
+    public double eval(String assignments) {
+        String[] assignmentsArray = assignments.split(";");
+
+        for (String assignment : assignmentsArray) {
+            String[] assignmentParts = assignment.split("=");
+            String variableName = assignmentParts[0].trim();
+            String variableValue = assignmentParts[1].trim();
+
+            if (this.name.equals(variableName)) {
+                    return Integer.parseInt(variableValue);
+            }
+        }
         return 0;
     }
 }

@@ -11,8 +11,8 @@ public class Add extends Expression {
     }
 
     @Override
-    public void print() {
-
+    public String toString() {
+        return "(" + this.left.toString() + "+" + this.right.toString() + ")";
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Add extends Expression {
     }
 
     @Override
-    public int eval(String assignments) {
+    public double eval(String assignments) {
         return this.left.eval(assignments) + this.right.eval(assignments);
     }
 }

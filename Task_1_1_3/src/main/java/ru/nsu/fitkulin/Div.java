@@ -11,17 +11,19 @@ public class Div extends Expression {
     }
 
     @Override
-    public void print() {
-
+    public String toString() {
+        return "(" + this.left.toString() + "/" + this.right.toString() + ")";
     }
 
     @Override
     public Expression derivative(String variable) {
-        return null;
+        return new Div(new Sub(new Mul(this.right, this.left.derivative(variable)),
+                                new Mul(this.left, this.right.derivative(variable))),
+                    new Mul(this.right, this.right));
     }
 
     @Override
-    public int eval(String assignments) {
-        return 0;
+    public double eval(String assignments) {
+        return left.eval(assignments) / right.eval(assignments);
     }
 }

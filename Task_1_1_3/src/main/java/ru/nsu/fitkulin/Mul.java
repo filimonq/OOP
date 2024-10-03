@@ -11,8 +11,8 @@ public class Mul extends Expression {
     }
 
     @Override
-    public void print() {
-
+    public String toString() {
+        return "(" + this.left.toString() + "*" + this.right.toString() + ")";
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Mul extends Expression {
     }
 
     @Override
-    public int eval(String assignments) {
+    public double eval(String assignments) {
         return left.eval(assignments) * right.eval(assignments);
     }
 }

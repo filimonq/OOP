@@ -1,16 +1,19 @@
 package ru.nsu.fitkulin;
 
 public class Number extends Expression {
-
-    int value;
+    double value;
     public Number(int value) {
         super();
         this.value = value;
     }
 
     @Override
-    public void print() {
-
+    public String toString() {
+        if (this.value % 1 == 0) {
+            return "" + (int) this.value;
+        } else {
+            return "" + this.value;
+        }
     }
 
     @Override
@@ -19,7 +22,7 @@ public class Number extends Expression {
     }
 
     @Override
-    public int eval(String assignments) {
+    public double eval(String assignments) {
         return value;
     }
 }
