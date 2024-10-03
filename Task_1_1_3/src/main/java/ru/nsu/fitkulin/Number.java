@@ -2,7 +2,7 @@ package ru.nsu.fitkulin;
 
 public class Number extends Expression {
     double value;
-    public Number(int value) {
+    public Number(double value) {
         super();
         this.value = value;
     }
