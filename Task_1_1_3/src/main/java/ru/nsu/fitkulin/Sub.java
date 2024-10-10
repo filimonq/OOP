@@ -63,6 +63,7 @@ public class Sub extends Expression {
         if (simplifiedSub.left instanceof Number leftNumber
                 && simplifiedSub.right instanceof Number rightNumber) {
             return new Number(leftNumber.value - rightNumber.value);
+
         }  else if (simplifiedSub.left instanceof Number leftNumber && leftNumber.value == 0) {
             return simplifiedSub.right;
 

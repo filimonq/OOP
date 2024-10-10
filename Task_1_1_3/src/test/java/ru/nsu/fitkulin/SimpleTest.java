@@ -4,7 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * test for simplified.
+ */
 public class SimpleTest {
+    /**
+     * base test.
+     */
     @Test
     void simplificationTestA() {
         String expression = "(x*0) +(10-0) -  (x*1) + 12 + (128*0) + (32*1)+ 0/ y";

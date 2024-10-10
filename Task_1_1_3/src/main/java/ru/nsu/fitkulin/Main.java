@@ -29,11 +29,21 @@ public class Main {
         System.out.print("Производная: ");
         de.print();
 
-        double result = e.eval(variableValue);
-        System.out.println("Результат: " + result);
+        try {
+            double result = e.eval(variableValue);
+            System.out.println("Результат: " + result);
+        } catch (ArithmeticException ex) {
+            System.out.println("--- " + ex.getMessage() + " ---");
+        }
 
-        Expression se = e.simple();
-        System.out.print("Упрощённое: ");
-        se.print();
+        try {
+            Expression se = e.simple();
+            System.out.print("Упрощённое: ");
+            se.print();
+        } catch (ArithmeticException ex) {
+            System.out.println("--- " + ex.getMessage() + " ---");
+        }
+
+        scanner.close();
     }
 }

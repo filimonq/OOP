@@ -50,6 +50,9 @@ public class Div extends Expression {
      */
     @Override
     public double eval(String assignments) {
+        if (right.eval(assignments) == 0) {
+            throw new ArithmeticException("Ошибка: Деление на ноль");
+        }
         return left.eval(assignments) / right.eval(assignments);
     }
 
@@ -58,9 +61,14 @@ public class Div extends Expression {
         Div simplifiedDiv = new Div(this.left.simple(), this.right.simple());
         if (simplifiedDiv.left instanceof Number leftNumber
                 && simplifiedDiv.right instanceof Number rightNumber) {
+            if (rightNumber.value == 0) {
+                throw new ArithmeticException("Ошибка: Деление на ноль");
+            }
             return new Number(leftNumber.value / rightNumber.value);
+
         } else if (this.left instanceof Number leftNumber && leftNumber.value == 0) {
             return new Number(0);
+
         } else {
             return simplifiedDiv;
         }

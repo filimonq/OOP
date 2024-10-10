@@ -1,6 +1,7 @@
 package ru.nsu.fitkulin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +39,18 @@ public class OperationsTest {
 
         double result = e.eval("x = 10; y = 13");
         assertEquals(23.0, result);
+    }
+
+    @Test
+    public void testZero() {
+        String expression = "999/0";
+        Expression e = Parser.parse(expression);
+        try {
+            double result = e.eval("x = 0");
+        } catch (ArithmeticException ex) {
+            return ;
+        }
+        fail();
+
     }
 }

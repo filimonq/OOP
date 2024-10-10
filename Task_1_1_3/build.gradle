@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'jacoco'
 }
+
+/* for simple
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17) // Specify desired Java version
@@ -18,6 +20,7 @@ repositories {
 
 dependencies {
 }
+*/
 
 group = 'ru.nsu.fitkulin'
 version = '1.0-SNAPSHOT'
