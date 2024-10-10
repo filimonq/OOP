@@ -1,11 +1,19 @@
 package ru.nsu.fitkulin;
 
+/**
+ * parser class.
+ */
 public class Parser {
     private static String expression;
     private static String token;
     private static int pos;
     private static int len;
 
+    /**
+     * parses the given expression.
+     * @param exp expression
+     * @return formatted expression
+     */
     static Expression parse(String exp) {
         expression = exp;
         pos = 0;
@@ -14,6 +22,11 @@ public class Parser {
         return parseExpression();
     }
 
+    /**
+     * reads the next token from the expression, ignoring whitespace.
+     * shifts the current position.
+     * @returna string representation of the next token.
+     */
     private static String readToken() {
         while (pos < len && expression.charAt(pos) == ' ')
             pos++;
@@ -30,6 +43,10 @@ public class Parser {
         return token = expression.substring(left, pos);
     }
 
+    /**
+     * returns the next token without changing the current position.
+     * @return next token.
+     */
     private static String peekToken() {
         int oldPos = pos;
         token = readToken();
@@ -37,6 +54,10 @@ public class Parser {
         return token;
     }
 
+    /**
+     * parses an atomic expression.
+     * @return expression representing the atomic expression
+     */
     private static Expression parseAtom() {
         if (peekToken().equals("(")) {
             readToken();
@@ -53,6 +74,10 @@ public class Parser {
         }
     }
 
+    /**
+     * parses a monomial(*, /).
+     * @return expression representing the monomial.
+     */
     private static Expression parseMonome() {
         Expression expL = parseAtom();
         String oper;
@@ -68,6 +93,10 @@ public class Parser {
         return expL;
     }
 
+    /**
+     * parses a complete expression(+, -).
+     * @return complete expression.
+     */
     private static Expression parseExpression() {
         Expression expL = parseMonome();
         String oper;

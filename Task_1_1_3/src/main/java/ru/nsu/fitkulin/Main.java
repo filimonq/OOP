@@ -2,7 +2,13 @@ package ru.nsu.fitkulin;
 
 import java.util.Scanner;
 
+/**
+ * main class.
+ */
 public class Main {
+    /**
+     * main func.
+     */
     public static void main(String[] args) {
         System.out.println("Введите выражение");
         Scanner scanner = new Scanner(System.in);
