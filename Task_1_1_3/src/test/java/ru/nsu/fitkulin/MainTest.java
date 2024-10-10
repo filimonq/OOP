@@ -25,7 +25,7 @@ public class MainTest {
     }
 
     /**
-     * second
+     * second.
      */
     @Test
     public void testMainMethods2() {

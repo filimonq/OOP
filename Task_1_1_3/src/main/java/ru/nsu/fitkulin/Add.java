@@ -1,7 +1,7 @@
 package ru.nsu.fitkulin;
 
 /**
- * class for sum
+ * class for sum.
  */
 public class Add extends Expression {
     Expression left;
@@ -14,7 +14,7 @@ public class Add extends Expression {
      *
      * @param right right expression.
      */
-    Add (Expression left, Expression right) {
+    Add(Expression left, Expression right) {
         super();
         this.left = left;
         this.right = right;
@@ -31,7 +31,7 @@ public class Add extends Expression {
     }
 
     /**
-     * derivative of sum
+     * derivative of sum.
      *
      * @param variable variable for derivative.
      *

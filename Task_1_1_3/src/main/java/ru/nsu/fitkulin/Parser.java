@@ -26,7 +26,6 @@ public class Parser {
 
     /**
      * reads the next token from the expression, ignoring whitespace.
-     *
      * shifts the current position.
      *
      * @return string representation of the next token.
@@ -93,10 +92,12 @@ public class Parser {
         while (peekToken().equals("*") || peekToken().equals("/")) {
             oper = readToken();
             expR = parseAtom();
-            if (oper.equals("*"))
+            if (oper.equals("*")) {
                 expL = new Mul(expL, expR);
-            else
+            }
+            else {
                 expL = new Div(expL, expR);
+            }
         }
         return expL;
     }
@@ -113,10 +114,12 @@ public class Parser {
         while (peekToken().equals("+") || peekToken().equals("-")) {
             oper = readToken();
             expR = parseMonome();
-            if (oper.equals("+"))
+            if (oper.equals("+")) {
                 expL = new Add(expL, expR);
-            else
+            }
+            else {
                 expL = new Sub(expL, expR);
+            }
         }
         return expL;
     }

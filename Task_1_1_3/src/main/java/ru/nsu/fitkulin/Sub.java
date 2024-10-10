@@ -1,7 +1,7 @@
 package ru.nsu.fitkulin;
 
 /**
- * class for sub
+ * class for sub.
  */
 public class Sub extends Expression {
     Expression left;
@@ -14,7 +14,7 @@ public class Sub extends Expression {
      *
      * @param right right expression.
      */
-    Sub (Expression left, Expression right) {
+    Sub(Expression left, Expression right) {
         super();
         this.left = left;
         this.right = right;

@@ -14,7 +14,7 @@ public class Mul extends Expression {
      *
      * @param right right expression.
      */
-    Mul (Expression left, Expression right) {
+    Mul(Expression left, Expression right) {
         super();
         this.left = left;
         this.right = right;

@@ -14,7 +14,7 @@ public class Div extends Expression {
      *
      * @param right right expression.
      */
-    Div (Expression left, Expression right) {
+    Div(Expression left, Expression right) {
         super();
         this.left = left;
         this.right = right;
