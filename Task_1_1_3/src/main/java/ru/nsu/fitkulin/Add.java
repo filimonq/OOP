@@ -53,4 +53,25 @@ public class Add extends Expression {
     public double eval(String assignments) {
         return this.left.eval(assignments) + this.right.eval(assignments);
     }
+
+    /**
+     * @return simple exp for Add.
+     */
+    @Override
+    public Expression simple() {
+        Add simplifiedAdd = new Add(this.left.simple(), this.right.simple());
+        if (simplifiedAdd.left instanceof Number leftNumber
+                && simplifiedAdd.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value + rightNumber.value);
+
+        } else if (simplifiedAdd.left instanceof Number leftNumber && leftNumber.value == 0) {
+            return simplifiedAdd.right;
+
+        } else if (simplifiedAdd.right instanceof Number rightNumber && rightNumber.value == 0) {
+            return simplifiedAdd.left;
+
+        } else {
+            return simplifiedAdd;
+        }
+    }
 }

@@ -51,4 +51,9 @@ public class Number extends Expression {
     public double eval(String assignments) {
         return value;
     }
+
+    @Override
+    public Expression simple() {
+        return new Number(this.value);
+    }
 }

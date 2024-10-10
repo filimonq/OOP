@@ -61,4 +61,9 @@ public class Variable extends Expression {
         }
         return 0;
     }
+
+    @Override
+    public Expression simple() {
+        return new Variable(this.name);
+    }
 }

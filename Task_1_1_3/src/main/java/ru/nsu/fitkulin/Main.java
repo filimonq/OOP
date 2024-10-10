@@ -31,5 +31,9 @@ public class Main {
 
         double result = e.eval(variableValue);
         System.out.println("Результат: " + result);
+
+        Expression se = e.simple();
+        System.out.print("Упрощённое: ");
+        se.print();
     }
 }

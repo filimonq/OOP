@@ -52,4 +52,30 @@ public class Mul extends Expression {
     public double eval(String assignments) {
         return left.eval(assignments) * right.eval(assignments);
     }
+
+    /**
+     * @return simple exp for Mul.
+     */
+    @Override
+    public Expression simple() {
+        Mul simplifiedMul = new Mul(this.left.simple(), this.right.simple());
+        if (simplifiedMul.left instanceof Number leftNumber
+                && simplifiedMul.right instanceof Number rightNumber) {
+            return new Number(leftNumber.value * rightNumber.value);
+
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 0
+                || simplifiedMul.right instanceof  Number rightNumber && rightNumber.value == 0) {
+            return new Number(0);
+
+        } else if (simplifiedMul.left instanceof Number leftNumber && leftNumber.value == 1) {
+            return simplifiedMul.right;
+
+        } else if (simplifiedMul.right instanceof Number rightNumber && rightNumber.value == 1) {
+            return simplifiedMul.left;
+
+        } else {
+            return simplifiedMul;
+        }
+    }
 }
+

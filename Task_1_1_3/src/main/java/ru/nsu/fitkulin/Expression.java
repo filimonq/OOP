@@ -29,5 +29,9 @@ public abstract class Expression {
      */
     public abstract double eval(String assignments);
 
-    // public abstract Expression dop();
+    /**
+     * get new expression which is simplification of original expression.
+     * @return new expression.
+     */
+    public abstract Expression simple();
 }
