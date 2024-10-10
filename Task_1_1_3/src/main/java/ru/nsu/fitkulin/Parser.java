@@ -94,8 +94,7 @@ public class Parser {
             expR = parseAtom();
             if (oper.equals("*")) {
                 expL = new Mul(expL, expR);
-            }
-            else {
+            } else {
                 expL = new Div(expL, expR);
             }
         }
@@ -116,8 +115,7 @@ public class Parser {
             expR = parseMonome();
             if (oper.equals("+")) {
                 expL = new Add(expL, expR);
-            }
-            else {
+            } else {
                 expL = new Sub(expL, expR);
             }
         }
