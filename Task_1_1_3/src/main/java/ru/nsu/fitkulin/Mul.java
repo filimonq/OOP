@@ -9,7 +9,9 @@ public class Mul extends Expression {
 
     /**
      * constructor.
+     *
      * @param left left expression.
+     *
      * @param right right expression.
      */
     Mul (Expression left, Expression right) {
@@ -20,6 +22,7 @@ public class Mul extends Expression {
 
     /**
      * string for multiplication.
+     *
      * @return (a*b).
      */
     @Override
@@ -28,7 +31,8 @@ public class Mul extends Expression {
     }
 
     /**
-     * derivative for multiplication
+     * derivative for multiplication.
+     *
      * @return derivative of mul two expressions.
      */
     @Override
@@ -39,7 +43,9 @@ public class Mul extends Expression {
 
     /**
      * evaluating an expression with assigned variables.
+     *
      * @param assignments assignation string.
+     *
      * @return res of expression.
      */
     @Override

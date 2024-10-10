@@ -16,6 +16,7 @@ public class Number extends Expression {
 
     /**
      * string for number.
+     *
      * @return int if there is no fractional part.
      */
     @Override
@@ -29,7 +30,9 @@ public class Number extends Expression {
 
     /**
      * derivative of number.
+     *
      * @param variable variable for derivative.
+     *
      * @return always zero.
      */
     @Override
@@ -39,7 +42,9 @@ public class Number extends Expression {
 
     /**
      * just number`s value.
+     *
      * @param assignments assignation string.
+     *
      * @return value.
      */
     @Override

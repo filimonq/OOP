@@ -13,14 +13,18 @@ public abstract class Expression {
 
     /**
      * get derivative of expression.
+     *
      * @param variable variable for derivative.
+     *
      * @return a new expression after taking the derivative.
      */
     public abstract Expression derivative(String variable);
 
     /**
      * evaluating an expression with assigned variables.
+     *
      * @param assignments assignation string.
+     *
      * @return result of expression.
      */
     public abstract double eval(String assignments);

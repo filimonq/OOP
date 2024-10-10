@@ -17,6 +17,7 @@ public class Variable extends Expression {
 
     /**
      * string fot variable.
+     *
      * @return variable.
      */
     @Override
@@ -26,7 +27,9 @@ public class Variable extends Expression {
 
     /**
      * derivative of variable.
+     *
      * @param variable variable for derivative.
+     *
      * @return 1, if we take the derivative with respect to this variable.
      */
     public Expression derivative(String variable) {
@@ -39,7 +42,9 @@ public class Variable extends Expression {
 
     /**
      * processes the input of a variable value.
+     *
      * @param assignments assignation string.
+     *
      * @return value of variable.
      */
     @Override

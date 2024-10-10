@@ -11,8 +11,10 @@ public class Parser {
 
     /**
      * parses the given expression.
-     * @param exp expression
-     * @return formatted expression
+     *
+     * @param exp expression.
+     *
+     * @return formatted expression.
      */
     static Expression parse(String exp) {
         expression = exp;
@@ -24,27 +26,31 @@ public class Parser {
 
     /**
      * reads the next token from the expression, ignoring whitespace.
+     *
      * shifts the current position.
-     * @returna string representation of the next token.
+     *
+     * @return string representation of the next token.
      */
     private static String readToken() {
-        while (pos < len && expression.charAt(pos) == ' ')
+        while (pos < len && expression.charAt(pos) == ' ') {
             pos++;
-
-        if (pos == len)
+        }
+        if (pos == len) {
             return token = "";
-
-        if ("+-*/()".contains(String.valueOf(expression.charAt(pos))))
+        }
+        if ("+-*/()".contains(String.valueOf(expression.charAt(pos)))) {
             return token = String.valueOf(expression.charAt(pos++));
-
+        }
         int left = pos;
-        while (pos < len && Character.isLetterOrDigit(expression.charAt(pos)))
+        while (pos < len && Character.isLetterOrDigit(expression.charAt(pos))) {
             pos++;
+        }
         return token = expression.substring(left, pos);
     }
 
     /**
      * returns the next token without changing the current position.
+     *
      * @return next token.
      */
     private static String peekToken() {
@@ -56,7 +62,8 @@ public class Parser {
 
     /**
      * parses an atomic expression.
-     * @return expression representing the atomic expression
+     *
+     * @return expression representing the atomic expression.
      */
     private static Expression parseAtom() {
         if (peekToken().equals("(")) {
@@ -76,6 +83,7 @@ public class Parser {
 
     /**
      * parses a monomial(*, /).
+     *
      * @return expression representing the monomial.
      */
     private static Expression parseMonome() {
@@ -95,6 +103,7 @@ public class Parser {
 
     /**
      * parses a complete expression(+, -).
+     *
      * @return complete expression.
      */
     private static Expression parseExpression() {

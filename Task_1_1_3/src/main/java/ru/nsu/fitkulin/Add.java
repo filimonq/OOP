@@ -9,7 +9,9 @@ public class Add extends Expression {
 
     /**
      * constructor.
+     *
      * @param left left expression
+     *
      * @param right right expression.
      */
     Add (Expression left, Expression right) {
@@ -20,6 +22,7 @@ public class Add extends Expression {
 
     /**
      * string of sum.
+     *
      * @return (a+b).
      */
     @Override
@@ -29,7 +32,9 @@ public class Add extends Expression {
 
     /**
      * derivative of sum
+     *
      * @param variable variable for derivative.
+     *
      * @return derivative of sum two expressions.
      */
     @Override
@@ -39,7 +44,9 @@ public class Add extends Expression {
 
     /**
      * evaluating an expression with assigned variables.
+     *
      * @param assignments assignation string.
+     *
      * @return res of expression.
      */
     @Override

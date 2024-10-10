@@ -9,7 +9,9 @@ public class Div extends Expression {
 
     /**
      * constructor.
+     *
      * @param left left expression.
+     *
      * @param right right expression.
      */
     Div (Expression left, Expression right) {
@@ -20,6 +22,7 @@ public class Div extends Expression {
 
     /**
      * string fot division.
+     *
      * @return (a / b)
      */
     @Override
@@ -29,7 +32,9 @@ public class Div extends Expression {
 
     /**
      * derivative for division.
+     *
      * @param variable variable for derivative.
+     *
      * @return derivative of division two expressions.
      */
     @Override
@@ -41,7 +46,9 @@ public class Div extends Expression {
 
     /**
      * evaluating an expression with assigned variables.
+     *
      * @param assignments assignation string.
+     *
      * @return res of expression.
      */
     @Override

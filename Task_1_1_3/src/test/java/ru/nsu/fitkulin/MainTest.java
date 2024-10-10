@@ -1,10 +1,16 @@
 package ru.nsu.fitkulin;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
+
+/**
+ * test of all code.
+ */
 public class MainTest {
+    /**
+     * first.
+     */
     @Test
     public void testMainMethods() {
         Expression e = new Add(new Number(4), new Div(new Number(2), new Variable("x")));
@@ -18,6 +24,9 @@ public class MainTest {
         assertEquals(4.2, result);
     }
 
+    /**
+     * second
+     */
     @Test
     public void testMainMethods2() {
         Expression e = new Sub(new Mul(new Number(2.7), new Variable("x")), new Number(4));

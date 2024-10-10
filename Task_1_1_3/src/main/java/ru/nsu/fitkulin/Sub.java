@@ -9,7 +9,9 @@ public class Sub extends Expression {
 
     /**
      * constructor.
+     *
      * @param left left expression.
+     *
      * @param right right expression.
      */
     Sub (Expression left, Expression right) {
@@ -20,6 +22,7 @@ public class Sub extends Expression {
 
     /**
      * string of sub.
+     *
      * @return (a-b).
      */
     @Override
@@ -29,7 +32,9 @@ public class Sub extends Expression {
 
     /**
      * derivative of sub.
+     *
      * @param variable – variable for derivative.
+     *
      * @return derivative of sub. two expressions.
      */
     @Override
@@ -39,7 +44,9 @@ public class Sub extends Expression {
 
     /**
      * evaluating an expression with assigned variables.
+     *
      * @param assignments assignation string.
+     *
      * @return res of expression.
      */
     @Override
