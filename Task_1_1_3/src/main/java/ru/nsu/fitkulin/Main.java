@@ -4,16 +4,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Expression e = new Add(new Number(4), new Div(new Number(2), new Variable("x")));
+        System.out.println("Введите выражение");
+        Scanner scanner = new Scanner(System.in);
+        String expression = scanner.nextLine();
 
-        System.out.print("Input: ");
+        System.out.println("Введите переменные в формате 'x = 10; y = 5'");
+        String variableValue = scanner.nextLine();
+
+        System.out.println("Введите переменную, по которой нужно взять производную");
+        String variableDerivative = scanner.nextLine();
+
+        Expression e = Parser.parse(expression);
+
+        System.out.print("Выражение: ");
         e.print();
 
-        Expression de = e.derivative("x");
-        System.out.print("Derivative: ");
+        Expression de = e.derivative(variableDerivative);
+        System.out.print("Производная: ");
         de.print();
 
-        double result = e.eval("x = 10; y = 13");
-        System.out.println("Evaluation Result: " + result);
+        double result = e.eval(variableValue);
+        System.out.println("Результат: " + result);
     }
 }

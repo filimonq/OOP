@@ -1,5 +1,8 @@
 package ru.nsu.fitkulin;
 
+/**
+ * class responsible for the variable.
+ */
 public class Variable extends Expression {
 
     String name;
@@ -21,8 +24,6 @@ public class Variable extends Expression {
         }
     }
 
-
-
     @Override
     public double eval(String assignments) {
         String[] assignmentsArray = assignments.split(";");
@@ -31,9 +32,8 @@ public class Variable extends Expression {
             String[] assignmentParts = assignment.split("=");
             String variableName = assignmentParts[0].trim();
             String variableValue = assignmentParts[1].trim();
-
             if (this.name.equals(variableName)) {
-                    return Integer.parseInt(variableValue);
+                    return Float.parseFloat(variableValue);
             }
         }
         return 0;

@@ -1,5 +1,8 @@
 package ru.nsu.fitkulin;
 
+/**
+ * class responsible for the number.
+ */
 public class Number extends Expression {
     double value;
     public Number(double value) {
@@ -10,7 +13,7 @@ public class Number extends Expression {
     @Override
     public String toString() {
         if (this.value % 1 == 0) {
-            return "" + (int) this.value;
+            return "" + (int) this.value; // если число целое, то приводим к инту
         } else {
             return "" + this.value;
         }
