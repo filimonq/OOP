@@ -69,7 +69,7 @@ public class Add extends Expression {
 
         } else if (simplifiedAdd.right instanceof Number rightNumber && rightNumber.value == 0) {
             return simplifiedAdd.left;
-
+            
         } else {
             return simplifiedAdd;
         }

@@ -31,6 +31,7 @@ public abstract class Expression {
 
     /**
      * get new expression which is simplification of original expression.
+     *
      * @return new expression.
      */
     public abstract Expression simple();
