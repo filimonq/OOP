@@ -136,6 +136,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">Expression</span>
 extends java.lang.Object</pre>
+<div class="block">abstract class Expression.</div>
 </li>
 </ul>
 </div>
@@ -180,17 +181,23 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;variable)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">get derivative of expression.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;assignments)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">evaluating an expression with assigned variables.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#print()">print</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">print expression.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -242,6 +249,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>print</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;print()</pre>
+<div class="block">print expression.</div>
 </li>
 </ul>
 <a id="derivative(java.lang.String)">
@@ -251,6 +259,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public abstract&nbsp;<a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;variable)</pre>
+<div class="block">get derivative of expression.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>variable</code> - variable for derivative.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a new expression after taking the derivative.</dd>
+</dl>
 </li>
 </ul>
 <a id="eval(java.lang.String)">
@@ -260,6 +275,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public abstract&nbsp;double&nbsp;eval&#8203;(java.lang.String&nbsp;assignments)</pre>
+<div class="block">evaluating an expression with assigned variables.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>assignments</code> - assignation string.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result of expression.</dd>
+</dl>
 </li>
 </ul>
 </li>

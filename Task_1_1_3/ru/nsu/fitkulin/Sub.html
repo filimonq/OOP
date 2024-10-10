@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Sub</span>
 extends <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a></pre>
+<div class="block">class for sub</div>
 </li>
 </ul>
 </div>
@@ -160,17 +161,23 @@ extends <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#derivative(java.lang.String)">derivative</a></span>&#8203;(java.lang.String&nbsp;variable)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">derivative of sub.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;assignments)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">evaluating an expression with assigned variables.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">string of sub.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -210,9 +217,12 @@ extends <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">string of sub.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>(a-b).</dd>
 </dl>
 </li>
 </ul>
@@ -223,9 +233,14 @@ extends <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a
 <li class="blockList">
 <h4>derivative</h4>
 <pre class="methodSignature">public&nbsp;<a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a>&nbsp;derivative&#8203;(java.lang.String&nbsp;variable)</pre>
+<div class="block">derivative of sub.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#derivative(java.lang.String)">derivative</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>variable</code> - – variable for derivative.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>derivative of sub. two expressions.</dd>
 </dl>
 </li>
 </ul>
@@ -236,9 +251,14 @@ extends <a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;eval&#8203;(java.lang.String&nbsp;assignments)</pre>
+<div class="block">evaluating an expression with assigned variables.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Expression.html#eval(java.lang.String)">eval</a></code>&nbsp;in class&nbsp;<code><a href="Expression.html" title="class in ru.nsu.fitkulin">Expression</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>assignments</code> - assignation string.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>res of expression.</dd>
 </dl>
 </li>
 </ul>
