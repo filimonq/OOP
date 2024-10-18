@@ -9,7 +9,7 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     private final List<List<Boolean>> incidenceMatrix;
     private int edgeCount;
 
-    public IncidenceMatrixGraph (int maxVertices) {
+    public IncidenceMatrixGraph(int maxVertices) {
         this.vertices = new ArrayList<>();
         this.incidenceMatrix = new ArrayList<>();
         for (int i = 0; i < maxVertices; i++) {
@@ -25,12 +25,9 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     public void addVertex(T vertex) {
         if (!vertices.contains(vertex)) {
             vertices.add(vertex);
-
             for (List<Boolean> row : incidenceMatrix) {
                 row.add(false);
             }
-
-            incidenceMatrix.add(new ArrayList<>(vertices.size()));
             for (int i = 0; i < vertices.size(); i++) {
                 incidenceMatrix.get(vertices.size() - 1).add(false);
             }
@@ -40,7 +37,9 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     @Override
     public void removeVertex(T vertex) {
         int index = vertices.indexOf(vertex);
-        if (index == -1) return;
+        if (index == -1) {
+            return;
+        }
 
         vertices.remove(index);
         incidenceMatrix.remove(index);
@@ -55,6 +54,12 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
         if (fromIndex != -1 && toIndex != -1) {
+            for (List<Boolean> row : incidenceMatrix) {
+                row.add(false);
+            }
+            for (int j = 0; j < vertices.size(); j++) {
+                incidenceMatrix.get(j).add(false);
+            }
             incidenceMatrix.get(fromIndex).set(edgeCount, true);
             incidenceMatrix.get(toIndex).set(edgeCount, true);
             edgeCount++;
@@ -66,8 +71,13 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
         if (fromIndex != -1 && toIndex != -1) {
-            incidenceMatrix.get(fromIndex).set(edgeCount - 1, false);
-            incidenceMatrix.get(toIndex).set(edgeCount - 1, false);
+            for (int i = 0; i < edgeCount; i++) {
+                if (incidenceMatrix.get(fromIndex).get(i) && incidenceMatrix.get(toIndex).get(i)) {
+                    incidenceMatrix.get(fromIndex).set(i, false);
+                    incidenceMatrix.get(toIndex).set(i, false);
+                    break; // Удаляем только первое найденное ребро
+                }
+            }
         }
     }
 

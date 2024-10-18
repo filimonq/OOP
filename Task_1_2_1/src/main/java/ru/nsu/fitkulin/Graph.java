@@ -13,6 +13,4 @@ public interface Graph<T> {
     void removeEdge(T from, T to);
 
     List<T> getNeighbors(T vertex);
-
-    // void readFromFile(String filename) throws IOException;
 }
