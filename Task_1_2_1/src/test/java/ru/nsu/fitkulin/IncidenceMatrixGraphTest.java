@@ -7,12 +7,12 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AdjacencyMatrixGraphTest {
-    AdjacencyMatrixGraph<String> graph;
+class IncidenceMatrixGraphTest {
+    IncidenceMatrixGraph<String> graph;
 
     @BeforeEach
     void setUp() {
-        graph = new AdjacencyMatrixGraph<>();
+        graph = new IncidenceMatrixGraph<>(5);
         graph.addVertex("A");
         graph.addVertex("B");
         graph.addVertex("C");
@@ -26,18 +26,18 @@ class AdjacencyMatrixGraphTest {
     }
 
     @Test
-    void graphTest() {
+    void graphTest() { // fix that sh*t
         graph.removeVertex("A");
         graph.removeEdge("B", "C");
 
         String expectedOutput =
                 """
                         Vertices: [B, C, D, E]
-                        Adjacency Matrix:
-                        B: 0 0 0 0\s
-                        C: 0 1 0 0\s
-                        D: 0 0 0 0\s
-                        E: 0 0 1 0\s
+                        Incidence Matrix:
+                        B: 0 0 1 0 0\s
+                        C: 0 -1 0 0 0\s
+                        D: 0 0 0 -1 0\s
+                        E: 0 0 0 1 0\s
                         """;
 
 
@@ -47,8 +47,8 @@ class AdjacencyMatrixGraphTest {
     @Test
     void getNeighbors() {
         List<String> expectedOutput = new ArrayList<>();
-        expectedOutput.add("A");
         expectedOutput.add("C");
+        expectedOutput.add("A");
 
         assertEquals(expectedOutput, graph.getNeighbors("B"));
     }

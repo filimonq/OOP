@@ -2,7 +2,6 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 class AdjacencyMatrixGraph<T> implements Graph<T> {
     private final List<T> vertices;
@@ -81,23 +80,6 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
             }
         }
         return neighbors;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof AdjacencyMatrixGraph<?> that)) {
-            return false;
-        }
-        return Objects.equals(vertices, that.vertices)
-                && Objects.equals(adjacencyMatrix, that.adjacencyMatrix);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(vertices, adjacencyMatrix);
     }
 
     @Override
