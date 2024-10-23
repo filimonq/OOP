@@ -44,8 +44,6 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
             return;
         }
 
-        edges.removeIf(edge -> edge.from.equals(vertex) || edge.to.equals(vertex));
-
         vertices.remove(index);
         incidenceMatrix.remove(index);
 
@@ -84,7 +82,6 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
                 break;
             }
         }
-
         if (edgeIndex != -1) {
             edges.remove(edgeIndex);
             for (List<Integer> row : incidenceMatrix) {

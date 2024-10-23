@@ -27,17 +27,17 @@ class IncidenceMatrixGraphTest {
 
     @Test
     void graphTest() {
-        graph.removeVertex("A");
+        graph.removeVertex("E");
         graph.removeEdge("B", "C");
 
         String expectedOutput = // криво как то
                 """
-                        Vertices: [B, C, D, E]
+                        Vertices: [A, B, C, D]
                         Incidence Matrix:
-                        B: 0 1\s
-                        C: 2 0\s
-                        D: 0 0\s
-                        E: 0 0\s
+                        A: 1 0 -1 0\s
+                        B: -1 0 1 0\s
+                        C: 0 2 0 0\s
+                        D: 0 0 0 0\s
                         """;
 
 
