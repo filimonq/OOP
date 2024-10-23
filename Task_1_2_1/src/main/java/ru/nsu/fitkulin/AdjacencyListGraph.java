@@ -66,7 +66,6 @@ class AdjacencyListGraph<T> implements Graph<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Vertices: ").append(vertices).append("\n");
-
         sb.append("Adjacency List:\n");
         for (int i = 0; i < adjacencyList.size(); i++) {
             sb.append(vertices.get(i)).append(": ");

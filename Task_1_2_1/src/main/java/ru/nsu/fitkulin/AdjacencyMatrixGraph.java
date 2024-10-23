@@ -86,7 +86,6 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Vertices: ").append(vertices).append("\n");
-
         sb.append("Adjacency Matrix:\n");
         for (int i = 0; i < adjacencyMatrix.size(); i++) {
             sb.append(vertices.get(i)).append(": ");

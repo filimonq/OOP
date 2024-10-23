@@ -3,21 +3,24 @@ package ru.nsu.fitkulin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IncidenceMatrixGraph<T> implements Graph<T> {
+class IncidenceMatrixGraph<T> implements Graph<T> {
     private final List<T> vertices;
-    private final List<List<Integer>> incidenceMatrix;
-    private int edgeCount;
+    private final List<List<Integer>> incidenceMatrix; // Изменено на Integer
+    private final List<Edge<T>> edges;
 
-    public IncidenceMatrixGraph(int maxVertices) {
+    private static class Edge<T> {
+        T from;
+        T to;
+        Edge(T from, T to) {
+            this.from = from;
+            this.to = to;
+        }
+    }
+
+    public IncidenceMatrixGraph() {
         this.vertices = new ArrayList<>();
         this.incidenceMatrix = new ArrayList<>();
-        for (int i = 0; i < maxVertices; i++) {
-            incidenceMatrix.add(new ArrayList<>());
-            for (int j = 0; j < maxVertices; j++) {
-                incidenceMatrix.get(i).add(0);
-            }
-        }
-        this.edgeCount = 0;
+        this.edges = new ArrayList<>();
     }
 
     @Override
@@ -27,9 +30,8 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
             for (List<Integer> row : incidenceMatrix) {
                 row.add(0);
             }
-            // Добавляем новый ряд для новой вершины
             incidenceMatrix.add(new ArrayList<>());
-            for (int i = 0; i < edgeCount; i++) {
+            for (int i = 0; i < edges.size(); i++) {
                 incidenceMatrix.get(vertices.size() - 1).add(0);
             }
         }
@@ -41,6 +43,8 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         if (index == -1) {
             return;
         }
+
+        edges.removeIf(edge -> edge.from.equals(vertex) || edge.to.equals(vertex));
 
         vertices.remove(index);
         incidenceMatrix.remove(index);
@@ -55,26 +59,36 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
         if (fromIndex != -1 && toIndex != -1) {
-            edgeCount++;
-            for (List<Integer> row : incidenceMatrix) {
-                row.add(0);
+            Edge<T> newEdge = new Edge<>(from, to);
+            edges.add(newEdge);
+
+            for (int i = 0; i < vertices.size(); i++) {
+                incidenceMatrix.get(i).add(0);
             }
-            incidenceMatrix.get(fromIndex).set(edgeCount - 1, 1);
-            incidenceMatrix.get(toIndex).set(edgeCount - 1, -1);
+
+            if (from.equals(to)) {
+                incidenceMatrix.get(fromIndex).set(edges.size() - 1, 2); // петля
+            } else {
+                incidenceMatrix.get(fromIndex).set(edges.size() - 1, 1);
+                incidenceMatrix.get(toIndex).set(edges.size() - 1, -1);
+            }
         }
     }
 
     @Override
     public void removeEdge(T from, T to) {
-        int fromIndex = vertices.indexOf(from);
-        int toIndex = vertices.indexOf(to);
-        if (fromIndex != -1 && toIndex != -1) {
-            for (int i = 0; i < edgeCount; i++) {
-                if (incidenceMatrix.get(fromIndex).get(i) == 1 && incidenceMatrix.get(toIndex).get(i) == -1) {
-                    incidenceMatrix.get(fromIndex).set(i, 0);
-                    incidenceMatrix.get(toIndex).set(i, 0);
-                    break;
-                }
+        int edgeIndex = -1;
+        for (int i = 0; i < edges.size(); i++) {
+            if (edges.get(i).from.equals(from) && edges.get(i).to.equals(to)) {
+                edgeIndex = i;
+                break;
+            }
+        }
+
+        if (edgeIndex != -1) {
+            edges.remove(edgeIndex);
+            for (List<Integer> row : incidenceMatrix) {
+                row.remove(edgeIndex);
             }
         }
     }
@@ -87,13 +101,11 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
             return neighbors;
         }
 
-        for (int i = 0; i < edgeCount; i++) {
+        for (int i = 0; i < edges.size(); i++) {
             if (incidenceMatrix.get(vertexIndex).get(i) == 1) {
-                for (int j = 0; j < vertices.size(); j++) {
-                    if (incidenceMatrix.get(j).get(i) == -1 && j != vertexIndex) {
-                        neighbors.add(vertices.get(j));
-                    }
-                }
+                neighbors.add(edges.get(i).to);
+            } else if (incidenceMatrix.get(vertexIndex).get(i) == 2) {
+                neighbors.add(vertex);
             }
         }
         return neighbors;
@@ -106,13 +118,11 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         sb.append("Incidence Matrix:\n");
         for (int i = 0; i < vertices.size(); i++) {
             sb.append(vertices.get(i)).append(": ");
-            for (int j = 0; j < edgeCount; j++) {
+            for (int j = 0; j < edges.size(); j++) {
                 sb.append(incidenceMatrix.get(i).get(j)).append(" ");
             }
             sb.append("\n");
         }
-
         return sb.toString();
     }
 }
-

@@ -1,8 +1,10 @@
 package ru.nsu.fitkulin;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
+/**
+ * interface for parametrized graph.
+ */
 public interface Graph<T> {
     void addVertex(T vertex);
 
