@@ -8,6 +8,9 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     private final List<T> vertices;
     private final List<List<Boolean>> adjacencyMatrix;
 
+    /**
+     * constructor.
+     */
     public AdjacencyMatrixGraph() {
         this.vertices = new ArrayList<>();
         this.adjacencyMatrix = new ArrayList<>();
@@ -34,6 +37,7 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     @Override
     public void removeVertex(T vertex) {
         int index = vertices.indexOf(vertex);
+        // indexOf возвращает -1, если элемент не найден
         if (index == -1) {
             return;
         }
@@ -68,8 +72,9 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     public List<T> getNeighbors(T vertex) {
         List<T> neighbors = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return neighbors;
-
+        if (vertexIndex == -1) {
+            return neighbors;
+        }
         for (int i = 0; i < vertices.size(); i++) {
             if (adjacencyMatrix.get(vertexIndex).get(i)) {
                 neighbors.add(vertices.get(i));
@@ -94,4 +99,22 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     public int hashCode() {
         return Objects.hash(vertices, adjacencyMatrix);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vertices: ").append(vertices).append("\n");
+
+        sb.append("Adjacency Matrix:\n");
+        for (int i = 0; i < adjacencyMatrix.size(); i++) {
+            sb.append(vertices.get(i)).append(": ");
+            for (int j = 0; j < adjacencyMatrix.get(i).size(); j++) {
+                sb.append(adjacencyMatrix.get(i).get(j) ? "1 " : "0 ");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
 }

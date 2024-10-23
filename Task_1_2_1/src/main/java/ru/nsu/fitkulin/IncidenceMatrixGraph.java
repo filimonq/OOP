@@ -61,7 +61,6 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
                 incidenceMatrix.get(j).add(false);
             }
             incidenceMatrix.get(fromIndex).set(edgeCount, true);
-            incidenceMatrix.get(toIndex).set(edgeCount, true);
             edgeCount++;
         }
     }
@@ -117,4 +116,22 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     public int hashCode() {
         return Objects.hash(vertices, incidenceMatrix, edgeCount);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vertices: ").append(vertices).append("\n");
+
+        sb.append("Incidence Matrix:\n");
+        for (int i = 0; i < vertices.size(); i++) {
+            sb.append(vertices.get(i)).append(": ");
+            for (int j = 0; j < edgeCount; j++) {
+                sb.append(incidenceMatrix.get(i).get(j) ? "1 " : "0 ");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
 }

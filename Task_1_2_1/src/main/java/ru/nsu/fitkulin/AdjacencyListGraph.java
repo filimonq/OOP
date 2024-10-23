@@ -79,4 +79,21 @@ class AdjacencyListGraph<T> implements Graph<T> {
     public int hashCode() {
         return Objects.hash(vertices, adjacencyList);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vertices: ").append(vertices).append("\n");
+
+        sb.append("Adjacency List:\n");
+        for (int i = 0; i < adjacencyList.size(); i++) {
+            sb.append(vertices.get(i)).append(": ");
+            for (T neighbor : adjacencyList.get(i)) {
+                sb.append(neighbor).append(" ");
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
 }
