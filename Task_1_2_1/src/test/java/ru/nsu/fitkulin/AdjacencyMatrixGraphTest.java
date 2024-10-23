@@ -1,5 +1,7 @@
 package ru.nsu.fitkulin;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,7 +47,10 @@ class AdjacencyMatrixGraphTest {
         graph.addEdge("A", "C");
         graph.addEdge("A", "B");
 
-        String expectedOutput = "[C, B]";
+        List<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("C");
+        expectedOutput.add("B");
+
         assertEquals(expectedOutput, graph.getNeighbors("A"));
 
     }
