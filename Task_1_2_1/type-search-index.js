@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"Graph"},{"p":"ru.nsu.fitkulin","l":"GraphSort"},{"p":"ru.nsu.fitkulin","l":"IncidenceMatrixGraph"},{"p":"ru.nsu.fitkulin","l":"Main"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"Graph"},{"p":"ru.nsu.fitkulin","l":"GraphSort"},{"p":"ru.nsu.fitkulin","l":"IncidenceMatrixGraph"}];updateSearchResults();
