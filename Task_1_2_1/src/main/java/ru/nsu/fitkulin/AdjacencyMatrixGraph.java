@@ -116,5 +116,4 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
 
         return sb.toString();
     }
-
 }
