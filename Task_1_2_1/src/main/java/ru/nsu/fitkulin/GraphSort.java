@@ -2,8 +2,8 @@ package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
@@ -16,6 +16,7 @@ public class GraphSort<T> {
 
     /**
      * constructor.
+     *
      * @param graph is our graph representation
      */
     public GraphSort(Graph<T> graph) {
@@ -24,6 +25,7 @@ public class GraphSort<T> {
 
     /**
      * topological sort for our graph.
+     * 
      * @return sorted graph.
      */
     public List<T> topologicalSort() {
