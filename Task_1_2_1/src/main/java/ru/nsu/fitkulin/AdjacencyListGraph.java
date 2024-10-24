@@ -62,6 +62,10 @@ class AdjacencyListGraph<T> implements Graph<T> {
         return new ArrayList<>(adjacencyList.get(vertexIndex));
     }
 
+    public List<T> getVertices() {
+        return vertices;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

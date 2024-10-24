@@ -15,4 +15,6 @@ public interface Graph<T> {
     void removeEdge(T from, T to);
 
     List<T> getNeighbors(T vertex);
+
+    List<T> getVertices();
 }

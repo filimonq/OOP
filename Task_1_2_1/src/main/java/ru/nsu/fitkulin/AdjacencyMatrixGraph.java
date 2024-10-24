@@ -82,6 +82,10 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
         return neighbors;
     }
 
+    public List<T> getVertices() {
+        return vertices;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
