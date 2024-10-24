@@ -1,17 +1,16 @@
 package ru.nsu.fitkulin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
 class GraphSortTest {
-    private final AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();;
+    private final AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
 
     @Test
     void testTopologicalSortComplex() {
