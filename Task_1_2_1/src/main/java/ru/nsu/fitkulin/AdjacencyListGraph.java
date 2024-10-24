@@ -1,12 +1,19 @@
+
 package ru.nsu.fitkulin;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class for representing a graph as an adjacency list.
+*/
 class AdjacencyListGraph<T> implements Graph<T> {
     private final List<T> vertices;
     private final List<List<T>> adjacencyList;
 
+    /**
+     * constructor.
+     */
     public AdjacencyListGraph() {
         this.vertices = new ArrayList<>();
         this.adjacencyList = new ArrayList<>();
@@ -24,7 +31,7 @@ class AdjacencyListGraph<T> implements Graph<T> {
     public void removeVertex(T vertex) {
         int index = vertices.indexOf(vertex);
         if (index == -1) {
-            return;
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
 
         vertices.remove(index);
@@ -39,25 +46,35 @@ class AdjacencyListGraph<T> implements Graph<T> {
     public void addEdge(T from, T to) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex != -1 && toIndex != -1) {
-            adjacencyList.get(fromIndex).add(to);
+        if (fromIndex == -1) {
+            throw new IllegalArgumentException("From vertex not found: " + from);
         }
+        if (toIndex == -1) {
+            throw new IllegalArgumentException("To vertex not found: " + to);
+        }
+        adjacencyList.get(fromIndex).add(to);
     }
 
     @Override
     public void removeEdge(T from, T to) {
         int fromIndex = vertices.indexOf(from);
-        if (fromIndex != -1) {
-            adjacencyList.get(fromIndex).remove(to);
+        int toIndex = vertices.indexOf(to);
+        if (fromIndex == -1) {
+            throw new IllegalArgumentException("From vertex not found: " + from);
         }
+        if (toIndex == -1) {
+            throw new IllegalArgumentException("To vertex not found: " + to);
+        }
+        adjacencyList.get(fromIndex).remove(to);
     }
 
     @Override
     public List<T> getNeighbors(T vertex) {
         int vertexIndex = vertices.indexOf(vertex);
         if (vertexIndex == -1) {
-            return new ArrayList<>();
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
+
 
         return new ArrayList<>(adjacencyList.get(vertexIndex));
     }

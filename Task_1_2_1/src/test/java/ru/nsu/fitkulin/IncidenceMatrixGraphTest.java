@@ -28,7 +28,6 @@ class IncidenceMatrixGraphTest {
     @Test
     void graphTest() {
         graph.removeVertex("E");
-        graph.removeVertex("V");
         graph.removeEdge("B", "C");
 
         String expectedOutput = // криво как то

@@ -3,6 +3,9 @@ package ru.nsu.fitkulin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class for representing a graph as an incidence matrix.
+ */
 class IncidenceMatrixGraph<T> implements Graph<T> {
     private final List<T> vertices;
     private final List<List<Integer>> incidenceMatrix; // Изменено на Integer
@@ -17,6 +20,9 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
         }
     }
 
+    /**
+     * constructor.
+     */
     public IncidenceMatrixGraph() {
         this.vertices = new ArrayList<>();
         this.incidenceMatrix = new ArrayList<>();
@@ -41,7 +47,7 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
     public void removeVertex(T vertex) {
         int index = vertices.indexOf(vertex);
         if (index == -1) {
-            return;
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
 
         vertices.remove(index);
@@ -56,20 +62,25 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
     public void addEdge(T from, T to) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex != -1 && toIndex != -1) {
-            Edge<T> newEdge = new Edge<>(from, to);
-            edges.add(newEdge);
+        if (fromIndex == -1) {
+            throw new IllegalArgumentException("From vertex not found: " + from);
+        }
+        if (toIndex == -1) {
+            throw new IllegalArgumentException("To vertex not found: " + to);
+        }
+        Edge<T> newEdge = new Edge<>(from, to);
+        edges.add(newEdge);
 
-            for (int i = 0; i < vertices.size(); i++) {
-                incidenceMatrix.get(i).add(0);
-            }
+        for (int i = 0; i < vertices.size(); i++) {
+            incidenceMatrix.get(i).add(0);
+        }
 
-            if (from.equals(to)) {
-                incidenceMatrix.get(fromIndex).set(edges.size() - 1, 2); // петля
-            } else {
-                incidenceMatrix.get(fromIndex).set(edges.size() - 1, 1);
-                incidenceMatrix.get(toIndex).set(edges.size() - 1, -1);
-            }
+        if (from.equals(to)) {
+            incidenceMatrix.get(fromIndex).set(edges.size() - 1, 2); // петля
+        } else {
+            incidenceMatrix.get(fromIndex).set(edges.size() - 1, 1);
+            incidenceMatrix.get(toIndex).set(edges.size() - 1, -1);
+
         }
     }
 
@@ -82,11 +93,12 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
                 break;
             }
         }
-        if (edgeIndex != -1) {
-            edges.remove(edgeIndex);
-            for (List<Integer> row : incidenceMatrix) {
-                row.remove(edgeIndex);
-            }
+        if (edgeIndex == -1) {
+            throw new IllegalArgumentException("Edge not found from " + from + " to " + to);
+        }
+        edges.remove(edgeIndex);
+        for (List<Integer> row : incidenceMatrix) {
+            row.remove(edgeIndex);
         }
     }
 
@@ -95,7 +107,7 @@ class IncidenceMatrixGraph<T> implements Graph<T> {
         List<T> neighbors = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
         if (vertexIndex == -1) {
-            return neighbors;
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
 
         for (int i = 0; i < edges.size(); i++) {

@@ -28,7 +28,6 @@ class AdjacencyListGraphTest {
     @Test
     void graphTest() {
         graph.removeVertex("A");
-        graph.removeVertex("V");
         graph.removeEdge("B", "C");
 
         String expectedOutput =

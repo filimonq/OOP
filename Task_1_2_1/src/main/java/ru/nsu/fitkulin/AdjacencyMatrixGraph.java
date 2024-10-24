@@ -3,6 +3,9 @@ package ru.nsu.fitkulin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * class for representing a graph as an adjacency matrix.
+ */
 class AdjacencyMatrixGraph<T> implements Graph<T> {
     private final List<T> vertices;
     private final List<List<Boolean>> adjacencyMatrix;
@@ -38,7 +41,7 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
         int index = vertices.indexOf(vertex);
         // indexOf возвращает -1, если элемент не найден
         if (index == -1) {
-            return;
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
 
         vertices.remove(index);
@@ -53,18 +56,26 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
     public void addEdge(T from, T to) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex != -1 && toIndex != -1) {
-            adjacencyMatrix.get(fromIndex).set(toIndex, true);
+        if (fromIndex == -1) {
+            throw new IllegalArgumentException("From vertex not found: " + from);
         }
+        if (toIndex == -1) {
+            throw new IllegalArgumentException("To vertex not found: " + to);
+        }
+        adjacencyMatrix.get(fromIndex).set(toIndex, true);
     }
 
     @Override
     public void removeEdge(T from, T to) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex != -1 && toIndex != -1) {
-            adjacencyMatrix.get(fromIndex).set(toIndex, false);
+        if (fromIndex == -1) {
+            throw new IllegalArgumentException("From vertex not found: " + from);
         }
+        if (toIndex == -1) {
+            throw new IllegalArgumentException("To vertex not found: " + to);
+        }
+        adjacencyMatrix.get(fromIndex).set(toIndex, false);
     }
 
     @Override
@@ -72,7 +83,7 @@ class AdjacencyMatrixGraph<T> implements Graph<T> {
         List<T> neighbors = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
         if (vertexIndex == -1) {
-            return neighbors;
+            throw new IllegalArgumentException("Vertex not found: " + vertex);
         }
         for (int i = 0; i < vertices.size(); i++) {
             if (adjacencyMatrix.get(vertexIndex).get(i)) {
