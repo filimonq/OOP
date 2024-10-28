@@ -152,6 +152,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
             }
         };
     }
+
     public int getSize() {
         return size;
     }
