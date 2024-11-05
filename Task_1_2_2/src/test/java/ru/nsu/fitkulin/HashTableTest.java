@@ -51,12 +51,47 @@ class HashTableTest {
             count++;
             iterator.next();
         }
-        assertEquals(3, count);
+        for (var c : hashTable) {
+            count++;
+        }
+        assertEquals(6, count);
+    }
+    @Test
+    public void testResize() {
+        hashTable.put("four", 4);
+        hashTable.put("five", 5);
+        hashTable.put("six", 6);
+        hashTable.put("seven", 7);
+        hashTable.put("eight", 8);
+        hashTable.put("nine", 9);
+        hashTable.put("ten", 10);
+        hashTable.put("eleven", 11);
+        hashTable.put("twelve", 12);
+        hashTable.put("ildar", 13);
+        hashTable.put("kirill", 14);
+        hashTable.put("grisha", 15);
+        hashTable.put("bogdan", 16);
+        hashTable.put("kolya", 17);
+        hashTable.put("nikita", 18);
+        hashTable.put("lol", 19);
+
+        hashTable.update("one", 5);
+        assertEquals(5, hashTable.get("one"));
+
+        assertTrue(hashTable.isContains("one"));
+
+        hashTable.removeKey("grisha");
+        assertEquals(18, hashTable.getSize());
+
+        String expected = "{six=6, one=5, four=4, twelve=12, bogdan=16, lol=19, kirill=14," +
+                " two=2, seven=7, eight=8, kolya=17, five=5, nine=9, ildar=13," +
+                " nikita=18, ten=10, three=3, eleven=11}";
+        assertEquals(expected, hashTable.toString());
     }
 
     @Test
     public void testToString() {
-        String expected = "[one=1 two=2 three=3 ]";
+        String expected = "{one=1, two=2, three=3}";
         assertEquals(expected, hashTable.toString());
     }
 }

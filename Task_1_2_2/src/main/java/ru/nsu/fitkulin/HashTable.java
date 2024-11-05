@@ -78,7 +78,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
                 return entry.getValue();
             }
         }
-        return null;
+        throw new IllegalArgumentException("Key not found: " + key);
     }
 
     public void update(K key, V value) {
@@ -112,17 +112,16 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("[");
-
+        sb.append("{");
 
         for (ArrayList<Entry<K, V>> bucket : table) {
             for (Entry<K, V> entry : bucket) {
                 sb.append(entry.getKey()).append("=").append(entry.getValue());
-                sb.append(" ");
+                sb.append(", ");
             }
         }
-
-        sb.append("]");
+        sb.setLength(sb.length() - 2);
+        sb.append("}");
         return sb.toString();
     }
 
@@ -143,7 +142,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
                 }
                 return false;
             }
-
+            // collections.
             @Override
             public Entry<K, V> next() {
                 Entry<K, V> entry = table.get(currentBucket).get(currentEntry);
