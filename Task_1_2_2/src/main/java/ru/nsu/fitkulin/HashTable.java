@@ -1,9 +1,10 @@
 package ru.nsu.fitkulin;
 
+import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.AbstractMap.SimpleEntry;
+
 
 /**
  * class for hash table.

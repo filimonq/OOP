@@ -83,9 +83,9 @@ class HashTableTest {
         hashTable.removeKey("grisha");
         assertEquals(18, hashTable.getSize());
 
-        String expected = "{six=6, one=5, four=4, twelve=12, bogdan=16, lol=19, kirill=14," +
-                " two=2, seven=7, eight=8, kolya=17, five=5, nine=9, ildar=13," +
-                " nikita=18, ten=10, three=3, eleven=11}";
+        String expected = "{six=6, one=5, four=4, twelve=12, bogdan=16, lol=19, kirill=14,"
+                + " two=2, seven=7, eight=8, kolya=17, five=5, nine=9, ildar=13,"
+                + " nikita=18, ten=10, three=3, eleven=11}";
         assertEquals(expected, hashTable.toString());
     }
 
