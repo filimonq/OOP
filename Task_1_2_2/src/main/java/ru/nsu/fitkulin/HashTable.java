@@ -2,9 +2,10 @@ package ru.nsu.fitkulin;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 import java.util.Map.Entry;
-
+import java.util.Objects;
 
 /**
  * class for hash table.
@@ -107,8 +108,46 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
     @Override
     public boolean equals(Object o) {
-        return false; //////////////////////////////////////////////////////////////////////////////
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HashTable<?, ?>)) {
+            return false;
+        }
+
+        HashTable<K, V> other = (HashTable<K, V>) o;
+        if (this.size != other.size) {
+            return false;
+        }
+
+        for (ArrayList<Entry<K, V>> bucket : table) {
+            for (Entry<K, V> entry : bucket) {
+                K key = entry.getKey();
+                V value = entry.getValue();
+
+                if (!other.isContains(key) || !Objects.equals(other.get(key), value)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        for (ArrayList<Entry<K, V>> bucket : table) {
+            for (Entry<K, V> entry : bucket) {
+                K key = entry.getKey();
+                V value = entry.getValue();
+
+                result = 31 * result + (key == null ? 0 : key.hashCode());
+                result = 31 * result + (value == null ? 0 : value.hashCode());
+            }
+        }
+        return result;
+    }
+
 
     @Override
     public String toString() {
@@ -143,7 +182,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
                 }
                 return false;
             }
-            // collections.
+
             @Override
             public Entry<K, V> next() {
                 Entry<K, V> entry = table.get(currentBucket).get(currentEntry);

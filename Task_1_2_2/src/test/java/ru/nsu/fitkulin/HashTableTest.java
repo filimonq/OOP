@@ -1,6 +1,7 @@
 package ru.nsu.fitkulin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Iterator;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class HashTableTest {
     private HashTable<String, Integer> hashTable;
+    private HashTable<String, Integer> hashTable2;
 
     @BeforeEach
     public void setUp() {
@@ -17,6 +19,11 @@ class HashTableTest {
         hashTable.put("one", 1);
         hashTable.put("two", 2);
         hashTable.put("three", 3);
+
+        hashTable2 = new HashTable<>();
+        hashTable2.put("one", 1);
+        hashTable2.put("three", 3);
+        hashTable2.put("two", 2);
     }
 
     @Test
@@ -69,7 +76,7 @@ class HashTableTest {
         hashTable.put("twelve", 12);
         hashTable.put("ildar", 13);
         hashTable.put("kirill", 14);
-        hashTable.put("grisha", 15);
+        hashTable.put("grigory", 15);
         hashTable.put("bogdan", 16);
         hashTable.put("kolya", 17);
         hashTable.put("nikita", 18);
@@ -80,7 +87,7 @@ class HashTableTest {
 
         assertTrue(hashTable.isContains("one"));
 
-        hashTable.removeKey("grisha");
+        hashTable.removeKey("grigory");
         assertEquals(18, hashTable.getSize());
 
         String expected = "{six=6, one=5, four=4, twelve=12, bogdan=16, lol=19, kirill=14,"
@@ -94,4 +101,17 @@ class HashTableTest {
         String expected = "{one=1, two=2, three=3}";
         assertEquals(expected, hashTable.toString());
     }
+
+    @Test
+    void testEquals_SameContent_ReturnsTrue() {
+
+        assertEquals(hashTable, hashTable2);
+    }
+
+    @Test
+    void testEquals_DifferentContent_ReturnsFalse() {
+        hashTable2.put("four", 4);
+        assertNotEquals(hashTable, hashTable2);
+    }
+
 }
