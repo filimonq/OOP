@@ -104,6 +104,14 @@ class HashTableTest {
 
     @Test
     void testEquals() {
+        hashTable.put("one", 3);
+        hashTable.put("two", 4);
+        hashTable.put("three", 5);
+
+        hashTable2.put("one", 3);
+        hashTable2.put("three", 5);
+        hashTable2.put("two", 4);
+
         assertEquals(hashTable, hashTable2);
     }
 
