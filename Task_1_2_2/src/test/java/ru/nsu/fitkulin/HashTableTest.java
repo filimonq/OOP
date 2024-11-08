@@ -103,13 +103,12 @@ class HashTableTest {
     }
 
     @Test
-    void testEquals_SameContent_ReturnsTrue() {
-
+    void testEquals() {
         assertEquals(hashTable, hashTable2);
     }
 
     @Test
-    void testEquals_DifferentContent_ReturnsFalse() {
+    void testNotEquals() {
         hashTable2.put("four", 4);
         assertNotEquals(hashTable, hashTable2);
     }

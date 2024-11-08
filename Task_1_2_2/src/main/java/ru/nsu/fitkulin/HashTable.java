@@ -1,11 +1,8 @@
 package ru.nsu.fitkulin;
 
+import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.Objects;
 
 /**
  * class for hash table.
@@ -18,6 +15,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     private ArrayList<ArrayList<Entry<K, V>>> table;
     private int size;
     private int capacity;
+    private int modificationCount;
 
     /**
      * constructor.
@@ -84,7 +82,12 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
     }
 
     public void update(K key, V value) {
-        put(key, value);
+        if (isContains(key)) {
+            put(key, value);
+        } else {
+            throw new IllegalArgumentException("Key not found: " + key);
+        }
+
     }
 
     public boolean isContains(K key) {
@@ -167,12 +170,15 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
     @Override
     public Iterator<Entry<K, V>> iterator() {
+        final int expectedModificationCount = modificationCount;
+
         return new Iterator<Entry<K, V>>() {
             private int currentBucket = 0;
             private int currentEntry = 0;
 
             @Override
             public boolean hasNext() {
+                checkForConcurrentModification();
                 while (currentBucket < table.size()) {
                     if (currentEntry < table.get(currentBucket).size()) {
                         return true;
@@ -185,13 +191,22 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
 
             @Override
             public Entry<K, V> next() {
+                checkForConcurrentModification();
+                if (!hasNext()) {
+                    throw new NoSuchElementException("No more elements to iterate.");
+                }
                 Entry<K, V> entry = table.get(currentBucket).get(currentEntry);
                 currentEntry++;
                 return entry;
             }
+
+            private void checkForConcurrentModification() {
+                if (expectedModificationCount != modificationCount) {
+                    throw new ConcurrentModificationException("Collection was modified");
+                }
+            }
         };
     }
-
     public int getSize() {
         return size;
     }
