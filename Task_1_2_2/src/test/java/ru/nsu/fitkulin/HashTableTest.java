@@ -63,6 +63,7 @@ class HashTableTest {
         }
         assertEquals(6, count);
     }
+
     @Test
     public void testResize() {
         hashTable.put("four", 4);
@@ -120,5 +121,4 @@ class HashTableTest {
         hashTable2.put("four", 4);
         assertNotEquals(hashTable, hashTable2);
     }
-
 }

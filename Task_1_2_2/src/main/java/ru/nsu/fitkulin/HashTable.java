@@ -114,6 +114,7 @@ public class HashTable<K, V> implements Iterable<Entry<K, V>> {
         if (this == o) {
             return true;
         }
+
         if (!(o instanceof HashTable<?, ?>)) {
             return false;
         }
