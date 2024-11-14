@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.fitkulin","c":"SubstringSearch","l":"SubstringSearch()","u":"%3Cinit%3E()"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.fitkulin","c":"SubstringSearch","l":"SubstringSearch(String)","u":"%3Cinit%3E(java.lang.String)"}];updateSearchResults();
