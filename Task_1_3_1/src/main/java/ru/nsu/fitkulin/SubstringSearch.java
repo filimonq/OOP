@@ -20,17 +20,19 @@ public class SubstringSearch {
     /**
      * method for finding a substring using the KMP algorithm.
      */
-    ArrayList<Integer> find(String filePath, int limit) throws IOException {
+    ArrayList<Integer> find(String filePath) throws IOException {
         ArrayList<Integer> list = new ArrayList<>();
-        try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(filePath), limit)) {
-            byte[] buffer = new byte[limit];
+        StringBuilder testBuilder = new StringBuilder();
+
+        try (BufferedInputStream stream = new BufferedInputStream(new FileInputStream(filePath))) {
+            byte[] buffer = new byte[4096];
             int bytesRead;
 
             while ((bytesRead = stream.read(buffer)) != -1) {
-                String partOfFile = new String(buffer, 0, bytesRead, StandardCharsets.UTF_8);
-                kmpSearch(partOfFile, list);
+                testBuilder.append(new String(buffer, 0, bytesRead, StandardCharsets.UTF_8));
             }
         }
+        kmpSearch(testBuilder.toString(), list);
         return list;
     }
 
