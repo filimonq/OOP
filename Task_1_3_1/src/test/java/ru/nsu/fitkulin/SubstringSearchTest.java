@@ -52,7 +52,7 @@ class SubstringSearchTest {
             FileWriter myWriter = new FileWriter("file.txt");
             for (long i = 0L; i < 4564259L; i++) {
                 myWriter.write("😜😅😂😺👹👹💩🤡🤡☹😴😢🥰😻😻😻😈😈😈🦠🦠🙊🙊🙉🙉\n");
-                arrList.add(i * 25);
+                arrList.add(i * 25L);
             }
             myWriter.close();
             SubstringSearch actual = new SubstringSearch("😜");
