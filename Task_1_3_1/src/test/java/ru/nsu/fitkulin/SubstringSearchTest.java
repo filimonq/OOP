@@ -39,6 +39,32 @@ class SubstringSearchTest {
         ArrayList<Long> expected = new ArrayList<>(Arrays.asList(2203L, 2355L, 3691L, 5115L));
         assertEquals(expected, actual.find("src/test/resources/file3.txt"));
     }
-    
+    @Test
+    void testGiantFile() {
+        ArrayList<Long> arrList = new ArrayList<>();
+        try {
+            File file = new File("file.txt");
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+            FileWriter myWriter = new FileWriter("file.txt");
+            for (long i = 0L; i < 4564259L; i++) {
+                myWriter.write("😜😅😂😺👹👹💩🤡🤡☹😴😢🥰😻😻😻😈😈😈🦠🦠🙊🙊🙉🙉\n");
+                arrList.add(i * 26L);
+            }
+            myWriter.close();
+            SubstringSearch actual = new SubstringSearch("😜");
+            assertEquals(arrList, actual.find("file.txt"));
+            if (file.delete()) {
+                System.out.println("Deleted the file: " + file.getName());
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred during test 1");
+        }
+    }
 
 }
