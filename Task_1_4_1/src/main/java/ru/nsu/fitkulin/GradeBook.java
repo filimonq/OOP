@@ -1,4 +1,5 @@
 package ru.nsu.fitkulin;
+
 import java.util.List;
 
 /**
@@ -15,7 +16,9 @@ public class GradeBook {
         this.qualifyingWorkGrade = qualifyingWorkGrade;
     }
 
-
+    /**
+     * method for add new grade.
+     */
     public void addGrade(Grade newGrade) {
         if (newGrade.getGrade().getValue() < 2 || newGrade.getGrade().getValue() > 5
                 || newGrade.getSem() > 8 || newGrade.getSem() < 1) {
@@ -24,6 +27,11 @@ public class GradeBook {
         grades.add(newGrade);
     }
 
+    /**
+     * calculates the average of all grades.
+     *
+     * @return avg of grades
+     */
     public double calculateAverageScore() {
         return grades.stream()
                 .mapToInt(g -> g.getGrade().getValue())
@@ -31,6 +39,11 @@ public class GradeBook {
                 .orElse(0.0);
     }
 
+    /**
+     * check checking for the possibility of transferring to a budget.
+     *
+     * @return truth if possible, otherwise - false.
+     */
     public boolean canTransferToBudget() {
         if (formOfStudy != FormOfStudy.PAID) {
             return false;
@@ -57,7 +70,11 @@ public class GradeBook {
         return !hasSatisfactory;
     }
 
-
+    /**
+     * checking the possibility of receiving a red diploma.
+     *
+     * @return truth if possible, otherwise - false.
+     */
     public boolean canGetRedDiploma() {
         long excellentCount = grades.stream()
                 .filter(g -> g.getGrade() == GradeEnum.EXCELLENT)
@@ -68,5 +85,29 @@ public class GradeBook {
 
         return (excellentCount / (double) grades.size()) >= 0.75
                 && noSatisfactory && qualifyingWorkGrade == GradeEnum.EXCELLENT;
+    }
+
+    /**
+     * checking the possibility of receiving an increased scholarship.
+     *
+     * @return truth if possible, otherwise - false.
+     */
+    public boolean IncreasedScholarship() {
+        int currentSemester = grades.stream()
+                .mapToInt(Grade::getSem)
+                .max()
+                .orElse(0);
+
+        List<Grade> currentExamGrades = grades.stream()
+                .filter(g -> g.getSem() == currentSemester
+                        && g.getAssessmentType() == AssessmentType.EXAM)
+                .toList();
+
+        if (currentExamGrades.isEmpty()) {
+            return true;
+        }
+
+        return currentExamGrades.stream()
+                .allMatch(g -> g.getGrade() == GradeEnum.EXCELLENT);
     }
 }
