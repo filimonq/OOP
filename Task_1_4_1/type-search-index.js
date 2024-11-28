@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"Main"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"AssessmentType"},{"p":"ru.nsu.fitkulin","l":"FormOfStudy"},{"p":"ru.nsu.fitkulin","l":"Grade"},{"p":"ru.nsu.fitkulin","l":"GradeBook"},{"p":"ru.nsu.fitkulin","l":"GradeEnum"}];updateSearchResults();
