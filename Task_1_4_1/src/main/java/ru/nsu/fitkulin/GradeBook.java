@@ -10,6 +10,9 @@ public class GradeBook {
     private FormOfStudy formOfStudy;
     private GradeEnum qualifyingWorkGrade;
 
+    /**
+     * constructor.
+    */
     public GradeBook(List<Grade> grades, FormOfStudy formOfStudy, GradeEnum qualifyingWorkGrade) {
         this.grades = grades;
         this.formOfStudy = formOfStudy;
@@ -92,7 +95,7 @@ public class GradeBook {
      *
      * @return truth if possible, otherwise - false.
      */
-    public boolean IncreasedScholarship() {
+    public boolean increasedScholarship() {
         int currentSemester = grades.stream()
                 .mapToInt(Grade::getSem)
                 .max()

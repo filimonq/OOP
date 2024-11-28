@@ -1,16 +1,16 @@
 package ru.nsu.fitkulin;
 
-import static ru.nsu.fitkulin.GradeEnum.EXCELLENT;
-import static ru.nsu.fitkulin.GradeEnum.GOOD;
-import static ru.nsu.fitkulin.GradeEnum.SATISFACTORY;
-import static ru.nsu.fitkulin.AssessmentType.EXAM;
 import static ru.nsu.fitkulin.AssessmentType.DIFFERENTIAL_CREDIT;
+import static ru.nsu.fitkulin.AssessmentType.EXAM;
+import static ru.nsu.fitkulin.GradeEnum.GOOD;
+import static ru.nsu.fitkulin.GradeEnum.EXCELLENT;
+import static ru.nsu.fitkulin.GradeEnum.SATISFACTORY;
 
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -56,9 +56,9 @@ class GradeBookTest {
 
     @Test
     void testIncreasedScholarship() {
-        assertTrue(gradeBook.IncreasedScholarship());
+        assertTrue(gradeBook.increasedScholarship());
         grades.add(new Grade(GOOD, 5, "20-06-2025",
                 "aaaaa ny TV&MS", "AA", EXAM));
-        assertFalse(gradeBook.IncreasedScholarship());
+        assertFalse(gradeBook.increasedScholarship());
     }
 }

@@ -11,6 +11,9 @@ public class Grade {
     private String teacher;
     private AssessmentType assessmentType;
 
+    /**
+     * constructor.
+     */
     public Grade(GradeEnum grade, int semester, String date,
                  String subject, String teacher, AssessmentType assessmentType) {
         this.grade = grade;
