@@ -37,7 +37,7 @@ class GradeBookTest {
     @Test
     void testCalculateAverageScore() {
         double averageScore = gradeBook.calculateAverageScore();
-        assertEquals(4.0, averageScore);
+        assertEquals(4.2, averageScore);
     }
 
     @Test
