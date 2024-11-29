@@ -1,14 +1,13 @@
 package ru.nsu.fitkulin;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static ru.nsu.fitkulin.AssessmentType.DIFFERENTIAL_CREDIT;
 import static ru.nsu.fitkulin.AssessmentType.EXAM;
 import static ru.nsu.fitkulin.GradeEnum.EXCELLENT;
 import static ru.nsu.fitkulin.GradeEnum.GOOD;
 import static ru.nsu.fitkulin.GradeEnum.SATISFACTORY;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ class GradeBookTest {
     @Test
     void testBudget() {
         assertTrue(gradeBook.canTransferToBudget());
-        grades.add(new Grade(SATISFACTORY, 4, "20-06-2025",
+        gradeBook.addGrade(new Grade(SATISFACTORY, 4, "20-06-2025",
                 "Modeli....", "AA", EXAM));
         assertFalse(gradeBook.canTransferToBudget());
     }
@@ -59,7 +58,7 @@ class GradeBookTest {
     @Test
     void testIncreasedScholarship() {
         assertTrue(gradeBook.increasedScholarship());
-        grades.add(new Grade(GOOD, 5, "20-06-2025",
+        gradeBook.addGrade(new Grade(GOOD, 5, "20-06-2025",
                 "aaaaa ny TV&MS", "AA", EXAM));
         assertFalse(gradeBook.increasedScholarship());
     }
