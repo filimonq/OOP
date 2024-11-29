@@ -62,4 +62,50 @@ class GradeBookTest {
                 "aaaaa ny TV&MS", "AA", EXAM));
         assertFalse(gradeBook.increasedScholarship());
     }
+
+    @Test
+    void testToString() {
+        String expected = "Grade Book:\n" +
+                "Form of Study: PAID\n" +
+                "Qualifying Work Grade: EXCELLENT\n" +
+                "Grades:\n" +
+                "---------------------------------\n" +
+                "  Subject: Matlog\n" +
+                "  Grade: GOOD\n" +
+                "  Semester: 1\n" +
+                "  Date: 12-01-2024\n" +
+                "  Teacher: Palch\n" +
+                "  Assessment Type: EXAM\n" +
+                "---------------------------------\n" +
+                "  Subject: Matan\n" +
+                "  Grade: EXCELLENT\n" +
+                "  Semester: 1\n" +
+                "  Date: 17-01-2024\n" +
+                "  Teacher: Ters\n" +
+                "  Assessment Type: EXAM\n" +
+                "---------------------------------\n" +
+                "  Subject: OS\n" +
+                "  Grade: GOOD\n" +
+                "  Semester: 3\n" +
+                "  Date: 16-01-2024\n" +
+                "  Teacher: Papa\n" +
+                "  Assessment Type: EXAM\n" +
+                "---------------------------------\n" +
+                "  Subject: Imperativka\n" +
+                "  Grade: SATISFACTORY\n" +
+                "  Semester: 2\n" +
+                "  Date: 25-05-2024\n" +
+                "  Teacher: TV\n" +
+                "  Assessment Type: DIFFERENTIAL_CREDIT\n" +
+                "---------------------------------\n" +
+                "  Subject: OOP\n" +
+                "  Grade: EXCELLENT\n" +
+                "  Semester: 4\n" +
+                "  Date: 20-06-2025\n" +
+                "  Teacher: AA\n" +
+                "  Assessment Type: EXAM\n" +
+                "---------------------------------\n";
+
+        assertEquals(expected, gradeBook.toString());
+    }
 }

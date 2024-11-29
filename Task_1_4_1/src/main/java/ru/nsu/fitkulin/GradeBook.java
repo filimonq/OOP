@@ -113,4 +113,27 @@ public class GradeBook {
         return currentExamGrades.stream()
                 .allMatch(g -> g.getGrade() == GradeEnum.EXCELLENT);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Grade Book:\n");
+        sb.append("Form of Study: ").append(formOfStudy).append("\n");
+        sb.append("Qualifying Work Grade: ").append(qualifyingWorkGrade).append("\n");
+        sb.append("Grades:\n");
+        sb.append("---------------------------------\n");
+
+        for (Grade grade : grades) {
+            sb.append("  Subject: ").append(grade.getSubject()).append("\n");
+            sb.append("  Grade: ").append(grade.getGrade()).append("\n");
+            sb.append("  Semester: ").append(grade.getSem()).append("\n");
+            sb.append("  Date: ").append(grade.getDate()).append("\n");
+            sb.append("  Teacher: ").append(grade.getTeacher()).append("\n");
+            sb.append("  Assessment Type: ").append(grade.getAssessmentType()).append("\n");
+            sb.append("---------------------------------\n");
+        }
+
+        return sb.toString();
+    }
+
 }

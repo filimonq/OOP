@@ -35,4 +35,16 @@ public class Grade {
     public AssessmentType getAssessmentType() {
         return assessmentType;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
 }
