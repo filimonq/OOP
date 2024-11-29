@@ -1,8 +1,8 @@
 package ru.nsu.fitkulin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.nsu.fitkulin.AssessmentType.DIFFERENTIAL_CREDIT;
 import static ru.nsu.fitkulin.AssessmentType.EXAM;
 import static ru.nsu.fitkulin.GradeEnum.EXCELLENT;
@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
 
 class GradeBookTest {
     private GradeBook gradeBook;
-
     List<Grade> grades = new ArrayList<>();
+    
     @BeforeEach
     void setUp() {
         grades.add(new Grade(GOOD, 1, "12-01-2024",
