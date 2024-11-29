@@ -8,15 +8,13 @@ import java.util.List;
 public class GradeBook {
     private List<Grade> grades;
     private FormOfStudy formOfStudy;
-    private GradeEnum qualifyingWorkGrade;
 
     /**
      * constructor.
-    */
-    public GradeBook(List<Grade> grades, FormOfStudy formOfStudy, GradeEnum qualifyingWorkGrade) {
+     */
+    public GradeBook(List<Grade> grades, FormOfStudy formOfStudy) {
         this.grades = grades;
         this.formOfStudy = formOfStudy;
-        this.qualifyingWorkGrade = qualifyingWorkGrade;
     }
 
     /**
@@ -45,7 +43,7 @@ public class GradeBook {
     /**
      * check checking for the possibility of transferring to a budget.
      *
-     * @return truth if possible, otherwise - false.
+     * @return true if possible, otherwise - false.
      */
     public boolean canTransferToBudget() {
         if (formOfStudy != FormOfStudy.PAID) {
@@ -76,7 +74,7 @@ public class GradeBook {
     /**
      * checking the possibility of receiving a red diploma.
      *
-     * @return truth if possible, otherwise - false.
+     * @return true if possible, otherwise - false.
      */
     public boolean canGetRedDiploma() {
         long excellentCount = grades.stream()
@@ -86,14 +84,18 @@ public class GradeBook {
         boolean noSatisfactory = grades.stream()
                 .noneMatch(g -> g.getGrade() == GradeEnum.SATISFACTORY);
 
+        boolean qualifyingWorkExcellent = grades.stream()
+                .filter(g -> g.getAssessmentType() == AssessmentType.QUALIFICATION_WORK)
+                .allMatch(g -> g.getGrade() == GradeEnum.EXCELLENT);
+
         return (excellentCount / (double) grades.size()) >= 0.75
-                && noSatisfactory && qualifyingWorkGrade == GradeEnum.EXCELLENT;
+                && noSatisfactory && qualifyingWorkExcellent;
     }
 
     /**
      * checking the possibility of receiving an increased scholarship.
      *
-     * @return truth if possible, otherwise - false.
+     * @return true if possible, otherwise - false.
      */
     public boolean increasedScholarship() {
         int currentSemester = grades.stream()
@@ -119,7 +121,6 @@ public class GradeBook {
         StringBuilder sb = new StringBuilder();
         sb.append("Grade Book:\n");
         sb.append("Form of Study: ").append(formOfStudy).append("\n");
-        sb.append("Qualifying Work Grade: ").append(qualifyingWorkGrade).append("\n");
         sb.append("Grades:\n");
         sb.append("---------------------------------\n");
 
@@ -135,5 +136,4 @@ public class GradeBook {
 
         return sb.toString();
     }
-
 }

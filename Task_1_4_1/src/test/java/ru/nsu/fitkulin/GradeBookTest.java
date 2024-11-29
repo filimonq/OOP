@@ -3,8 +3,7 @@ package ru.nsu.fitkulin;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static ru.nsu.fitkulin.AssessmentType.DIFFERENTIAL_CREDIT;
-import static ru.nsu.fitkulin.AssessmentType.EXAM;
+import static ru.nsu.fitkulin.AssessmentType.*;
 import static ru.nsu.fitkulin.GradeEnum.EXCELLENT;
 import static ru.nsu.fitkulin.GradeEnum.GOOD;
 import static ru.nsu.fitkulin.GradeEnum.SATISFACTORY;
@@ -19,7 +18,7 @@ import org.junit.jupiter.api.Test;
 class GradeBookTest {
     private GradeBook gradeBook;
     List<Grade> grades = new ArrayList<>();
-    
+
     @BeforeEach
     void setUp() {
         grades.add(new Grade(GOOD, 1, "12-01-2024",
@@ -33,7 +32,7 @@ class GradeBookTest {
         grades.add(new Grade(EXCELLENT, 4, "20-06-2025",
                 "OOP", "AA", EXAM));
 
-        gradeBook = new GradeBook(grades, FormOfStudy.PAID, EXCELLENT);
+        gradeBook = new GradeBook(grades, FormOfStudy.PAID);
     }
 
     @Test
@@ -52,13 +51,15 @@ class GradeBookTest {
 
     @Test
     void testRedDiplome() {
+        gradeBook.addGrade(new Grade(EXCELLENT, 4, "15-06-2027",
+                "diploma", "chief", QUALIFICATION_WORK));
         assertFalse(gradeBook.canGetRedDiploma());
     }
 
     @Test
     void testIncreasedScholarship() {
         assertTrue(gradeBook.increasedScholarship());
-        gradeBook.addGrade(new Grade(GOOD, 5, "20-06-2025",
+        gradeBook.addGrade(new Grade(GOOD, 5, "11-06-2025",
                 "aaaaa ny TV&MS", "AA", EXAM));
         assertFalse(gradeBook.increasedScholarship());
     }
@@ -67,7 +68,6 @@ class GradeBookTest {
     void testToString() {
         String expected = "Grade Book:\n"
                 + "Form of Study: PAID\n"
-                + "Qualifying Work Grade: EXCELLENT\n"
                 + "Grades:\n"
                 + "---------------------------------\n"
                 + "  Subject: Matlog\n"
