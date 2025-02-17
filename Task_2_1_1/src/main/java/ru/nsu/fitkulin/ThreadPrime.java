@@ -3,11 +3,11 @@ package ru.nsu.fitkulin;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ThreadPrime {
-    public static boolean isPrime(int number) {
+    public static boolean isPrime(long number) {
         if (number < 2) {
             return false;
         }
-        for (int i = 2; i * i <= number; i++) {
+        for (long i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;
             }
@@ -15,7 +15,7 @@ public class ThreadPrime {
         return true;
     }
 
-    public static boolean checkWithThreads(int[] numbers, int numThreads)
+    public static boolean checkWithThreads(long[] numbers, int numThreads)
             throws InterruptedException {
         AtomicBoolean foundNonPrime = new AtomicBoolean(false);
         Thread[] threads = new Thread[numThreads];

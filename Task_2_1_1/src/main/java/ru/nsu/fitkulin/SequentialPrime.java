@@ -1,11 +1,11 @@
 package ru.nsu.fitkulin;
 
 public class SequentialPrime {
-    public static boolean isPrime(int number) {
+    public static boolean isPrime(long number) {
         if (number < 2) {
             return false;
         }
-        for (int i = 2; i * i <= number; i++) {
+        for (long i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;
             }
@@ -13,8 +13,8 @@ public class SequentialPrime {
         return true;
     }
 
-    public static boolean containsNonPrimeSequential(int[] numbers) {
-        for (int number : numbers) {
+    public static boolean containsNonPrimeSequential(long[] numbers) {
+        for (long number : numbers) {
             if (!isPrime(number)) {
                 return true;
             }
