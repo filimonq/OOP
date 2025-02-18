@@ -76,6 +76,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ParallelStreamThread</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">class for checking an array of numbers for non-prime numbers using parallel streams.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,10 +106,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#containsNonPrimeParallelStream(long%5B%5D)" class="member-name-link">containsNonPrimeParallelStream</a><wbr>(long[]&nbsp;numbers)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">checks an array of numbers for non-prime numbers using parallel streams.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isPrime(long)" class="member-name-link">isPrime</a><wbr>(long&nbsp;number)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">checks if a number is prime.</div>
+</div>
 </div>
 </div>
 </div>
@@ -144,12 +149,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isPrime(long)">
 <h3>isPrime</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isPrime</span><wbr><span class="parameters">(long&nbsp;number)</span></div>
+<div class="block">checks if a number is prime.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>number</code> - for check.</dd>
+<dt>Returns:</dt>
+<dd>boolean res of check.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="containsNonPrimeParallelStream(long[])">
 <h3>containsNonPrimeParallelStream</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">containsNonPrimeParallelStream</span><wbr><span class="parameters">(long[]&nbsp;numbers)</span></div>
+<div class="block">checks an array of numbers for non-prime numbers using parallel streams.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>numbers</code> - array for check.</dd>
+<dt>Returns:</dt>
+<dd>boolean res of check.</dd>
+</dl>
 </section>
 </li>
 </ul>
