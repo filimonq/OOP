@@ -1,7 +1,7 @@
 package ru.nsu.fitkulin;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class ThreadPrimeTest {
     @Test
     void testParallelStream_WithLargePrime() throws InterruptedException {
         long[] numbers = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
-                6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
+            6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
         assertFalse(ThreadPrime.checkWithThreads(numbers, 3));
     }
 
