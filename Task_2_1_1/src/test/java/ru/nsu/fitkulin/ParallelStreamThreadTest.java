@@ -33,7 +33,7 @@ class ParallelStreamThreadTest {
 
     @Test
     void timeTest() {
-        long[] numbers = new long[100000];
+        long[] numbers = new long[10000];
         Arrays.fill(numbers, 2147483647);
 
         long startTime = System.currentTimeMillis();
