@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ *
+ * @param <T> queue element type
+ */
 public class Warehouse<T> {
     private final Queue<T> storage = new LinkedList<>();
     private final int capacity; // Максимальная вместимость
@@ -18,12 +22,12 @@ public class Warehouse<T> {
     }
 
     /**
-     * Добавляет элемент на склад (аналог offer() в Queue).
-     * Если склад полон, поток блокируется до появления места.
+     * Adds an item to the warehouse.
+     * If the warehouse is full, the flow is blocked until space becomes available.
      */
     public synchronized void put(T item) throws InterruptedException {
         while (storage.size() >= capacity && isActive) {
-            wait(); // Ждем свободного места
+            wait();
         }
 
         if (!isActive) {
@@ -31,39 +35,38 @@ public class Warehouse<T> {
         }
 
         storage.offer(item);
-        notifyAll(); // Уведомляем ждущие потоки
+        notifyAll();
     }
 
     /**
-     * Извлекает один элемент (аналог poll() в Queue).
-     * Если склад пуст, поток блокируется до появления элементов.
+     * Retrieves one item.
+     * If the warehouse is empty, the thread blocks until items arrive.
      */
     public synchronized T poll() throws InterruptedException {
         while (storage.isEmpty() && isActive) {
-            wait(); // Ждем элементов
+            wait();
         }
 
         if (!isActive) {
-            return null; // Склад остановлен
+            return null;
         }
 
         T item = storage.poll();
-        notifyAll(); // Уведомляем ждущие потоки
+        notifyAll();
         return item;
     }
 
     /**
-     * Извлекает до maxItems элементов (расширенная логика для курьеров).
+     * Retrieves up to maxItems items.
      */
     public synchronized List<T> pollBatch(int maxItems) throws InterruptedException {
         List<T> batch = new LinkedList<>();
-
         while (storage.isEmpty() && isActive) {
-            wait(); // Ждем элементов
+            wait();
         }
 
         if (!isActive) {
-            return batch; // Возвращаем пустой список
+            return batch;
         }
 
         int count = Math.min(maxItems, storage.size());
@@ -71,16 +74,16 @@ public class Warehouse<T> {
             batch.add(storage.poll());
         }
 
-        notifyAll(); // Уведомляем пекарей о свободном месте
+        notifyAll();
         return batch;
     }
 
     /**
-     * Останавливает работу склада.
+     * Stops warehouse operations.
      */
     public synchronized void shutdown() {
         isActive = false;
-        notifyAll(); // Разблокируем все потоки
+        notifyAll();
     }
 
     public synchronized boolean isActive() {
