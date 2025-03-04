@@ -11,7 +11,7 @@ import java.util.Queue;
 public class Warehouse<T> {
     private final Queue<T> storage = new LinkedList<>();
     private final int capacity; // Максимальная вместимость
-    private boolean isActive = true; // Флаг работы склада
+    private boolean isRunning = true;
 
     public Warehouse(int capacity) {
         this.capacity = capacity;
@@ -26,11 +26,11 @@ public class Warehouse<T> {
      * If the warehouse is full, the flow is blocked until space becomes available.
      */
     public synchronized void put(T item) throws InterruptedException {
-        while (storage.size() >= capacity && isActive) {
+        while (storage.size() >= capacity && isRunning) {
             wait();
         }
 
-        if (!isActive) {
+        if (!isRunning) {
             throw new InterruptedException("Warehouse is shut down");
         }
 
@@ -43,11 +43,11 @@ public class Warehouse<T> {
      * If the warehouse is empty, the thread blocks until items arrive.
      */
     public synchronized T poll() throws InterruptedException {
-        while (storage.isEmpty() && isActive) {
+        while (storage.isEmpty() && isRunning) {
             wait();
         }
 
-        if (!isActive) {
+        if (!isRunning) {
             return null;
         }
 
@@ -61,11 +61,11 @@ public class Warehouse<T> {
      */
     public synchronized List<T> pollBatch(int maxItems) throws InterruptedException {
         List<T> batch = new LinkedList<>();
-        while (storage.isEmpty() && isActive) {
+        while (storage.isEmpty() && isRunning) {
             wait();
         }
 
-        if (!isActive) {
+        if (!isRunning) {
             return batch;
         }
 
@@ -82,11 +82,11 @@ public class Warehouse<T> {
      * Stops warehouse operations.
      */
     public synchronized void shutdown() {
-        isActive = false;
+        isRunning = false;
         notifyAll();
     }
 
     public synchronized boolean isActive() {
-        return isActive;
+        return isRunning;
     }
 }
