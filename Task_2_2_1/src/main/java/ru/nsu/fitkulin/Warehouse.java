@@ -86,7 +86,7 @@ public class Warehouse<T> {
         notifyAll();
     }
 
-    public synchronized boolean isActive() {
+    public synchronized boolean isRunning() {
         return isRunning;
     }
 }

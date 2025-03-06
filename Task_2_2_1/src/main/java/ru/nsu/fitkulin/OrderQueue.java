@@ -2,7 +2,7 @@ package ru.nsu.fitkulin;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
+// в один класс ??
 public class OrderQueue<T> {
     private final Queue<T> queue = new LinkedList<>();
     private volatile boolean isRunning = true;
@@ -22,11 +22,11 @@ public class OrderQueue<T> {
     }
 
     public synchronized void stop() {
-        isRunning = true;
+        isRunning = false;
         notifyAll();
     }
 
-    public synchronized boolean isStopped() {
+    public synchronized boolean isRunning() {
         return isRunning;
     }
 }
