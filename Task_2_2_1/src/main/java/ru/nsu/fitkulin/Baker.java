@@ -13,22 +13,35 @@ public class Baker implements Runnable {
 
     @Override
     public void run() {
-        try {
-            while (!Thread.currentThread().isInterrupted() && orderQueue.isRunning()) {
-                Order order = orderQueue.takeOrder();
-                if (order == null) break;
-
-                long startTime = System.currentTimeMillis();
-                order.setStatus(OrderStatus.COOKING);
-                Thread.sleep((long) cookingTimeMs * order.getAmount());
-                long endTime = System.currentTimeMillis();
-
-                order.setStatus(OrderStatus.COOKED);
-                warehouse.put(order);
+        while (orderQueue.isRunning() || !orderQueue.isEmpty()) {
+            Order order = null;
+            try {
+                order = orderQueue.takeOrder();
+            } catch (InterruptedException e) {
+                if (!orderQueue.isRunning() && orderQueue.isEmpty()) {
+                    break;
+                }
+                continue;
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.out.println("Baker interrupted");
+            if (order == null) {
+                if (!orderQueue.isRunning() && orderQueue.isEmpty()) {
+                    break;
+                }
+                continue;
+            }
+
+            order.setStatus(OrderStatus.COOKING);
+            try {
+                Thread.sleep((long) cookingTimeMs * order.getAmount());
+            } catch (InterruptedException e) {
+                //
+            }
+            order.setStatus(OrderStatus.COOKED);
+            try {
+                warehouse.put(order);
+            } catch (InterruptedException e) {
+                //
+            }
         }
     }
 }

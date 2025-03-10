@@ -1,7 +1,6 @@
 package ru.nsu.fitkulin;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
@@ -10,14 +9,14 @@ import java.util.Queue;
  */
 public class Warehouse<T> {
     private final Queue<T> storage = new LinkedList<>();
-    private final int capacity; // Максимальная вместимость
+    private final int capacity;
     private boolean isRunning = true;
 
     public Warehouse(int capacity) {
         this.capacity = capacity;
     }
 
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return storage.isEmpty();
     }
 
@@ -31,7 +30,7 @@ public class Warehouse<T> {
         }
 
         if (!isRunning) {
-            throw new InterruptedException("Warehouse is shut down");
+            return;
         }
 
         storage.offer(item);
@@ -47,7 +46,7 @@ public class Warehouse<T> {
             wait();
         }
 
-        if (!isRunning) {
+        if (!isRunning && storage.isEmpty()) {
             return null;
         }
 
@@ -56,31 +55,6 @@ public class Warehouse<T> {
         return item;
     }
 
-    /**
-     * Retrieves up to maxItems items.
-     */
-    public synchronized List<T> pollBatch(int maxItems) throws InterruptedException {
-        List<T> batch = new LinkedList<>();
-        while (storage.isEmpty() && isRunning) {
-            wait();
-        }
-
-        if (!isRunning) {
-            return batch;
-        }
-
-        int count = Math.min(maxItems, storage.size());
-        for (int i = 0; i < count; i++) {
-            batch.add(storage.poll());
-        }
-
-        notifyAll();
-        return batch;
-    }
-
-    /**
-     * Stops warehouse operations.
-     */
     public synchronized void shutdown() {
         isRunning = false;
         notifyAll();

@@ -13,29 +13,28 @@ public class Courier implements Runnable {
 
     @Override
     public void run() {
-        try {
-            while (!Thread.currentThread().isInterrupted() && warehouse.isRunning()) {
-                Order order = warehouse.poll();
-                if (order == null) break;
-
-                processOrder(order);
+        while (warehouse.isRunning() || !warehouse.isEmpty()) {
+            Order order = null;
+            try {
+                order = warehouse.poll();
+            } catch (InterruptedException e) {
+                if (!warehouse.isRunning() && warehouse.isEmpty()) break;
+                continue;
             }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.out.println("Courier interrupted");
+            if (order == null) {
+                break;
+            }
+            try {
+                order.setStatus(OrderStatus.DELIVERING);
+                int trips = (int) Math.ceil((double) order.getAmount() / trunkCapacity);
+                int deliveryTime = (int) (order.getTime() * speedCoefficient * trips * 1000);
+                Thread.sleep(deliveryTime);
+                order.setStatus(OrderStatus.DELIVERED);
+                System.out.println("Order " + order.getId() + " delivered in " +
+                        deliveryTime + "ms (" + trips + " trips)");
+            } catch (InterruptedException e) {
+                break;
+            }
         }
-    }
-
-    private void processOrder(Order order) throws InterruptedException {
-        order.setStatus(OrderStatus.DELIVERING);
-
-        int trips = (int) Math.ceil((double) order.getAmount() / trunkCapacity);
-        int deliveryTime = (int) (order.getTime() * speedCoefficient * trips);
-
-        Thread.sleep(deliveryTime);
-
-        order.setStatus(OrderStatus.DELIVERED);
-        System.out.println("Order " + order.getId() + " delivered in "
-                + (deliveryTime) + "ms (" + trips + " trips)");
     }
 }
