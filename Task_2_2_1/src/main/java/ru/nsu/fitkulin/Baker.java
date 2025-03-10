@@ -40,13 +40,13 @@ public class Baker implements Runnable {
             try {
                 Thread.sleep((long) cookingTimeMs * order.getAmount());
             } catch (InterruptedException e) {
-                //
+                System.out.println("Baker interrupted");
             }
             order.setStatus(OrderStatus.COOKED);
             try {
                 warehouse.put(order);
             } catch (InterruptedException e) {
-                //
+                System.out.println("Baker interrupted");
             }
         }
     }

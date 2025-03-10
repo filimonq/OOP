@@ -57,7 +57,7 @@ public class Warehouse<T> {
     }
 
     /**
-     * shuts down the warehouse, waking up all waiting threads
+     * shuts down the warehouse, waking up all waiting threads.
      */
     public synchronized void shutdown() {
         isRunning = false;
