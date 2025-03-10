@@ -1,9 +1,10 @@
 package ru.nsu.fitkulin;
 
-import java.io.InputStream;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.io.InputStream;
+import org.junit.jupiter.api.Test;
 
 /**
  * test with json config.

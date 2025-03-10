@@ -1,5 +1,8 @@
 package ru.nsu.fitkulin;
 
+/**
+ * The class represents a courier who delivers orders to customers.
+ */
 public class Courier implements Runnable {
     private final Warehouse<Order> warehouse;
     private final int trunkCapacity;
@@ -11,6 +14,9 @@ public class Courier implements Runnable {
         this.speedCoefficient = speedCoefficient;
     }
 
+    /**
+     * Starts the order delivery process.
+     */
     @Override
     public void run() {
         while (warehouse.isRunning() || !warehouse.isEmpty()) {

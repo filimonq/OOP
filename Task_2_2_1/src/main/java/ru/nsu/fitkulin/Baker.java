@@ -1,5 +1,8 @@
 package ru.nsu.fitkulin;
 
+/**
+ * The class represents a baker who prepares orders.
+ */
 public class Baker implements Runnable {
     private final OrderQueue<Order> orderQueue;
     private final Warehouse<Order> warehouse;
@@ -11,6 +14,9 @@ public class Baker implements Runnable {
         this.cookingTimeMs = cookingTimeMs;
     }
 
+    /**
+     * Starts the order preparation process.
+     */
     @Override
     public void run() {
         while (orderQueue.isRunning() || !orderQueue.isEmpty()) {

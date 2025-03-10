@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
+ * The class represents a warehouse where finished orders are stored.
  *
  * @param <T> queue element type
  */
@@ -55,6 +56,9 @@ public class Warehouse<T> {
         return item;
     }
 
+    /**
+     * shuts down the warehouse, waking up all waiting threads
+     */
     public synchronized void shutdown() {
         isRunning = false;
         notifyAll();

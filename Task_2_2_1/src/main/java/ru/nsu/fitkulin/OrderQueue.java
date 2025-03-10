@@ -4,12 +4,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * queue with pizza orders.
+ * The class represents a queue of orders in a pizzeria.
  */
 public class OrderQueue<T> {
     private final Queue<T> queue = new LinkedList<>();
     private volatile boolean isRunning = true;
 
+    /**
+     * Adds a new order to the queue.
+     */
     public synchronized void addOrder(T order) {
         if (isRunning) {
             queue.add(order);
@@ -17,6 +20,9 @@ public class OrderQueue<T> {
         }
     }
 
+    /**
+     * Retrieves an order from the queue. If the queue is empty, waits for a new order.
+     */
     public synchronized T takeOrder() throws InterruptedException {
         while (queue.isEmpty() && isRunning) {
             wait();
