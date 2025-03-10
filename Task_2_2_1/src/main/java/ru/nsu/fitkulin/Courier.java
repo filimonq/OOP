@@ -18,7 +18,9 @@ public class Courier implements Runnable {
             try {
                 order = warehouse.poll();
             } catch (InterruptedException e) {
-                if (!warehouse.isRunning() && warehouse.isEmpty()) break;
+                if (!warehouse.isRunning() && warehouse.isEmpty()) {
+                    break;
+                }
                 continue;
             }
             if (order == null) {
@@ -30,8 +32,8 @@ public class Courier implements Runnable {
                 int deliveryTime = (int) (order.getTime() * speedCoefficient * trips * 1000);
                 Thread.sleep(deliveryTime);
                 order.setStatus(OrderStatus.DELIVERED);
-                System.out.println("Order " + order.getId() + " delivered in " +
-                        deliveryTime + "ms (" + trips + " trips)");
+                System.out.println("Order " + order.getId() + " delivered in "
+                        + deliveryTime + "ms (" + trips + " trips)");
             } catch (InterruptedException e) {
                 break;
             }

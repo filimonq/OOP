@@ -1,9 +1,13 @@
 package ru.nsu.fitkulin;
 
-import org.junit.jupiter.api.Test;
 import java.io.InputStream;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * test with json config.
+ */
 class PizzeriaTest {
     @Test
     void testPizzeriaLifecycle() throws Exception {

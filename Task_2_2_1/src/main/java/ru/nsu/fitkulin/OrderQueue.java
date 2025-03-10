@@ -3,6 +3,9 @@ package ru.nsu.fitkulin;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * queue with pizza orders.
+ */
 public class OrderQueue<T> {
     private final Queue<T> queue = new LinkedList<>();
     private volatile boolean isRunning = true;
