@@ -39,7 +39,7 @@ class PizzeriaTest {
     private static Thread getThread(Pizzeria pizzeria) {
         Thread additionalOrdersThread = new Thread(() -> {
             Random random = new Random();
-            int orderId = 100;
+            int orderId = pizzeria.getInitialOrderId() + 1;
             while (pizzeria.getOrderQueue().isRunning()) {
                 try {
                     long delay = random.nextInt(10_001);
@@ -49,7 +49,7 @@ class PizzeriaTest {
                         break;
                     }
 
-                    int deliveryTime = random.nextInt(20) + 5;
+                    int deliveryTime = random.nextInt(10) + 5;
                     int amount = random.nextInt(5) + 5;
                     System.out.println("Заказ " + orderId + " добавлен в очередь. Количество "
                             + "пицц: " + amount);

@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * class implementing a pizzeria. loads data from JSON and regulates the operation of the pizzeria.
@@ -16,6 +17,7 @@ public class Pizzeria {
     private final int workTimeSeconds;
     private final List<Thread> bakerThreads = new ArrayList<>();
     private final List<Thread> courierThreads = new ArrayList<>();
+    private final int initialOrderId;
 
     public Pizzeria(String configPath) throws Exception {
         this(new ObjectMapper().readTree(new File(configPath)));
@@ -46,12 +48,16 @@ public class Pizzeria {
             courierThread.start();
         });
 
+        AtomicInteger maxOrderId = new AtomicInteger();
         config.get("orders").forEach(orderNode -> {
             int id = orderNode.get("id").asInt();
+            maxOrderId.set(Math.max(maxOrderId.get(), id));
             int time = orderNode.get("time").asInt();
             int amount = orderNode.get("amount").asInt();
             orderQueue.addOrder(new Order(id, time, amount));
         });
+
+        this.initialOrderId = maxOrderId.get();
     }
 
     public void startWorkDay() throws InterruptedException {
@@ -95,5 +101,9 @@ public class Pizzeria {
 
     public OrderQueue<Order> getOrderQueue() {
         return orderQueue;
+    }
+
+    public int getInitialOrderId() {
+        return initialOrderId;
     }
 }
