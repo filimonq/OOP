@@ -15,8 +15,7 @@ public class Order {
         this.amount = amount;
         this.status = OrderStatus.QUEUE;
     }
-
-    //
+    
     public int getId() {
         return this.id;
     }

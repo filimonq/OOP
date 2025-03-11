@@ -1,6 +1,6 @@
 {
   "warehouseCapacity": 10,
-  "workTimeSeconds": 4,
+  "workTimeSeconds": 30,
   "bakers": [
     {"cookingTimeSec": 1},
     {"cookingTimeSec": 2},
@@ -15,13 +15,6 @@
   "orders": [
     {"id": 1, "time": 10, "amount": 5},
     {"id": 2, "time": 15, "amount": 3},
-    {"id": 3, "time": 15, "amount": 1},
-    {"id": 4, "time": 15, "amount": 1},
-    {"id": 5, "time": 15, "amount": 1},
-    {"id": 6, "time": 15, "amount": 2},
-    {"id": 7, "time": 15, "amount": 3},
-    {"id": 8, "time": 15, "amount": 4},
-    {"id": 9, "time": 15, "amount": 1},
-    {"id": 10, "time": 15, "amount": 1}
+    {"id": 3, "time": 15, "amount": 1}
   ]
 }

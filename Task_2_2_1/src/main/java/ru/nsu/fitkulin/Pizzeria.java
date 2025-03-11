@@ -91,4 +91,8 @@ public class Pizzeria {
 
         System.out.println("Pizzeria is finally closed");
     }
+
+    public OrderQueue<Order> getOrderQueue() {
+        return orderQueue;
+    }
 }
