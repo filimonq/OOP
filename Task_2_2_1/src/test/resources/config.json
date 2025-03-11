@@ -1,6 +1,6 @@
 {
   "warehouseCapacity": 10,
-  "workTimeSeconds": 30,
+  "workTimeSeconds": 4,
   "bakers": [
     {"cookingTimeSec": 1},
     {"cookingTimeSec": 2},

@@ -19,7 +19,7 @@ public class Courier implements Runnable {
      */
     @Override
     public void run() {
-        while (warehouse.isRunning() || !warehouse.isEmpty()) {
+        while (!warehouse.isEmpty() || warehouse.isRunning()) {
             Order order = null;
             try {
                 order = warehouse.poll();

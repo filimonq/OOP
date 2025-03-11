@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * class implementing a pizzeria. loads data from JSON and regulates the operation of the pizzeria.
  */
 public class Pizzeria {
     private final OrderQueue<Order> orderQueue = new OrderQueue<>();
@@ -61,7 +61,6 @@ public class Pizzeria {
 
     public void shutdown() {
         orderQueue.stop();
-        warehouse.shutdown();
         System.out.println("Pizzeria is closed");
 
         while (!orderQueue.isEmpty() || !warehouse.isEmpty()) {
@@ -80,6 +79,8 @@ public class Pizzeria {
                 Thread.currentThread().interrupt();
             }
         }
+
+        warehouse.shutdown();
 
         for (Thread courier : courierThreads) {
             try {
