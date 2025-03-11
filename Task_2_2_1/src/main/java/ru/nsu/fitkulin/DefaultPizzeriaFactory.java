@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Default implementation of PizzeriaFactory that reads configuration from a JSON file.
+ */
 public class DefaultPizzeriaFactory implements PizzeriaFactory {
     private final JsonNode config;
 

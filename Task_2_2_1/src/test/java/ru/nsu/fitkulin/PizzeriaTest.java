@@ -1,10 +1,14 @@
 package ru.nsu.fitkulin;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import java.io.InputStream;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
+/**
+ * test with order generator.
+ */
 class PizzeriaTest {
     @Test
     void testPizzeriaLifecycle() throws Exception {
@@ -27,7 +31,6 @@ class PizzeriaTest {
         pizzeriaThread.start();
         pizzeriaThread.join(120 * 1000L);
         additionalOrdersThread.join(120 * 1000L);
-
         long elapsed = System.currentTimeMillis() - startTime;
 
         assertFalse(pizzeriaThread.isAlive(), "Пиццерия не завершила работу вовремя");

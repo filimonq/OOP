@@ -8,6 +8,13 @@ public class Baker implements Runnable {
     private final Warehouse<Order> warehouse;
     private final int cookingTimeMs;
 
+    /**
+     * constructor.
+     *
+     * @param orderQueue queue for orders.
+     * @param warehouse warehouse where bakers put pizza.
+     * @param cookingTimeMs bakers speed.
+     */
     public Baker(OrderQueue<Order> orderQueue, Warehouse<Order> warehouse, int cookingTimeMs) {
         this.orderQueue = orderQueue;
         this.warehouse = warehouse;

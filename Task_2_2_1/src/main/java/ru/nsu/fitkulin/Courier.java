@@ -8,6 +8,13 @@ public class Courier implements Runnable {
     private final int trunkCapacity;
     private final double speedCoefficient;
 
+    /**
+     * constructor.
+     *
+     * @param warehouse warehouse where couriers take pizza.
+     * @param trunkCapacity couriers capacity.
+     * @param speedCoefficient couriers speed.
+     */
     public Courier(Warehouse<Order> warehouse, int trunkCapacity, double speedCoefficient) {
         this.warehouse = warehouse;
         this.trunkCapacity = trunkCapacity;
