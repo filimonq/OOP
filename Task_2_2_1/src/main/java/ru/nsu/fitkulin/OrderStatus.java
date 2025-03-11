@@ -1,7 +1,7 @@
 package ru.nsu.fitkulin;
 
 /**
- * enum for orders status
+ * enum for orders status.
  */
 public enum OrderStatus {
     QUEUE,
