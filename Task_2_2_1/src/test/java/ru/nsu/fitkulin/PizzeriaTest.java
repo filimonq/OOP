@@ -1,8 +1,6 @@
 package ru.nsu.fitkulin;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.io.InputStream;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
@@ -11,9 +9,9 @@ class PizzeriaTest {
     @Test
     void testPizzeriaLifecycle() throws Exception {
         InputStream configStream = getClass().getResourceAsStream("/config.json");
-        assertNotNull(configStream, "Конфигурационный файл не найден");
+        PizzeriaFactory config = new DefaultPizzeriaFactory(configStream);
 
-        Pizzeria pizzeria = new Pizzeria(configStream);
+        Pizzeria pizzeria = new Pizzeria(config);
 
         Thread additionalOrdersThread = getThread(pizzeria);
 

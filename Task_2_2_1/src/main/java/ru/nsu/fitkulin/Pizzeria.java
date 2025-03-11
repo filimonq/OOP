@@ -1,12 +1,7 @@
 package ru.nsu.fitkulin;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * class implementing a pizzeria. loads data from JSON and regulates the operation of the pizzeria.
@@ -17,47 +12,29 @@ public class Pizzeria {
     private final int workTimeSeconds;
     private final List<Thread> bakerThreads = new ArrayList<>();
     private final List<Thread> courierThreads = new ArrayList<>();
-    private final int initialOrderId;
+    private int maxOrderId = 0;
 
-    public Pizzeria(String configPath) throws Exception {
-        this(new ObjectMapper().readTree(new File(configPath)));
-    }
 
-    public Pizzeria(InputStream configStream) throws Exception {
-        this(new ObjectMapper().readTree(configStream));
-    }
+    public Pizzeria(PizzeriaFactory config) {
+        this.warehouse = new Warehouse<>(config.getWarehouseCapacity());
+        this.workTimeSeconds = config.getWorkTimeSeconds();
 
-    private Pizzeria(JsonNode config) {
-        this.warehouse = new Warehouse<>(config.get("warehouseCapacity").asInt());
-        this.workTimeSeconds = config.get("workTimeSeconds").asInt();
-
-        config.get("bakers").forEach(bakerNode -> {
-            int cookingTime = bakerNode.get("cookingTimeSec").asInt() * 1000;
-            Baker baker = new Baker(orderQueue, warehouse, cookingTime);
+        config.createBakers(orderQueue, warehouse).forEach(baker -> {
             Thread bakerThread = new Thread(baker, "Baker-" + bakerThreads.size());
             bakerThreads.add(bakerThread);
             bakerThread.start();
         });
 
-        config.get("couriers").forEach(courierNode -> {
-            int capacity = courierNode.get("trunkCapacity").asInt();
-            double speed = courierNode.get("speedCoefficient").asDouble();
-            Courier courier = new Courier(warehouse, capacity, speed);
+        config.createCouriers(warehouse).forEach(courier -> {
             Thread courierThread = new Thread(courier, "Courier-" + courierThreads.size());
             courierThreads.add(courierThread);
             courierThread.start();
         });
 
-        AtomicInteger maxOrderId = new AtomicInteger();
-        config.get("orders").forEach(orderNode -> {
-            int id = orderNode.get("id").asInt();
-            maxOrderId.set(Math.max(maxOrderId.get(), id));
-            int time = orderNode.get("time").asInt();
-            int amount = orderNode.get("amount").asInt();
-            orderQueue.addOrder(new Order(id, time, amount));
+        config.createOrders().forEach(order -> {
+            orderQueue.addOrder(order);
+            maxOrderId = Math.max(maxOrderId, order.getId());
         });
-
-        this.initialOrderId = maxOrderId.get();
     }
 
     public void startWorkDay() throws InterruptedException {
@@ -104,6 +81,6 @@ public class Pizzeria {
     }
 
     public int getInitialOrderId() {
-        return initialOrderId;
+        return maxOrderId;
     }
 }
