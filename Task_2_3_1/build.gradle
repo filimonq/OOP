@@ -1,21 +1,39 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'checkstyle'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 group = 'ru.nsu.fitkulin'
 version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
 }
 
-test {
+application {
+    mainClass = 'ru.nsu.fitkulin.Main'
+}
+
+javafx {
+    version = "23.0.2"
+    modules = ['javafx.controls']
+}
+
+tasks.named('test') {
     useJUnitPlatform()
 }
 
