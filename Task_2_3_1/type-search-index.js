@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin.model","l":"Food"},{"p":"ru.nsu.fitkulin.model","l":"Level"},{"p":"ru.nsu.fitkulin","l":"Main"},{"p":"ru.nsu.fitkulin.model","l":"Snake"}];updateSearchResults();
