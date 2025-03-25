@@ -5,4 +5,5 @@ public interface Level {
 
     int getFoodCount();
 
+    int getWinLength();
 }
