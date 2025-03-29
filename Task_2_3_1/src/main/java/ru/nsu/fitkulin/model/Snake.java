@@ -1,7 +1,7 @@
 package ru.nsu.fitkulin.model;
 
-import java.util.LinkedList;
 import javafx.geometry.Point2D;
+import java.util.LinkedList;
 
 public class Snake {
     private final LinkedList<Point2D> body;
@@ -37,7 +37,6 @@ public class Snake {
     public void move() {
         currentDirection = nextDirection;
         Point2D newHead = getNextHeadPosition();
-
         body.addFirst(newHead);
         if (!growNextMove) {
             body.removeLast();

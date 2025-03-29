@@ -9,10 +9,12 @@ public class SimpleFood implements Food {
         this.position = position;
     }
 
+    @Override
     public Point2D getPosition() {
         return position;
     }
 
+    @Override
     public void setPosition(Point2D position) {
         this.position = position;
     }

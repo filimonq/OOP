@@ -6,4 +6,8 @@ public interface Level {
     int getFoodCount();
 
     int getWinLength();
+
+    int getWidth();
+
+    int getHeight();
 }

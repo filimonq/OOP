@@ -18,8 +18,8 @@ public class GameBoard {
 
     public GameBoard(Level level) {
         this.level = level;
-        this.width = ((SimpleLevel) level).getWidth();
-        this.height = ((SimpleLevel) level).getHeight();
+        this.width = level.getWidth();
+        this.height = level.getHeight();
         this.snake = new Snake(width / 2, height / 2, level.getBaseSpeed());
         this.foods = new ArrayList<>();
         this.random = new Random();

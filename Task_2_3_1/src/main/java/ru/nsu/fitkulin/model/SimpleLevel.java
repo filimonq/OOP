@@ -3,7 +3,7 @@ package ru.nsu.fitkulin.model;
 public class SimpleLevel implements Level {
     private final int width;
     private final int height;
-    private final int winLength; // Условие победы
+    private final int winLength;
 
     public SimpleLevel(int width, int height, int winLength) {
         this.width = width;
@@ -13,7 +13,7 @@ public class SimpleLevel implements Level {
 
     @Override
     public int getBaseSpeed() {
-        return 10; // Скорость в клетках за обновление
+        return 300;
     }
 
     @Override
@@ -26,6 +26,13 @@ public class SimpleLevel implements Level {
         return winLength;
     }
 
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
+    }
 }
