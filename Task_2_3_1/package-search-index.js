@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.fitkulin"},{"l":"ru.nsu.fitkulin.model"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.fitkulin"},{"l":"ru.nsu.fitkulin.controller"},{"l":"ru.nsu.fitkulin.model"},{"l":"ru.nsu.fitkulin.view"}];updateSearchResults();
