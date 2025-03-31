@@ -49,7 +49,7 @@ public class LevelSelector {
         });
 
         level3Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(30, 10, 50, 30, 30);
+            selectedLevel = new SimpleLevel(30, 1000, 50, 30, 1000);
             stage.close();
         });
 

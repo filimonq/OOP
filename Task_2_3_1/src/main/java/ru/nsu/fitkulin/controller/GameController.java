@@ -19,8 +19,13 @@ public class GameController {
     private long lastUpdate = 0;
     private long updateInterval;
     private final int cellSize = 30;
+    private javafx.stage.Stage stage;
 
     private Level level;
+
+    public void setStage(javafx.stage.Stage stage) {
+        this.stage = stage;
+    }
 
     public void setLevel(Level level) {
         this.level = level;
@@ -58,5 +63,9 @@ public class GameController {
             case D: gameBoard.getSnake().updateDirection(Direction.RIGHT); break;
             case R: if (gameBoard.isGameOver() || gameBoard.isGameWon()) gameBoard.reset(); break;
         }
+    }
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
     }
 }
