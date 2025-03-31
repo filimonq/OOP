@@ -17,7 +17,7 @@ public class GameController {
     private GameView gameView;
     private AnimationTimer gameLoop;
     private long lastUpdate = 0;
-    private final int updateInterval = 100_000_000;
+    private long updateInterval;
     private final int cellSize = 30;
 
     private Level level;
@@ -30,6 +30,9 @@ public class GameController {
     private void initializeGame() {
         gameBoard = new GameBoard(level);
         gameView = new GameView(gameCanvas);
+
+        int speed = gameBoard.getSnake().getSpeed();
+        updateInterval = 1_000_000_000 / speed;
 
         gameCanvas.setWidth(gameBoard.getWidth() * cellSize);
         gameCanvas.setHeight(gameBoard.getHeight() * cellSize);

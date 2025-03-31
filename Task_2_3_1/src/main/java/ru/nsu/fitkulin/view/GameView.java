@@ -3,6 +3,7 @@ package ru.nsu.fitkulin.view;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import ru.nsu.fitkulin.model.GameBoard;
@@ -11,9 +12,11 @@ import ru.nsu.fitkulin.model.Snake;
 public class GameView {
     private final Canvas canvas;
     private final int cellSize = 30;
+    private final Image backgroundImage;
 
     public GameView(Canvas canvas) {
         this.canvas = canvas;
+        this.backgroundImage = new Image(getClass().getResourceAsStream("/back.png"));
     }
 
     public void render(GameBoard gameBoard) {
@@ -23,6 +26,7 @@ public class GameView {
 
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, width, height);
+        gc.drawImage(backgroundImage, 0, 0, width, height);
 
         Snake snake = gameBoard.getSnake();
         for (int i = 0; i < snake.getBody().size(); i++) {
@@ -43,6 +47,7 @@ public class GameView {
 
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("Arial", 20));
+        gc.setTextAlign(TextAlignment.LEFT);
         gc.fillText("Score: " + gameBoard.getScore(), 10, 20);
 
         if (gameBoard.isGameOver()) {
