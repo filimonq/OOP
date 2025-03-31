@@ -6,7 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
 import ru.nsu.fitkulin.model.Direction;
 import ru.nsu.fitkulin.model.GameBoard;
-import ru.nsu.fitkulin.model.SimpleLevel;
+import ru.nsu.fitkulin.model.Level;
 import ru.nsu.fitkulin.view.GameView;
 
 public class GameController {
@@ -17,12 +17,22 @@ public class GameController {
     private GameView gameView;
     private AnimationTimer gameLoop;
     private long lastUpdate = 0;
-    private final int updateInterval = 200_000_000; // 200мс
+    private final int updateInterval = 100_000_000;
+    private final int cellSize = 30;
 
-    @FXML
-    public void initialize() {
-        gameBoard = new GameBoard(new SimpleLevel(20, 20, 10));
+    private Level level;
+
+    public void setLevel(Level level) {
+        this.level = level;
+        initializeGame();
+    }
+
+    private void initializeGame() {
+        gameBoard = new GameBoard(level);
         gameView = new GameView(gameCanvas);
+
+        gameCanvas.setWidth(gameBoard.getWidth() * cellSize);
+        gameCanvas.setHeight(gameBoard.getHeight() * cellSize);
 
         gameLoop = new AnimationTimer() {
             @Override
@@ -39,11 +49,11 @@ public class GameController {
 
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
-            case UP:    gameBoard.getSnake().updateDirection(Direction.UP); break;
-            case DOWN:  gameBoard.getSnake().updateDirection(Direction.DOWN); break;
-            case LEFT:  gameBoard.getSnake().updateDirection(Direction.LEFT); break;
-            case RIGHT: gameBoard.getSnake().updateDirection(Direction.RIGHT); break;
-            case R:     if (gameBoard.isGameOver() || gameBoard.isGameWon()) gameBoard.reset(); break;
+            case W: gameBoard.getSnake().updateDirection(Direction.UP); break;
+            case S: gameBoard.getSnake().updateDirection(Direction.DOWN); break;
+            case A: gameBoard.getSnake().updateDirection(Direction.LEFT); break;
+            case D: gameBoard.getSnake().updateDirection(Direction.RIGHT); break;
+            case R: if (gameBoard.isGameOver() || gameBoard.isGameWon()) gameBoard.reset(); break;
         }
     }
 }

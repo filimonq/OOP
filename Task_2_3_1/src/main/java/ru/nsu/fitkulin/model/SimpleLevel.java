@@ -1,11 +1,15 @@
 package ru.nsu.fitkulin.model;
 
 public class SimpleLevel implements Level {
+    private final int baseSpeed;
+    private final int foodCount;
     private final int width;
     private final int height;
     private final int winLength;
 
-    public SimpleLevel(int width, int height, int winLength) {
+    public SimpleLevel(int baseSpeed, int foodCount, int width, int height, int winLength) {
+        this.baseSpeed = baseSpeed;
+        this.foodCount = foodCount;
         this.width = width;
         this.height = height;
         this.winLength = winLength;
@@ -13,12 +17,12 @@ public class SimpleLevel implements Level {
 
     @Override
     public int getBaseSpeed() {
-        return 300;
+        return baseSpeed;
     }
 
     @Override
     public int getFoodCount() {
-        return 1;
+        return foodCount;
     }
 
     @Override
