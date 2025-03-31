@@ -117,7 +117,7 @@ public class GameBoard {
         }
     }
 
-    private void spawnFood() {
+    public void spawnFood() {
         if (foods.size() >= width * height - (playerSnake.getLength()
                 + bots.stream().mapToInt(Snake::getLength).sum())) {
             return;
