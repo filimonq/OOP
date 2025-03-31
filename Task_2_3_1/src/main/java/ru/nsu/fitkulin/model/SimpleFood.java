@@ -13,9 +13,4 @@ public class SimpleFood implements Food {
     public Point2D getPosition() {
         return position;
     }
-
-    @Override
-    public void setPosition(Point2D position) {
-        this.position = position;
-    }
 }
