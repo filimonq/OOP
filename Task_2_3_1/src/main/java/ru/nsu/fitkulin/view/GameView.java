@@ -3,6 +3,7 @@ package ru.nsu.fitkulin.view;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -18,12 +19,22 @@ public class GameView {
     private final Image backgroundImage;
     private final Image snakeHeadImage;
     private final Image foodImage;
+    private final AudioClip gameOverSound;
+    private final AudioClip winSound;
+    private boolean gameOverPlayed;
+    private boolean winPlayed;
+
 
     public GameView(Canvas canvas) {
         this.canvas = canvas;
-        this.backgroundImage = new Image(getClass().getResourceAsStream("/back.png"));
-        this.snakeHeadImage = new Image(getClass().getResourceAsStream("/head.png"));
-        this.foodImage = new Image(getClass().getResourceAsStream("/simple_food.png"));
+        this.backgroundImage = new Image(getClass().getResourceAsStream("/images/back.png"));
+        this.snakeHeadImage = new Image(getClass().getResourceAsStream("/images/head.png"));
+        this.foodImage = new Image(getClass().getResourceAsStream("/images/simple_food.png"));
+        this.gameOverSound =
+                new AudioClip(getClass().getResource("/sounds/game_over.wav").toString());
+        this.winSound = new AudioClip(getClass().getResource("/sounds/win.wav").toString());
+        this.gameOverPlayed = false;
+        this.winPlayed = false;
     }
 
     public void render(GameBoard gameBoard) {
@@ -65,11 +76,22 @@ public class GameView {
             gc.setFont(new Font("Arial", 30));
             gc.setTextAlign(TextAlignment.CENTER);
             gc.fillText("Game Over! Press R", width / 2, height / 2);
+            if (!gameOverPlayed) {
+                gameOverSound.play();
+                gameOverPlayed = true;
+            }
         } else if (gameBoard.isGameWon()) {
             gc.setFill(Color.WHITE);
             gc.setFont(new Font("Arial", 30));
             gc.setTextAlign(TextAlignment.CENTER);
             gc.fillText("You Won! Press R", width / 2, height / 2);
+            if (!winPlayed) {
+                winSound.play();
+                winPlayed = true;
+            }
+        } else {
+            gameOverPlayed = false;
+            winPlayed = false;
         }
     }
 
