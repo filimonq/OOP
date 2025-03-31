@@ -39,7 +39,7 @@ public class LevelSelector {
         level3Button.setFont(font);
 
         level1Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(7, 3, 30, 15, 10);
+            selectedLevel = new SimpleLevel(5, 3, 30, 15, 10);
             stage.close();
         });
 
