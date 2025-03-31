@@ -27,13 +27,13 @@ public class GameController {
         this.stage = stage;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(Level level, int botCount) {
         this.level = level;
-        initializeGame();
+        initializeGame(botCount);
     }
 
-    private void initializeGame() {
-        gameBoard = new GameBoard(level);
+    private void initializeGame(int botCount) {
+        gameBoard = new GameBoard(level, botCount);
         gameView = new GameView(gameCanvas);
 
         int speed = gameBoard.getSnake().getSpeed();

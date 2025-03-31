@@ -1,8 +1,11 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
 import java.util.LinkedList;
+import javafx.geometry.Point2D;
 
+/**
+ * logic of snake.
+ */
 public class Snake {
     private final LinkedList<Point2D> body;
     private Direction currentDirection;

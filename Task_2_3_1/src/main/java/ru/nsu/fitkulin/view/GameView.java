@@ -10,6 +10,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import ru.nsu.fitkulin.model.Bot;
 import ru.nsu.fitkulin.model.GameBoard;
 import ru.nsu.fitkulin.model.Snake;
 
@@ -23,7 +24,6 @@ public class GameView {
     private final AudioClip winSound;
     private boolean gameOverPlayed;
     private boolean winPlayed;
-
 
     public GameView(Canvas canvas) {
         this.canvas = canvas;
@@ -44,20 +44,37 @@ public class GameView {
 
         gc.drawImage(backgroundImage, 0, 0, width, height);
 
-        LinearGradient snakeGradient = new LinearGradient(
+        LinearGradient playerGradient = new LinearGradient(
                 0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
                 new Stop(0, Color.LIME), new Stop(1, Color.DARKGREEN));
-
-        Snake snake = gameBoard.getSnake();
-        for (int i = 0; i < snake.getBody().size(); i++) {
-            var point = snake.getBody().get(i);
+        Snake playerSnake = gameBoard.getSnake();
+        for (int i = 0; i < playerSnake.getBody().size(); i++) {
+            var point = playerSnake.getBody().get(i);
             if (i == 0) {
-                gc.drawImage(snakeHeadImage, point.getX() * cellSize, point.getY() * cellSize,
-                        cellSize, cellSize);
+                gc.drawImage(snakeHeadImage,
+                        point.getX() * cellSize, point.getY() * cellSize, cellSize, cellSize);
             } else {
-                gc.setFill(snakeGradient);
+                gc.setFill(playerGradient);
                 gc.fillRoundRect(point.getX() * cellSize, point.getY() * cellSize,
                         cellSize - 1, cellSize - 1, 10, 10);
+            }
+        }
+
+        LinearGradient botGradient = new LinearGradient(
+                0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.RED), new Stop(1, Color.DARKRED));
+        for (Bot bot : gameBoard.getBots()) {
+            for (int i = 0; i < bot.getBody().size(); i++) {
+                var point = bot.getBody().get(i);
+                if (i == 0) {
+                    gc.setFill(Color.RED);
+                    gc.fillOval(point.getX() * cellSize,
+                            point.getY() * cellSize, cellSize, cellSize);
+                } else {
+                    gc.setFill(botGradient);
+                    gc.fillRoundRect(point.getX() * cellSize, point.getY() * cellSize,
+                            cellSize - 1, cellSize - 1, 10, 10);
+                }
             }
         }
 

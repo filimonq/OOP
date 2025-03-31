@@ -6,28 +6,34 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.nsu.fitkulin.controller.GameController;
-import ru.nsu.fitkulin.model.Level;
 import ru.nsu.fitkulin.view.LevelSelector;
 
 public class Main extends Application {
+    private GameController controller;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         LevelSelector levelSelector = new LevelSelector();
-        Level selectedLevel = levelSelector.selectLevel();
+        levelSelector.selectLevelAndBots();
 
-        if (selectedLevel != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
-            Parent root = loader.load();
-            GameController controller = loader.getController();
-            controller.setLevel(selectedLevel);
+        var level = levelSelector.getSelectedLevel();
+        int botCount = levelSelector.getSelectedBotCount();
 
-            Scene scene = new Scene(root);
-            scene.setOnKeyPressed(controller::handleKeyPress);
-            primaryStage.setTitle("Snake Game");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            primaryStage.sizeToScene();
-        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
+        Parent root = loader.load();
+        controller = loader.getController();
+        controller.setStage(primaryStage);
+        controller.setLevel(level, botCount);
+
+        Scene scene = new Scene(root);
+        scene.setOnKeyPressed(controller::handleKeyPress);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Snake with Bots");
+        primaryStage.show();
+    }
+
+    public GameController getController() {
+        return controller;
     }
 
     public static void main(String[] args) {
