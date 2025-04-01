@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Handles visual representation of game state using JavaFX Canvas.
+ Renders snakes, bots, food, UI elements and sound effects.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -89,7 +91,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.scene.canvas.Canvas)" class="member-name-link">GameView</a><wbr>(javafx.scene.canvas.Canvas&nbsp;canvas)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,7 +113,14 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#render(ru.nsu.fitkulin.model.GameBoard)" class="member-name-link">render</a><wbr>(<a href="../model/GameBoard.html" title="class in ru.nsu.fitkulin.model">GameBoard</a>&nbsp;gameBoard)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Renders current game state including:
+ - Player snake with gradient coloring
+ - Enemy bots with distinct visual style
+ - Food items with texture
+ - Score display
+ - Win/lose conditions overlay</div>
+</div>
 </div>
 </div>
 </div>
@@ -131,6 +142,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(javafx.scene.canvas.Canvas)">
 <h3>GameView</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameView</span><wbr><span class="parameters">(javafx.scene.canvas.Canvas&nbsp;canvas)</span></div>
+<div class="block">Constructs.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>canvas</code> - JavaFX Canvas for drawing game elements.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -145,12 +161,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="render(ru.nsu.fitkulin.model.GameBoard)">
 <h3>render</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">render</span><wbr><span class="parameters">(<a href="../model/GameBoard.html" title="class in ru.nsu.fitkulin.model">GameBoard</a>&nbsp;gameBoard)</span></div>
+<div class="block">Renders current game state including:
+ - Player snake with gradient coloring
+ - Enemy bots with distinct visual style
+ - Food items with texture
+ - Score display
+ - Win/lose conditions overlay</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>gameBoard</code> - Current game state to visualize</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getCellSize()">
 <h3>getCellSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getCellSize</span>()</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>Size of game grid cells in pixels</dd>
+</dl>
 </section>
 </li>
 </ul>

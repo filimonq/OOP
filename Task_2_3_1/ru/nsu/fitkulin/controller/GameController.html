@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameController</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Main game controller handling business logic and user input.
+ Manages game loop, coordinates model updates and view rendering.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,7 +111,9 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleKeyPress(javafx.scene.input.KeyEvent)" class="member-name-link">handleKeyPress</a><wbr>(javafx.scene.input.KeyEvent&nbsp;event)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Handles keyboard input for snake control and game restart.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLevel(ru.nsu.fitkulin.model.Level,int)" class="member-name-link">setLevel</a><wbr>(<a href="../model/Level.html" title="interface in ru.nsu.fitkulin.model">Level</a>&nbsp;level,
  int&nbsp;botCount)</code></div>
@@ -165,12 +169,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="handleKeyPress(javafx.scene.input.KeyEvent)">
 <h3>handleKeyPress</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleKeyPress</span><wbr><span class="parameters">(javafx.scene.input.KeyEvent&nbsp;event)</span></div>
+<div class="block">Handles keyboard input for snake control and game restart.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>event</code> - Key press event from JavaFX scene.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getGameBoard()">
 <h3>getGameBoard</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/GameBoard.html" title="class in ru.nsu.fitkulin.model">GameBoard</a></span>&nbsp;<span class="element-name">getGameBoard</span>()</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>Current game board state</dd>
+</dl>
 </section>
 </li>
 </ul>

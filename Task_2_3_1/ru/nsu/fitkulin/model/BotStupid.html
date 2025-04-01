@@ -81,6 +81,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">BotStupid</span>
 <span class="extends-implements">extends <a href="Bot.html" title="class in ru.nsu.fitkulin.model">Bot</a></span></div>
+<div class="block">Stupid bot implementation with random movement patterns.
+ Avoids immediate wall collisions but doesn't actively seek food.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -115,7 +117,9 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Snake.html" title="class in ru.nsu.fitkulin.model">Snake</a>&gt;&nbsp;allSnakes)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Decision-making method to be implemented by concrete bot classes.</div>
+</div>
 </div>
 </div>
 </div>
@@ -162,6 +166,9 @@ loadScripts(document, 'script');</script>
  int&nbsp;width,
  int&nbsp;height,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Snake.html" title="class in ru.nsu.fitkulin.model">Snake</a>&gt;&nbsp;allSnakes)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Bot.html#decideNextMove(java.util.List,int,int,java.util.List)">Bot</a></code></span></div>
+<div class="block">Decision-making method to be implemented by concrete bot classes.
+ Determines the bot's next move based on game state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Bot.html#decideNextMove(java.util.List,int,int,java.util.List)">decideNextMove</a></code>&nbsp;in class&nbsp;<code><a href="Bot.html" title="class in ru.nsu.fitkulin.model">Bot</a></code></dd>

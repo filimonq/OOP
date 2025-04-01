@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameBoard</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents the game state and manages all game entities.
+ Handles player snake, bots, food, collisions, and game rules.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -90,7 +92,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.fitkulin.model.Level,int)" class="member-name-link">GameBoard</a><wbr>(<a href="Level.html" title="interface in ru.nsu.fitkulin.model">Level</a>&nbsp;level,
  int&nbsp;botCount)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates new game board with specified level configuration.</div>
+</div>
 </div>
 </section>
 </li>
@@ -131,13 +135,19 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#reset()" class="member-name-link">reset</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Resets game to initial state.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#spawnFood()" class="member-name-link">spawnFood</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Spawns new food at random unoccupied position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Updates game state - moves entities, checks collisions, handles scoring.</div>
+</div>
 </div>
 </div>
 </div>
@@ -160,6 +170,12 @@ loadScripts(document, 'script');</script>
 <h3>GameBoard</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameBoard</span><wbr><span class="parameters">(<a href="Level.html" title="interface in ru.nsu.fitkulin.model">Level</a>&nbsp;level,
  int&nbsp;botCount)</span></div>
+<div class="block">Creates new game board with specified level configuration.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>level</code> - Contains game parameters (size, speed, etc)</dd>
+<dd><code>botCount</code> - Number of AI opponents (0-2)</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -174,18 +190,23 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="update()">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span>()</div>
+<div class="block">Updates game state - moves entities, checks collisions, handles scoring.
+ Called every game tick to progress the game.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="spawnFood()">
 <h3>spawnFood</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">spawnFood</span>()</div>
+<div class="block">Spawns new food at random unoccupied position.
+ Ensures food doesn't appear on snakes.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="reset()">
 <h3>reset</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">reset</span>()</div>
+<div class="block">Resets game to initial state.</div>
 </section>
 </li>
 <li>

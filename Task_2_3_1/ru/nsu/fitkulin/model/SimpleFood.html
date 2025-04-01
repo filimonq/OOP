@@ -82,6 +82,8 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SimpleFood</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="Food.html" title="interface in ru.nsu.fitkulin.model">Food</a></span></div>
+<div class="block">Basic implementation of Food interface representing consumable items in the game.
+ Maintains a single position on the game grid where the food appears.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -94,7 +96,9 @@ implements <a href="Food.html" title="interface in ru.nsu.fitkulin.model">Food</
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.geometry.Point2D)" class="member-name-link">SimpleFood</a><wbr>(javafx.geometry.Point2D&nbsp;position)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates food at specified position.</div>
+</div>
 </div>
 </section>
 </li>
@@ -133,6 +137,11 @@ implements <a href="Food.html" title="interface in ru.nsu.fitkulin.model">Food</
 <section class="detail" id="&lt;init&gt;(javafx.geometry.Point2D)">
 <h3>SimpleFood</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SimpleFood</span><wbr><span class="parameters">(javafx.geometry.Point2D&nbsp;position)</span></div>
+<div class="block">Creates food at specified position.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>position</code> - The (x,y) coordinates where food will appear on game grid</dd>
+</dl>
 </section>
 </li>
 </ul>
