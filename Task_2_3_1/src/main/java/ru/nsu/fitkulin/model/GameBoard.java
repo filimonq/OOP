@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Random;
 import javafx.geometry.Point2D;
 
+/**
+ * Represents the game state and manages all game entities.
+ * Handles player snake, bots, food, collisions, and game rules.
+ */
 public class GameBoard {
     private final Snake playerSnake;
     private final List<Bot> bots;
@@ -19,6 +23,11 @@ public class GameBoard {
     private boolean gameWon;
     private final Random random;
 
+    /**
+     * Creates new game board with specified level configuration.
+     * @param level Contains game parameters (size, speed, etc)
+     * @param botCount Number of AI opponents (0-2)
+     */
     public GameBoard(Level level, int botCount) {
         this.playerSnake = new Snake(level.getWidth() / 2,
                 level.getHeight() / 2, level.getBaseSpeed());
@@ -50,6 +59,10 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Updates game state - moves entities, checks collisions, handles scoring.
+     * Called every game tick to progress the game.
+     */
     public void update() {
         if (gameOver || gameWon) {
             return;
@@ -103,6 +116,14 @@ public class GameBoard {
         List<Bot> botsToRemove = new ArrayList<>();
         for (Bot bot : bots) {
             Point2D botHead = bot.getHead();
+
+            for (Bot otherBot : bots) {
+                if (bot != otherBot && otherBot.getBody().contains(botHead)) {
+                    botsToRemove.add(bot);
+                    break;
+                }
+            }
+
             if (bot.checkSelfCollision() || botHead.getX() < 0 || botHead.getX() >= width
                     || botHead.getY() < 0 || botHead.getY() >= height
                     || playerSnake.getBody().contains(botHead)) {
@@ -116,6 +137,10 @@ public class GameBoard {
         }
     }
 
+    /**
+     * Spawns new food at random unoccupied position.
+     * Ensures food doesn't appear on snakes.
+     */
     public void spawnFood() {
         if (foods.size() >= width * height - (playerSnake.getLength()
                 + bots.stream().mapToInt(Snake::getLength).sum())) {
@@ -151,6 +176,7 @@ public class GameBoard {
         foods.add(new SimpleFood(position));
     }
 
+
     private boolean checkCollisionWithBots(Point2D playerHead) {
         for (Bot bot : bots) {
             if (bot.getBody().contains(playerHead)) {
@@ -160,6 +186,9 @@ public class GameBoard {
         return false;
     }
 
+    /**
+     * Resets game to initial state.
+     */
     public void reset() {
         playerSnake.reset(width / 2, height / 2);
         bots.clear();

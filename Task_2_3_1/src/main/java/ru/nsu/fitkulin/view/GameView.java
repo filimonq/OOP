@@ -14,6 +14,10 @@ import ru.nsu.fitkulin.model.Bot;
 import ru.nsu.fitkulin.model.GameBoard;
 import ru.nsu.fitkulin.model.Snake;
 
+/**
+ * Handles visual representation of game state using JavaFX Canvas.
+ * Renders snakes, bots, food, UI elements and sound effects.
+ */
 public class GameView {
     private final Canvas canvas;
     private final int cellSize = 30;
@@ -24,6 +28,13 @@ public class GameView {
     private final AudioClip winSound;
     private boolean gameOverPlayed;
     private boolean winPlayed;
+
+
+    /**
+     * Constructs.
+     *
+     * @param canvas JavaFX Canvas for drawing game elements.
+     */
 
     public GameView(Canvas canvas) {
         this.canvas = canvas;
@@ -37,6 +48,16 @@ public class GameView {
         this.winPlayed = false;
     }
 
+    /**
+     * Renders current game state including:
+     * - Player snake with gradient coloring
+     * - Enemy bots with distinct visual style
+     * - Food items with texture
+     * - Score display
+     * - Win/lose conditions overlay
+     *
+     * @param gameBoard Current game state to visualize
+     */
     public void render(GameBoard gameBoard) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         double width = gameBoard.getWidth() * cellSize;
@@ -112,6 +133,9 @@ public class GameView {
         }
     }
 
+    /**
+     * @return Size of game grid cells in pixels
+     */
     public int getCellSize() {
         return cellSize;
     }

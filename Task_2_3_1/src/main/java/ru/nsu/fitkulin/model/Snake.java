@@ -4,7 +4,8 @@ import java.util.LinkedList;
 import javafx.geometry.Point2D;
 
 /**
- * logic of snake.
+ * Represents a snake entity with movement and growth logic.
+ * Maintains body segments and handles directional movement.
  */
 public class Snake {
     private final LinkedList<Point2D> body;
@@ -14,6 +15,12 @@ public class Snake {
     private int speed;
     private final int baseSpeed;
 
+    /**
+     * Creates new snake at specified position.
+     * @param startX Initial X coordinate
+     * @param startY Initial Y coordinate
+     * @param baseSpeed Movement speed (higher = faster)
+     */
     public Snake(int startX, int startY, int baseSpeed) {
         this.body = new LinkedList<>();
         this.body.add(new Point2D(startX, startY));
@@ -24,6 +31,10 @@ public class Snake {
         this.speed = baseSpeed;
     }
 
+    /**
+     * Updates movement direction if not opposite to current.
+     * @param newDirection Requested movement direction
+     */
     public void updateDirection(Direction newDirection) {
         if (!isOppositeDirection(newDirection)) {
             this.nextDirection = newDirection;
@@ -37,6 +48,10 @@ public class Snake {
                 || (currentDirection == Direction.RIGHT && direction == Direction.LEFT);
     }
 
+    /**
+     * Moves snake one cell in current direction.
+     * Handles body growth if growNextMove flag set.
+     */
     public void move() {
         currentDirection = nextDirection;
         Point2D newHead = getNextHeadPosition();
@@ -73,10 +88,17 @@ public class Snake {
         return new Point2D(x, y);
     }
 
+    /**
+     * Sets flag to grow snake on next move.
+     */
     public void grow() {
         this.growNextMove = true;
     }
 
+    /**
+     * Checks if head collides with body.
+     * @return True if self-collision detected
+     */
     public boolean checkSelfCollision() {
         Point2D head = getHead();
         return body.stream()
@@ -84,6 +106,11 @@ public class Snake {
                 .anyMatch(p -> p.equals(head));
     }
 
+    /**
+     * Resets snake to initial state.
+     * @param startX New starting X coordinate
+     * @param startY New starting Y coordinate
+     */
     public void reset(int startX, int startY) {
         body.clear();
         body.add(new Point2D(startX, startY));
@@ -115,7 +142,7 @@ public class Snake {
     }
 
     public void changeSpeed(double multiplier) {
-        speed = (int)(baseSpeed * multiplier);
+        speed = (int)   (baseSpeed * multiplier);
     }
 
     public void shrink() {

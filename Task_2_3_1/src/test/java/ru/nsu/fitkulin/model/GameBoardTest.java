@@ -1,21 +1,21 @@
 package ru.nsu.fitkulin.model;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import java.util.List;
 import javafx.geometry.Point2D;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GameBoardTest {
     private GameBoard gameBoard;
     private final int width = 20;
     private final int height = 15;
     private final int baseSpeed = 10;
-    private final int FOOD_COUNT = 3;
+    private final int foodCount = 3;
     private final int winLength = 10;
     private final int botCount = 2;
 
@@ -23,7 +23,7 @@ class GameBoardTest {
     void setUp() {
         Level level = new SimpleLevel(
                 baseSpeed,
-                FOOD_COUNT,
+                foodCount,
                 width,
                 height,
                 winLength
@@ -47,7 +47,7 @@ class GameBoardTest {
             assertNotEquals(player.getHead(), bot.getHead());
         });
 
-        assertEquals(FOOD_COUNT, gameBoard.getFoods().size());
+        assertEquals(foodCount, gameBoard.getFoods().size());
     }
 
     @Test
@@ -77,7 +77,7 @@ class GameBoardTest {
 
         assertEquals(new Point2D(width / 2, height / 2), gameBoard.getSnake().getHead());
         assertEquals(botCount, gameBoard.getBots().size());
-        assertEquals(FOOD_COUNT, gameBoard.getFoods().size());
+        assertEquals(foodCount, gameBoard.getFoods().size());
         assertEquals(0, gameBoard.getScore());
         assertFalse(gameBoard.isGameOver());
         assertFalse(gameBoard.isGameWon());

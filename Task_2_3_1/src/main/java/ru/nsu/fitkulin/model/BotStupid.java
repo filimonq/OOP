@@ -5,9 +5,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
 import javafx.geometry.Point2D;
 
+/**
+ * Stupid bot implementation with random movement patterns.
+ * Avoids immediate wall collisions but doesn't actively seek food.
+ */
 public class BotStupid extends Bot {
     private final Random random;
 

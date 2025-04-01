@@ -3,6 +3,10 @@ package ru.nsu.fitkulin.model;
 import java.util.List;
 import javafx.geometry.Point2D;
 
+/**
+ * Smart bot implementation that uses pathfinding to chase nearest food.
+ * Avoids collisions with walls and other snakes when possible.
+ */
 public class BotSmart extends Bot {
     public BotSmart(int startX, int startY, int baseSpeed) {
         super(startX, startY, baseSpeed);
@@ -11,7 +15,7 @@ public class BotSmart extends Bot {
     @Override
     public void decideNextMove(List<SimpleFood> foods,
                                int width, int height, List<Snake> allSnakes) {
-        if (foods.isEmpty()){
+        if (foods.isEmpty()) {
             return;
         }
 

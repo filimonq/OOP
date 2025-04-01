@@ -9,6 +9,10 @@ import ru.nsu.fitkulin.model.GameBoard;
 import ru.nsu.fitkulin.model.Level;
 import ru.nsu.fitkulin.view.GameView;
 
+/**
+ * Main game controller handling business logic and user input.
+ * Manages game loop, coordinates model updates and view rendering.
+ */
 public class GameController {
     @FXML
     private Canvas gameCanvas;
@@ -32,6 +36,16 @@ public class GameController {
         initializeGame(botCount);
     }
 
+    /**
+     * Initializes core game components and starts the game loop.
+     * Creates a new GameBoard with the selected level and bot count, configures the game view,
+     * sets up canvas dimensions based on level size, and starts the animation timer that drives
+     * the game updates. The game loop runs at a speed determined by the snake's base speed.
+     *
+     * @param botCount The number of AI opponents to create (0-2). This determines how many
+     *                 Bot instances will be added to the game board. Each bot will have its
+     *                 own independent behavior and compete with the player.
+     */
     private void initializeGame(int botCount) {
         gameBoard = new GameBoard(level, botCount);
         gameView = new GameView(gameCanvas);
@@ -55,6 +69,11 @@ public class GameController {
         gameLoop.start();
     }
 
+    /**
+     * Handles keyboard input for snake control and game restart.
+     *
+     * @param event Key press event from JavaFX scene.
+     */
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
             case W:
@@ -68,7 +87,7 @@ public class GameController {
                 break;
             case D:
                 gameBoard.getSnake().updateDirection(Direction.RIGHT);
-            break;
+                break;
             case R:
                 if (gameBoard.isGameOver() || gameBoard.isGameWon()) {
                     gameBoard.reset();
@@ -78,6 +97,9 @@ public class GameController {
         }
     }
 
+    /**
+     * @return Current game board state
+     */
     public GameBoard getGameBoard() {
         return gameBoard;
     }

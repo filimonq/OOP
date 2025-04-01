@@ -5,11 +5,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import ru.nsu.fitkulin.model.Level;
 import ru.nsu.fitkulin.model.SimpleLevel;
 
+/**
+ * Provides UI for selecting game level configuration and number of bots.
+ * Uses JavaFX components for user interaction.
+ */
 public class LevelSelector {
     private Level selectedLevel;
     private int selectedBotCount;
@@ -19,14 +23,10 @@ public class LevelSelector {
         selectedBotCount = 0;
     }
 
-    public Level getSelectedLevel() {
-        return selectedLevel;
-    }
-
-    public int getSelectedBotCount() {
-        return selectedBotCount;
-    }
-
+    /**
+     * Creates modal dialog for level and bot selection.
+     * Contains predefined level configurations and bot count options.
+     */
     public void selectLevelAndBots() {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -77,5 +77,19 @@ public class LevelSelector {
         Scene scene = new Scene(vbox, 300, 350);
         stage.setScene(scene);
         stage.showAndWait();
+    }
+
+    /**
+     * @return Selected level configuration
+     */
+    public Level getSelectedLevel() {
+        return selectedLevel;
+    }
+
+    /**
+     * @return Number of bots selected for the game
+     */
+    public int getSelectedBotCount() {
+        return selectedBotCount;
     }
 }

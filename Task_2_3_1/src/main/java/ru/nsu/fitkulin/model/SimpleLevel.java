@@ -1,7 +1,8 @@
 package ru.nsu.fitkulin.model;
 
 /**
- * base level.
+ * Basic level implementation containing game configuration parameters.
+ * Defines the playing field dimensions, and win conditions.
  */
 public class SimpleLevel implements Level {
     private final int baseSpeed;
@@ -11,11 +12,11 @@ public class SimpleLevel implements Level {
     private final int winLength;
 
     /**
-     * constructor.
+     * Constructor.
      *
      * @param baseSpeed speed of the snake on level.
      * @param foodCount amount of the food.
-     * @param winLength amount of necessary food for win
+     * @param winLength amount of necessary food for win.
      */
     public SimpleLevel(int baseSpeed, int foodCount, int width, int height, int winLength) {
         this.baseSpeed = baseSpeed;
