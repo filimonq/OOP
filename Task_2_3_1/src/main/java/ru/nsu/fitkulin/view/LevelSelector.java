@@ -51,8 +51,7 @@ public class LevelSelector {
 
         ComboBox<Integer> botCountCombo = new ComboBox<>();
         botCountCombo.getItems().addAll(0, 1, 2);
-        botCountCombo.setValue(0);
-        botCountCombo.setPromptText("Select number of bots");
+        botCountCombo.setValue(1);
         botCountCombo.setPrefWidth(1000);
         botCountCombo.setPrefHeight(100);
 
@@ -62,7 +61,7 @@ public class LevelSelector {
         level3Button.setFont(font);
 
         level1Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(5, 3, 30, 15, 10);
+            selectedLevel = new SimpleLevel(5, 3, 10, 10, 10);
             selectedBotCount = botCountCombo.getValue();
             stage.close();
         });
@@ -74,7 +73,7 @@ public class LevelSelector {
         });
 
         level3Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(30, 1000, 50, 30, 100);
+            selectedLevel = new SimpleLevel(30, 100, 50, 30, 100);
             selectedBotCount = botCountCombo.getValue();
             stage.close();
         });
