@@ -4,8 +4,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ru.nsu.fitkulin.model.Level;
 import ru.nsu.fitkulin.model.SimpleLevel;
@@ -79,16 +79,10 @@ public class LevelSelector {
         stage.showAndWait();
     }
 
-    /**
-     * @return Selected level configuration
-     */
     public Level getSelectedLevel() {
         return selectedLevel;
     }
 
-    /**
-     * @return Number of bots selected for the game
-     */
     public int getSelectedBotCount() {
         return selectedBotCount;
     }

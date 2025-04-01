@@ -97,9 +97,6 @@ public class GameController {
         }
     }
 
-    /**
-     * @return Current game board state
-     */
     public GameBoard getGameBoard() {
         return gameBoard;
     }

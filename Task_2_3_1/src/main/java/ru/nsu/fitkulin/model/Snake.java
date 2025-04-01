@@ -17,6 +17,7 @@ public class Snake {
 
     /**
      * Creates new snake at specified position.
+     *
      * @param startX Initial X coordinate
      * @param startY Initial Y coordinate
      * @param baseSpeed Movement speed (higher = faster)
@@ -33,6 +34,7 @@ public class Snake {
 
     /**
      * Updates movement direction if not opposite to current.
+     *
      * @param newDirection Requested movement direction
      */
     public void updateDirection(Direction newDirection) {
@@ -97,6 +99,7 @@ public class Snake {
 
     /**
      * Checks if head collides with body.
+     *
      * @return True if self-collision detected
      */
     public boolean checkSelfCollision() {
@@ -108,6 +111,7 @@ public class Snake {
 
     /**
      * Resets snake to initial state.
+     *
      * @param startX New starting X coordinate
      * @param startY New starting Y coordinate
      */
@@ -141,6 +145,10 @@ public class Snake {
         return body.size();
     }
 
+    /**
+     * Change speed of snake
+     * @param multiplier How many times will it change soon.
+     */
     public void changeSpeed(double multiplier) {
         speed = (int)   (baseSpeed * multiplier);
     }

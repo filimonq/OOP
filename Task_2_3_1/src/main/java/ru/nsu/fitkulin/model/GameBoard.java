@@ -25,6 +25,7 @@ public class GameBoard {
 
     /**
      * Creates new game board with specified level configuration.
+     *
      * @param level Contains game parameters (size, speed, etc)
      * @param botCount Number of AI opponents (0-2)
      */
