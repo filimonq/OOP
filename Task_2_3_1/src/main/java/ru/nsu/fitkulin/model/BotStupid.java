@@ -20,7 +20,7 @@ public class BotStupid extends Bot {
     }
 
     @Override
-    public void decideNextMove(List<SimpleFood> foods,
+    public void decideNextMove(List<Food> foods,
                                int width, int height, List<Snake> allSnakes) {
         Direction currentDir = getDirection();
         List<Direction> possibleDirections = getPossibleDirections(currentDir);

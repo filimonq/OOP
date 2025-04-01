@@ -13,14 +13,14 @@ public class BotSmart extends Bot {
     }
 
     @Override
-    public void decideNextMove(List<SimpleFood> foods,
+    public void decideNextMove(List<Food> foods,
                                int width, int height, List<Snake> allSnakes) {
         if (foods.isEmpty()) {
             return;
         }
 
         Point2D head = getHead();
-        SimpleFood target = findNearestFood(foods, head);
+        Food target = findNearestFood(foods, head);
 
         double dx = target.getPosition().getX() - head.getX();
         double dy = target.getPosition().getY() - head.getY();
@@ -46,10 +46,10 @@ public class BotSmart extends Bot {
         updateDirection(newDirection);
     }
 
-    private SimpleFood findNearestFood(List<SimpleFood> foods, Point2D head) {
-        SimpleFood nearest = foods.get(0);
+    private Food findNearestFood(List<Food> foods, Point2D head) {
+        Food nearest = foods.get(0);
         double minDistance = head.distance(nearest.getPosition());
-        for (SimpleFood food : foods) {
+        for (Food food : foods) {
             double distance = head.distance(food.getPosition());
             if (distance < minDistance) {
                 minDistance = distance;

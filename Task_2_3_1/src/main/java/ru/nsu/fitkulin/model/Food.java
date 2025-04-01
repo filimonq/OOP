@@ -8,4 +8,6 @@ import javafx.geometry.Point2D;
  */
 public interface Food {
     Point2D getPosition();
+
+    void applyEffect(Snake snake);
 }

@@ -12,7 +12,7 @@ import javafx.geometry.Point2D;
 public class GameBoard {
     private final Snake playerSnake;
     private final List<Bot> bots;
-    private final List<SimpleFood> foods;
+    private final List<Food> foods;
     private final int width;
     private final int height;
     private final int winLength;
@@ -79,12 +79,14 @@ public class GameBoard {
         }
 
         Point2D playerHead = playerSnake.getHead();
-        List<SimpleFood> foodsToRemove = new ArrayList<>();
-        for (SimpleFood food : foods) {
+        List<Food> foodsToRemove = new ArrayList<>();
+        for (Food food : foods) {
             if (playerHead.equals(food.getPosition())) {
                 foodsToRemove.add(food);
-                playerSnake.grow();
-                score += 10;
+                food.applyEffect(playerSnake);
+                if (food instanceof SimpleFood) {
+                    score += 10;
+                }
             }
         }
 
@@ -96,10 +98,10 @@ public class GameBoard {
         for (Bot bot : bots) {
             Point2D botHead = bot.getHead();
             foodsToRemove.clear();
-            for (SimpleFood food : foods) {
+            for (Food food : foods) {
                 if (botHead.equals(food.getPosition())) {
                     foodsToRemove.add(food);
-                    bot.grow();
+                    food.applyEffect(bot);
                 }
             }
             foods.removeAll(foodsToRemove);
@@ -166,7 +168,7 @@ public class GameBoard {
             }
 
             if (!isOccupied) {
-                for (SimpleFood food : foods) {
+                for (Food food : foods) {
                     if (food.getPosition().equals(position)) {
                         isOccupied = true;
                         break;
@@ -174,9 +176,10 @@ public class GameBoard {
                 }
             }
         } while (isOccupied);
-        foods.add(new SimpleFood(position));
-    }
 
+        Food newFood = new SimpleFood(position); //
+        foods.add(newFood);
+    }
 
     private boolean checkCollisionWithBots(Point2D playerHead) {
         for (Bot bot : bots) {
@@ -221,7 +224,7 @@ public class GameBoard {
         return bots;
     }
 
-    public List<SimpleFood> getFoods() {
+    public List<Food> getFoods() {
         return foods;
     }
 

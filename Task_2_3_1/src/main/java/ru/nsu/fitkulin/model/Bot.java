@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class Bot extends Snake {
     /**
      * Creates a new bot at specified position.
-     * 
+     *
      * @param startX Initial x-coordinate
      * @param startY Initial y-coordinate
      * @param baseSpeed Movement speed of the bot
@@ -22,7 +22,7 @@ public abstract class Bot extends Snake {
      * Decision-making method to be implemented by concrete bot classes.
      * Determines the bot's next move based on game state.
      */
-    public abstract void decideNextMove(List<SimpleFood> foods,
+    public abstract void decideNextMove(List<Food> foods,
                                         int width, int height, List<Snake> allSnakes);
 
     /**
@@ -32,7 +32,7 @@ public abstract class Bot extends Snake {
      * @param foods List of available food items
      * @param allSnakes List of all snakes in the game
      */
-    public void update(List<SimpleFood> foods, int width, int height, List<Snake> allSnakes) {
+    public void update(List<Food> foods, int width, int height, List<Snake> allSnakes) {
         decideNextMove(foods, width, height, allSnakes);
         move();
     }
