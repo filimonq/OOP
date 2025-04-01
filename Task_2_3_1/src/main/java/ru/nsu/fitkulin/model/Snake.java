@@ -146,7 +146,8 @@ public class Snake {
     }
 
     /**
-     * Change speed of snake
+     * Change speed of snake.
+     *
      * @param multiplier How many times will it change soon.
      */
     public void changeSpeed(double multiplier) {

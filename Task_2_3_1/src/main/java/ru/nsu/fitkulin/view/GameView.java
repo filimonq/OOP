@@ -132,10 +132,7 @@ public class GameView {
             winPlayed = false;
         }
     }
-
-    /**
-     * @return Size of game grid cells in pixels
-     */
+    
     public int getCellSize() {
         return cellSize;
     }

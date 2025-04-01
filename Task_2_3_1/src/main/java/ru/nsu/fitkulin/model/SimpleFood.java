@@ -11,6 +11,7 @@ public class SimpleFood implements Food {
 
     /**
      * Creates food at specified position.
+     *
      * @param position The (x,y) coordinates where food will appear on game grid
      */
     public SimpleFood(Point2D position) {

@@ -42,9 +42,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    /**
-     * @return Current game controller instance.
-     */
     public GameController getController() {
         return controller;
     }

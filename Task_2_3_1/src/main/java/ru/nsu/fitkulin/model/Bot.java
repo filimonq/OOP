@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class Bot extends Snake {
     /**
      * Creates a new bot at specified position.
+     * 
      * @param startX Initial x-coordinate
      * @param startY Initial y-coordinate
      * @param baseSpeed Movement speed of the bot
