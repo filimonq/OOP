@@ -50,7 +50,7 @@ public class LevelSelector {
         level3Button.setPrefHeight(100);
 
         ComboBox<Integer> botCountCombo = new ComboBox<>();
-        botCountCombo.getItems().addAll(0, 1, 2);
+        botCountCombo.getItems().addAll(0, 1, 2, 3, 4);
         botCountCombo.setValue(1);
         botCountCombo.setPrefWidth(1000);
         botCountCombo.setPrefHeight(100);
@@ -61,7 +61,7 @@ public class LevelSelector {
         level3Button.setFont(font);
 
         level1Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(5, 3, 10, 10, 10);
+            selectedLevel = new SimpleLevel(5, 3, 10, 10, 15);
             selectedBotCount = botCountCombo.getValue();
             stage.close();
         });
@@ -73,14 +73,15 @@ public class LevelSelector {
         });
 
         level3Button.setOnAction(e -> {
-            selectedLevel = new SimpleLevel(30, 100, 50, 30, 100);
+            selectedLevel = new SimpleLevel(30, 100, 50, 25, 100);
             selectedBotCount = botCountCombo.getValue();
             stage.close();
         });
 
         VBox vbox = new VBox(10);
 
-        vbox.getChildren().addAll(logoView, level1Button, level2Button, level3Button, botCountCombo);
+        vbox.getChildren().addAll(logoView,
+                level1Button, level2Button, level3Button, botCountCombo);
         Scene scene = new Scene(vbox, 1000, 1000);
         stage.setScene(scene);
         stage.showAndWait();

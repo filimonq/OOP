@@ -22,7 +22,7 @@ public class GameController {
     private AnimationTimer gameLoop;
     private long lastUpdate = 0;
     private long updateInterval;
-    private final int cellSize = 30;
+    private final int cellSize = 35;
     private javafx.stage.Stage stage;
 
     private Level level;

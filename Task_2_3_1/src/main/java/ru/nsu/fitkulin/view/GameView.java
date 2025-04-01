@@ -20,9 +20,10 @@ import ru.nsu.fitkulin.model.Snake;
  */
 public class GameView {
     private final Canvas canvas;
-    private final int cellSize = 30;
+    private final int cellSize = 35;
     private final Image backgroundImage;
     private final Image snakeHeadImage;
+    private final Image botHeadImage;
     private final Image foodImage;
     private final AudioClip gameOverSound;
     private final AudioClip winSound;
@@ -38,9 +39,10 @@ public class GameView {
 
     public GameView(Canvas canvas) {
         this.canvas = canvas;
-        this.backgroundImage = new Image(getClass().getResourceAsStream("/images/back.png"));
+        this.backgroundImage = new Image(getClass().getResourceAsStream("/images/back.jpg"));
         this.snakeHeadImage = new Image(getClass().getResourceAsStream("/images/head.png"));
         this.foodImage = new Image(getClass().getResourceAsStream("/images/simple_food.png"));
+        this.botHeadImage = new Image(getClass().getResourceAsStream("/images/bot.png"));
         this.gameOverSound =
                 new AudioClip(getClass().getResource("/sounds/game_over.wav").toString());
         this.winSound = new AudioClip(getClass().getResource("/sounds/win.wav").toString());
@@ -50,11 +52,11 @@ public class GameView {
 
     /**
      * Renders current game state including:
-     * - Player snake with gradient coloring
-     * - Enemy bots with distinct visual style
-     * - Food items with texture
-     * - Score display
-     * - Win/lose conditions overlay
+     * - Player snake with gradient coloring.
+     * - Enemy bots with distinct visual style.
+     * - Food items with texture.
+     * - Score display.
+     * - Win/lose conditions overlay.
      *
      * @param gameBoard Current game state to visualize
      */
@@ -72,8 +74,8 @@ public class GameView {
         for (int i = 0; i < playerSnake.getBody().size(); i++) {
             var point = playerSnake.getBody().get(i);
             if (i == 0) {
-                gc.drawImage(snakeHeadImage,
-                        point.getX() * cellSize, point.getY() * cellSize, cellSize, cellSize);
+                gc.drawImage(snakeHeadImage, point.getX() * cellSize,
+                        point.getY() * cellSize, cellSize, cellSize);
             } else {
                 gc.setFill(playerGradient);
                 gc.fillRoundRect(point.getX() * cellSize, point.getY() * cellSize,
@@ -88,8 +90,7 @@ public class GameView {
             for (int i = 0; i < bot.getBody().size(); i++) {
                 var point = bot.getBody().get(i);
                 if (i == 0) {
-                    gc.setFill(Color.RED);
-                    gc.fillOval(point.getX() * cellSize,
+                    gc.drawImage(botHeadImage, point.getX() * cellSize,
                             point.getY() * cellSize, cellSize, cellSize);
                 } else {
                     gc.setFill(botGradient);
