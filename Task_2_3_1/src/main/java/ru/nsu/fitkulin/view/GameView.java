@@ -132,7 +132,7 @@ public class GameView {
             winPlayed = false;
         }
     }
-    
+
     public int getCellSize() {
         return cellSize;
     }

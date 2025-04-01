@@ -3,6 +3,8 @@ package ru.nsu.fitkulin.view;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -32,21 +34,27 @@ public class LevelSelector {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Select Level and Bots");
 
+        Image logoImage = new Image(getClass().getResourceAsStream("/images/logo.jpg"));
+        ImageView logoView = new ImageView(logoImage);
+        logoView.setFitWidth(1000);
+        logoView.setPreserveRatio(true);
+
         Button level1Button = new Button("Level 1");
-        level1Button.setPrefWidth(300);
+        level1Button.setPrefWidth(1000);
         level1Button.setPrefHeight(100);
         Button level2Button = new Button("Level 2");
-        level2Button.setPrefWidth(300);
+        level2Button.setPrefWidth(1000);
         level2Button.setPrefHeight(100);
         Button level3Button = new Button("Level 3");
-        level3Button.setPrefWidth(300);
+        level3Button.setPrefWidth(1000);
         level3Button.setPrefHeight(100);
 
         ComboBox<Integer> botCountCombo = new ComboBox<>();
         botCountCombo.getItems().addAll(0, 1, 2);
         botCountCombo.setValue(0);
         botCountCombo.setPromptText("Select number of bots");
-        botCountCombo.setPrefWidth(300);
+        botCountCombo.setPrefWidth(1000);
+        botCountCombo.setPrefHeight(100);
 
         Font font = new Font("Arial", 18);
         level1Button.setFont(font);
@@ -73,8 +81,8 @@ public class LevelSelector {
 
         VBox vbox = new VBox(10);
 
-        vbox.getChildren().addAll(level1Button, level2Button, level3Button, botCountCombo);
-        Scene scene = new Scene(vbox, 300, 350);
+        vbox.getChildren().addAll(logoView, level1Button, level2Button, level3Button, botCountCombo);
+        Scene scene = new Scene(vbox, 1000, 1000);
         stage.setScene(scene);
         stage.showAndWait();
     }

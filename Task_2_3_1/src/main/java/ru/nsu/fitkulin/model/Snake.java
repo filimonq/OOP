@@ -154,6 +154,9 @@ public class Snake {
         speed = (int)   (baseSpeed * multiplier);
     }
 
+    /**
+     * Decreases snake by 1 unit.
+     */
     public void shrink() {
         if (body.size() > 1) {
             body.removeLast();
