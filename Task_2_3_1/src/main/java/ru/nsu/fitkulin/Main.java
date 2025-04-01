@@ -21,11 +21,12 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/game.fxml"));
         Parent root = loader.load();
+        Scene scene = new Scene(root);
         controller = loader.getController();
         controller.setStage(primaryStage);
         controller.setLevel(level, botCount);
 
-        Scene scene = new Scene(root);
+
         scene.setOnKeyPressed(controller::handleKeyPress);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Snake with Bots");

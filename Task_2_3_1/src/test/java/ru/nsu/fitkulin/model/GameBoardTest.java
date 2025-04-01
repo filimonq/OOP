@@ -1,45 +1,49 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+import javafx.geometry.Point2D;
 
-class GameBoardIntegrationTest {
+class GameBoardTest {
     private GameBoard gameBoard;
-    private final int WIDTH = 20;
-    private final int HEIGHT = 15;
-    private final int BASE_SPEED = 10;
+    private final int width = 20;
+    private final int height = 15;
+    private final int baseSpeed = 10;
     private final int FOOD_COUNT = 3;
-    private final int WIN_LENGTH = 10;
-    private final int BOT_COUNT = 2;
+    private final int winLength = 10;
+    private final int botCount = 2;
 
     @BeforeEach
     void setUp() {
         Level level = new SimpleLevel(
-                BASE_SPEED,
+                baseSpeed,
                 FOOD_COUNT,
-                WIDTH,
-                HEIGHT,
-                WIN_LENGTH
+                width,
+                height,
+                winLength
         );
 
-        gameBoard = new GameBoard(level, BOT_COUNT);
+        gameBoard = new GameBoard(level, botCount);
     }
 
     @Test
     void testGameInitialization() {
         Snake player = gameBoard.getSnake();
-        assertEquals(new Point2D(WIDTH/2, HEIGHT/2), player.getHead());
+        assertEquals(new Point2D(width / 2, height / 2), player.getHead());
         assertEquals(Direction.RIGHT, player.getDirection());
         assertEquals(1, player.getLength());
 
         List<Bot> bots = gameBoard.getBots();
-        assertEquals(BOT_COUNT, bots.size());
+        assertEquals(botCount, bots.size());
         bots.forEach(bot -> {
-            assertTrue(bot.getHead().getX() >= 0 && bot.getHead().getX() < WIDTH);
-            assertTrue(bot.getHead().getY() >= 0 && bot.getHead().getY() < HEIGHT);
+            assertTrue(bot.getHead().getX() >= 0 && bot.getHead().getX() < width);
+            assertTrue(bot.getHead().getY() >= 0 && bot.getHead().getY() < height);
             assertNotEquals(player.getHead(), bot.getHead());
         });
 
@@ -58,7 +62,7 @@ class GameBoardIntegrationTest {
 
     @Test
     void testWallCollision() {
-        for(int i = 0; i < WIDTH; i++) {
+        for (int i = 0; i < width; i++) {
             gameBoard.update();
         }
 
@@ -71,8 +75,8 @@ class GameBoardIntegrationTest {
         gameBoard.update();
         gameBoard.reset();
 
-        assertEquals(new Point2D(WIDTH/2, HEIGHT/2), gameBoard.getSnake().getHead());
-        assertEquals(BOT_COUNT, gameBoard.getBots().size());
+        assertEquals(new Point2D(width / 2, height / 2), gameBoard.getSnake().getHead());
+        assertEquals(botCount, gameBoard.getBots().size());
         assertEquals(FOOD_COUNT, gameBoard.getFoods().size());
         assertEquals(0, gameBoard.getScore());
         assertFalse(gameBoard.isGameOver());
@@ -101,10 +105,14 @@ class GameBoardIntegrationTest {
     }
 
     private boolean isPositionOccupied(Point2D position) {
-        if(gameBoard.getSnake().getBody().contains(position)) return true;
+        if (gameBoard.getSnake().getBody().contains(position)) {
+            return true;
+        }
 
-        for(Bot bot : gameBoard.getBots()) {
-            if(bot.getBody().contains(position)) return true;
+        for (Bot bot : gameBoard.getBots()) {
+            if (bot.getBody().contains(position)) {
+                return true;
+            }
         }
 
         return false;

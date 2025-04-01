@@ -1,8 +1,7 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
-
 import java.util.List;
+import javafx.geometry.Point2D;
 
 public class BotSmart extends Bot {
     public BotSmart(int startX, int startY, int baseSpeed) {
@@ -10,8 +9,11 @@ public class BotSmart extends Bot {
     }
 
     @Override
-    public void decideNextMove(List<SimpleFood> foods, int width, int height, List<Snake> allSnakes) {
-        if (foods.isEmpty()) return;
+    public void decideNextMove(List<SimpleFood> foods,
+                               int width, int height, List<Snake> allSnakes) {
+        if (foods.isEmpty()){
+            return;
+        }
 
         Point2D head = getHead();
         SimpleFood target = findNearestFood(foods, head);

@@ -31,10 +31,10 @@ public class Snake {
     }
 
     private boolean isOppositeDirection(Direction direction) {
-        return (currentDirection == Direction.UP && direction == Direction.DOWN) ||
-                (currentDirection == Direction.DOWN && direction == Direction.UP) ||
-                (currentDirection == Direction.LEFT && direction == Direction.RIGHT) ||
-                (currentDirection == Direction.RIGHT && direction == Direction.LEFT);
+        return (currentDirection == Direction.UP && direction == Direction.DOWN)
+                || (currentDirection == Direction.DOWN && direction == Direction.UP)
+                || (currentDirection == Direction.LEFT && direction == Direction.RIGHT)
+                || (currentDirection == Direction.RIGHT && direction == Direction.LEFT);
     }
 
     public void move() {
@@ -54,10 +54,20 @@ public class Snake {
         double y = head.getY();
 
         switch (currentDirection) {
-            case UP:    y--; break;
-            case DOWN:  y++; break;
-            case LEFT:  x--; break;
-            case RIGHT: x++; break;
+            case UP:
+                y--;
+                break;
+            case DOWN:
+                y++;
+                break;
+            case LEFT:
+                x--;
+                break;
+            case RIGHT:
+                x++;
+                break;
+            default:
+                break;
         }
 
         return new Point2D(x, y);
@@ -82,11 +92,27 @@ public class Snake {
         speed = baseSpeed;
     }
 
-    public Point2D getHead() { return body.getFirst(); }
-    public LinkedList<Point2D> getBody() { return new LinkedList<>(body); }
-    public Direction getDirection() { return currentDirection; }
-    public int getSpeed() { return speed; }
-    public int getLength() { return body.size(); }
+    public Point2D getHead() {
+        return body.getFirst();
+    }
+
+    public LinkedList<Point2D> getBody() {
+        return new LinkedList<>(body);
+
+    }
+
+    public Direction getDirection() {
+        return currentDirection;
+    }
+
+    public int getSpeed() {
+        return speed;
+
+    }
+
+    public int getLength() {
+        return body.size();
+    }
 
     public void changeSpeed(double multiplier) {
         speed = (int)(baseSpeed * multiplier);

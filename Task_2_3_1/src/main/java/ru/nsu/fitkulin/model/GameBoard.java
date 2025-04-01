@@ -1,10 +1,9 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
-import javafx.scene.media.AudioClip;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javafx.geometry.Point2D;
 
 public class GameBoard {
     private final Snake playerSnake;
@@ -184,12 +183,35 @@ public class GameBoard {
         gameWon = false;
     }
 
-    public Snake getSnake() { return playerSnake; }
-    public List<Bot> getBots() { return bots; }
-    public List<SimpleFood> getFoods() { return foods; }
-    public int getScore() { return score; }
-    public boolean isGameOver() { return gameOver; }
-    public boolean isGameWon() { return gameWon; }
-    public int getWidth() { return width; }
-    public int getHeight() { return height; }
+    public Snake getSnake() {
+        return playerSnake;
+    }
+
+    public List<Bot> getBots() {
+        return bots;
+    }
+
+    public List<SimpleFood> getFoods() {
+        return foods;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isGameWon() {
+        return gameWon;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

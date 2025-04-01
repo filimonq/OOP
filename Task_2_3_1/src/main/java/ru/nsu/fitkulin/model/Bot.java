@@ -1,6 +1,5 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
 import java.util.List;
 
 public abstract class Bot extends Snake {

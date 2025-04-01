@@ -57,11 +57,24 @@ public class GameController {
 
     public void handleKeyPress(KeyEvent event) {
         switch (event.getCode()) {
-            case W: gameBoard.getSnake().updateDirection(Direction.UP); break;
-            case S: gameBoard.getSnake().updateDirection(Direction.DOWN); break;
-            case A: gameBoard.getSnake().updateDirection(Direction.LEFT); break;
-            case D: gameBoard.getSnake().updateDirection(Direction.RIGHT); break;
-            case R: if (gameBoard.isGameOver() || gameBoard.isGameWon()) gameBoard.reset(); break;
+            case W:
+                gameBoard.getSnake().updateDirection(Direction.UP);
+                break;
+            case S:
+                gameBoard.getSnake().updateDirection(Direction.DOWN);
+                break;
+            case A:
+                gameBoard.getSnake().updateDirection(Direction.LEFT);
+                break;
+            case D:
+                gameBoard.getSnake().updateDirection(Direction.RIGHT);
+            break;
+            case R:
+                if (gameBoard.isGameOver() || gameBoard.isGameWon()) {
+                    gameBoard.reset();
+                }
+                break;
+            default: break;
         }
     }
 

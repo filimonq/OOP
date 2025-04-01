@@ -1,14 +1,12 @@
 package ru.nsu.fitkulin.model;
 
-import javafx.geometry.Point2D;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.LinkedList;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.LinkedList;
+import javafx.geometry.Point2D;
 
 public class SnakeTest {
     private Snake snake;
