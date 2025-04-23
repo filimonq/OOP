@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'jacoco'
+    id 'application'
 }
 
 group = 'ru.nsu.fitkulin'
@@ -9,6 +11,15 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass = 'ru.nsu.fitkulin.Master.Master'
+}
+
+tasks.register('runWorker', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'ru.nsu.fitkulin.Worker.Worker'
+}
+
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -16,4 +27,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
 }
