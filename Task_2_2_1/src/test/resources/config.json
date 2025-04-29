@@ -1,0 +1,20 @@
+{
+  "warehouseCapacity": 10,
+  "workTimeSeconds": 10,
+  "bakers": [
+    {"cookingTimeSec": 1},
+    {"cookingTimeSec": 2},
+    {"cookingTimeSec": 3}
+  ],
+  "couriers": [
+    {"trunkCapacity": 5, "speedCoefficient": 1.0},
+    {"trunkCapacity": 10, "speedCoefficient": 0.5},
+    {"trunkCapacity": 5, "speedCoefficient": 0.5},
+    {"trunkCapacity": 10, "speedCoefficient": 0.2}
+  ],
+  "orders": [
+    {"id": 1, "time": 10, "amount": 5},
+    {"id": 2, "time": 15, "amount": 3},
+    {"id": 3, "time": 15, "amount": 1}
+  ]
+}
