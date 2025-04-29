@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'ru.nsu.fitkulin'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+javafx {
+    version = "20.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.media' ]
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+}
+
+application {
+    mainClass = 'ru.nsu.fitkulin.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
