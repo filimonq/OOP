@@ -5,11 +5,15 @@ import java.net.*;
 import java.util.Arrays;
 
 public class Master {
-    public static void main(String[] args) {
-        long[] numbers = {11, 13, 17, 19, 23, 29, 31, 37, 41, 43};
-        int workerCount = 3;
-        int port = 12345;
+    public long[] numbers;
+    public int workerCount;
+    private final int port = 12345;
 
+    public Master() {
+        
+    }
+
+    public void start() {
         try (ServerSocket server = new ServerSocket(port)) {
             System.out.println("Master started on port " + port);
             int chunkSize = (int) Math.ceil((double) numbers.length / workerCount);
