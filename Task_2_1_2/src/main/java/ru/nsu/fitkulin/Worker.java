@@ -14,7 +14,7 @@ public class Worker {
             Socket socket = null;
             try {
                 socket = new Socket();
-                socket.connect(new InetSocketAddress(masterHost, port), 1000); // 1s таймаут
+                socket.connect(new InetSocketAddress(masterHost, port), 1000);
                 socket.setSoTimeout(1000);
                 System.out.println("Connected to Master at " + masterHost + ":" + port);
 
@@ -49,11 +49,13 @@ public class Worker {
                     shouldExit = true;
                 }
             } catch (SocketTimeoutException e) {
-                System.err.println("Worker timeout (attempt " + (attempts + 1) + "): " + e.getMessage());
+                System.err.println("Worker timeout (attempt "
+                        + (attempts + 1) + "): " + e.getMessage());
                 attempts++;
                 shouldExit = (attempts >= MAX_ATTEMPTS);
             } catch (IOException e) {
-                System.err.println("Worker error (attempt " + (attempts + 1) + "): " + e.getMessage());
+                System.err.println("Worker error (attempt "
+                        + (attempts + 1) + "): " + e.getMessage());
                 attempts++;
                 shouldExit = (attempts >= MAX_ATTEMPTS);
             } finally {
@@ -67,7 +69,7 @@ public class Worker {
             }
             if (!shouldExit) {
                 try {
-                    Thread.sleep(100); // Задержка между попытками
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     shouldExit = true;

@@ -2,21 +2,27 @@ package ru.nsu.fitkulin;
 
 import java.io.*;
 import java.net.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.Arrays;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.CountDownLatch;
 
 public class Master {
     private final long[] numbers;
     private final int port;
     private final ConcurrentHashMap<Integer, Task> taskPool = new ConcurrentHashMap<>();
+    private final ConcurrentMap<Integer, Long> taskDeadlines = new ConcurrentHashMap<>();
     private final int minChunkSize = 1;
     private final int workerCount;
     private boolean finalResult = false;
+    private static final long TASK_TIMEOUT_MS = 1000;
+    private final CountDownLatch completionLatch;
 
-    public Master(long[] numbers, int workerCount, int port) {
+    public Master(long[] numbers, int workerCount, int port, CountDownLatch completionLatch) {
         this.numbers = numbers;
         this.workerCount = workerCount;
         this.port = port;
+        this.completionLatch = completionLatch;
         initializeTaskPool();
     }
 
@@ -41,6 +47,7 @@ public class Master {
             onReady.run();
             long endTime = System.currentTimeMillis() + 2000;
             while (System.currentTimeMillis() < endTime) {
+                checkTaskTimeouts();
                 try (Socket worker = server.accept()) {
                     worker.setSoTimeout(1000);
                     DataInputStream in = new DataInputStream(worker.getInputStream());
@@ -61,9 +68,16 @@ public class Master {
                                     out.writeLong(num);
                                 }
                                 out.flush();
-
-                                boolean hasNonPrime = in.readBoolean();
-                                submitResult(task.getId(), hasNonPrime);
+                                taskDeadlines.put(task.getId(), System.currentTimeMillis()
+                                        + TASK_TIMEOUT_MS);
+                                try {
+                                    boolean hasNonPrime = in.readBoolean();
+                                    taskDeadlines.remove(task.getId());
+                                    submitResult(task.getId(), hasNonPrime);
+                                } catch (IOException e) {
+                                    System.err.println("Worker failed to return result for task "
+                                            + task.getId() + ": " + e.getMessage());
+                                }
                             } else {
                                 out.writeUTF("NO_TASKS");
                                 out.flush();
@@ -71,7 +85,7 @@ public class Master {
                         }
                     }
                 } catch (SocketTimeoutException e) {
-                    // игнорируем таймаут accept
+                    //
                 } catch (IOException e) {
                     System.err.println("Master IO error: " + e.getMessage());
                 }
@@ -92,7 +106,23 @@ public class Master {
                     System.err.println("Error closing server socket: " + e.getMessage());
                 }
             }
+            if (completionLatch != null) {
+                completionLatch.countDown();
+            }
         }
+    }
+
+    private void checkTaskTimeouts() {
+        long currentTime = System.currentTimeMillis();
+        taskDeadlines.forEach((taskId, deadline) -> {
+            if (currentTime > deadline) {
+                Task task = taskPool.get(taskId);
+                if (task != null && !task.isCompleted()) {
+                    System.out.println("Task " + taskId + " timed out, marking as free");
+                    taskDeadlines.remove(taskId);
+                }
+            }
+        });
     }
 
     private synchronized Task getNextTask() {
@@ -106,19 +136,19 @@ public class Master {
 
     private synchronized void submitResult(int taskId, boolean hasNonPrime) {
         if (allTasksCompleted()) {
-            System.out.println("Ignoring result for task " + taskId
-                    + ": all tasks already completed");
+            System.out.println("Ignoring result for task "
+                    + taskId + ": all tasks already completed");
             return;
         }
         Task task = taskPool.get(taskId);
         if (task != null && !task.isCompleted()) {
             task.setResult(hasNonPrime);
             finalResult |= hasNonPrime;
-            System.out.println("Task " + taskId + " completed: " + hasNonPrime
-                    + ", finalResult: " + finalResult);
+            System.out.println("Task " + taskId + " completed: "
+                    + hasNonPrime + ", finalResult: " + finalResult);
         } else {
-            System.out.println("Ignoring result for task " + taskId
-                    + ": task null or already completed");
+            System.out.println("Ignoring result for task "
+                    + taskId + ": task null or already completed");
         }
     }
 
