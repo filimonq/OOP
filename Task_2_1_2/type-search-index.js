@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"Main"},{"p":"ru.nsu.fitkulin.Master","l":"Master"},{"p":"ru.nsu.fitkulin.Worker","l":"Worker"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.fitkulin","l":"Master"},{"p":"ru.nsu.fitkulin","l":"Task"},{"p":"ru.nsu.fitkulin","l":"Worker"}];updateSearchResults();
