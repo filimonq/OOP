@@ -3,9 +3,9 @@ package ru.nsu.fitkulin;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.net.InetSocketAddress;
 
 public class Worker {
     private static final String masterHost = "localhost";
@@ -86,9 +86,13 @@ public class Worker {
     }
 
     public static boolean isPrime(long number) {
-        if (number < 2) return false;
+        if (number < 2) {
+            return false;
+        }
         for (long i = 2; i * i <= number; i++) {
-            if (number % i == 0) return false;
+            if (number % i == 0) {
+                return false;
+            }
         }
         return true;
     }
