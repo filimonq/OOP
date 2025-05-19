@@ -11,6 +11,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * The Master class is responsible for
+ * managing the pool of tasks and distributing them to Worker instances.
+ * It listens for connections from Workers, assigns tasks,
+ * and collects results to determine if any non-prime numbers are present in the entire dataset.
+ */
 public class Master {
     private final long[] numbers;
     private final int port;

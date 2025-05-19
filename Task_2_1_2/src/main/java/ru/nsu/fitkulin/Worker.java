@@ -7,6 +7,11 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+/**
+ * A Worker in the distributed system that connects to the Master to request tasks.
+ * It processes the assigned task by checking if any numbers
+ * in the task's array are non-prime and reports the result back to the Master.
+ */
 public class Worker {
     private static final String masterHost = "localhost";
     private static final int MAX_ATTEMPTS = 3;
