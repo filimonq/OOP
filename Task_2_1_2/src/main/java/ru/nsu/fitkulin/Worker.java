@@ -1,7 +1,11 @@
 package ru.nsu.fitkulin;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.net.InetSocketAddress;
 
 public class Worker {
     private static final String masterHost = "localhost";

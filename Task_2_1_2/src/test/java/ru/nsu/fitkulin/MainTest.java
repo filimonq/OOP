@@ -2,7 +2,11 @@ package ru.nsu.fitkulin;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.PrintStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CountDownLatch;
@@ -21,7 +25,7 @@ public class MainTest {
     @Test
     @Timeout(value = 10, unit = TimeUnit.SECONDS)
     public void testWithMixedNumbers() throws InterruptedException, IOException {
-        long[] numbers = {6, 8, 7, 13, 5, 9, 4};
+        long[] numbers = {6, 8, 7, 13, 5, 9, 4, 342, 32, 1, 3, 3532653};
         int workerCount = 3;
         int port = getAvailablePort();
 
