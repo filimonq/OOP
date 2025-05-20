@@ -232,9 +232,13 @@ public class MainTest {
     }
 
     private boolean isPrime(long number) {
-        if (number < 2) return false;
+        if (number < 2) {
+            return false;
+        }
         for (long i = 2; i * i <= number; i++) {
-            if (number % i == 0) return false;
+            if (number % i == 0) {
+                return false;
+            }
         }
         return true;
     }

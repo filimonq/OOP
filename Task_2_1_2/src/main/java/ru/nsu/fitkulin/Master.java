@@ -148,7 +148,9 @@ public class Master {
     private synchronized List<Task> getNextTasks() {
         List<Task> tasks = new ArrayList<>();
         int totalTasks = taskPool.size();
-        if (totalTasks == 0) return tasks;
+        if (totalTasks == 0) {
+            return tasks;
+        }
 
         int task1Idx = workerIndex % totalTasks;
         int task2Idx = (workerIndex + 1) % totalTasks;
@@ -157,8 +159,12 @@ public class Master {
         Task task1 = taskPool.get(task1Idx);
         Task task2 = taskPool.get(task2Idx);
 
-        if (task1 != null && !task1.isCompleted()) tasks.add(task1);
-        if (task2 != null && !task2.isCompleted() && task2Idx != task1Idx) tasks.add(task2);
+        if (task1 != null && !task1.isCompleted()){
+            tasks.add(task1);
+        }
+        if (task2 != null && !task2.isCompleted() && task2Idx != task1Idx) {
+            tasks.add(task2);
+        }
 
         return tasks;
     }
