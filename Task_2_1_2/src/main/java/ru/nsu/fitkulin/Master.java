@@ -85,7 +85,8 @@ public class Master {
                                 }
                                 out.flush();
                                 for (Task task : tasks) {
-                                    taskDeadlines.put(task.getId(), System.currentTimeMillis() + TASK_TIMEOUT_MS);
+                                    taskDeadlines.put(task.getId(),
+                                            System.currentTimeMillis() + TASK_TIMEOUT_MS);
                                 }
                                 try {
                                     for (Task task : tasks) {
@@ -94,7 +95,8 @@ public class Master {
                                         submitResult(task.getId(), hasNonPrime);
                                     }
                                 } catch (IOException e) {
-                                    System.err.println("Worker failed to return results: " + e.getMessage());
+                                    System.err.println("Worker failed to return results: "
+                                            + e.getMessage());
                                 }
                             } else {
                                 out.writeUTF("NO_TASKS");
