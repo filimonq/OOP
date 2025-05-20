@@ -34,8 +34,4 @@ public class Task {
     public boolean isCompleted() {
         return completed;
     }
-
-    public boolean getHasNonPrime() {
-        return hasNonPrime;
-    }
 }
