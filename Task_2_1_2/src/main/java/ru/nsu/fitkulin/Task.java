@@ -10,7 +10,6 @@ public class Task {
     private final int id;
     private final long[] numbers;
     private boolean completed;
-    private boolean hasNonPrime;
 
     public Task(int id, long[] numbers) {
         this.id = id;
@@ -27,7 +26,6 @@ public class Task {
     }
 
     public void setResult(boolean hasNonPrime) {
-        this.hasNonPrime = hasNonPrime;
         this.completed = true;
     }
 

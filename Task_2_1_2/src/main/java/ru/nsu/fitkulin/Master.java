@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
@@ -27,6 +29,7 @@ public class Master {
     private boolean finalResult = false;
     private static final long TASK_TIMEOUT_MS = 1000;
     private final CountDownLatch completionLatch;
+    private int workerIndex = 0;
 
     public Master(long[] numbers, int workerCount, int port, CountDownLatch completionLatch) {
         this.numbers = numbers;
@@ -64,29 +67,34 @@ public class Master {
                     DataOutputStream out = new DataOutputStream(worker.getOutputStream());
 
                     String request = in.readUTF();
-                    if ("REQUEST_TASK".equals(request)) {
+                    if ("REQUEST_TASKS".equals(request)) {
                         if (allTasksCompleted()) {
                             out.writeUTF("NO_TASKS");
                             out.flush();
                         } else {
-                            Task task = getNextTask();
-                            if (task != null) {
-                                out.writeUTF("TASK");
-                                out.writeInt(task.getId());
-                                out.writeInt(task.getNumbers().length);
-                                for (long num : task.getNumbers()) {
-                                    out.writeLong(num);
+                            List<Task> tasks = getNextTasks();
+                            if (!tasks.isEmpty()) {
+                                out.writeUTF("TASKS");
+                                out.writeInt(tasks.size());
+                                for (Task task : tasks) {
+                                    out.writeInt(task.getId());
+                                    out.writeInt(task.getNumbers().length);
+                                    for (long num : task.getNumbers()) {
+                                        out.writeLong(num);
+                                    }
                                 }
                                 out.flush();
-                                taskDeadlines.put(task.getId(), System.currentTimeMillis()
-                                        + TASK_TIMEOUT_MS);
+                                for (Task task : tasks) {
+                                    taskDeadlines.put(task.getId(), System.currentTimeMillis() + TASK_TIMEOUT_MS);
+                                }
                                 try {
-                                    boolean hasNonPrime = in.readBoolean();
-                                    taskDeadlines.remove(task.getId());
-                                    submitResult(task.getId(), hasNonPrime);
+                                    for (Task task : tasks) {
+                                        boolean hasNonPrime = in.readBoolean();
+                                        taskDeadlines.remove(task.getId());
+                                        submitResult(task.getId(), hasNonPrime);
+                                    }
                                 } catch (IOException e) {
-                                    System.err.println("Worker failed to return result for task "
-                                            + task.getId() + ": " + e.getMessage());
+                                    System.err.println("Worker failed to return results: " + e.getMessage());
                                 }
                             } else {
                                 out.writeUTF("NO_TASKS");
@@ -135,13 +143,22 @@ public class Master {
         });
     }
 
-    private synchronized Task getNextTask() {
-        for (Task task : taskPool.values()) {
-            if (!task.isCompleted()) {
-                return task;
-            }
-        }
-        return null;
+    private synchronized List<Task> getNextTasks() {
+        List<Task> tasks = new ArrayList<>();
+        int totalTasks = taskPool.size();
+        if (totalTasks == 0) return tasks;
+
+        int task1Idx = workerIndex % totalTasks;
+        int task2Idx = (workerIndex + 1) % totalTasks;
+        workerIndex++;
+
+        Task task1 = taskPool.get(task1Idx);
+        Task task2 = taskPool.get(task2Idx);
+
+        if (task1 != null && !task1.isCompleted()) tasks.add(task1);
+        if (task2 != null && !task2.isCompleted() && task2Idx != task1Idx) tasks.add(task2);
+
+        return tasks;
     }
 
     private synchronized void submitResult(int taskId, boolean hasNonPrime) {

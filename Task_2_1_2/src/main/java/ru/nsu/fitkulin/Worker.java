@@ -30,29 +30,30 @@ public class Worker {
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 DataInputStream in = new DataInputStream(socket.getInputStream());
 
-                out.writeUTF("REQUEST_TASK");
+                out.writeUTF("REQUEST_TASKS");
                 out.flush();
 
                 String response = in.readUTF();
-                if ("TASK".equals(response)) {
-                    int taskId = in.readInt();
-                    int size = in.readInt();
-                    long[] numbers = new long[size];
-                    for (int i = 0; i < size; i++) {
-                        numbers[i] = in.readLong();
-                    }
-
-                    boolean hasNonPrime = false;
-                    for (long num : numbers) {
-                        if (!isPrime(num)) {
-                            hasNonPrime = true;
-                            break;
+                if ("TASKS".equals(response)) {
+                    int taskCount = in.readInt();
+                    for (int t = 0; t < taskCount; t++) {
+                        int taskId = in.readInt();
+                        int size = in.readInt();
+                        long[] numbers = new long[size];
+                        for (int i = 0; i < size; i++) {
+                            numbers[i] = in.readLong();
                         }
+                        boolean hasNonPrime = false;
+                        for (long num : numbers) {
+                            if (!isPrime(num)) {
+                                hasNonPrime = true;
+                                break;
+                            }
+                        }
+                        out.writeBoolean(hasNonPrime);
+                        out.flush();
+                        System.out.println("Task " + taskId + " processed: " + hasNonPrime);
                     }
-
-                    out.writeBoolean(hasNonPrime);
-                    out.flush();
-                    System.out.println("Task " + taskId + " processed: " + hasNonPrime);
                 } else if ("NO_TASKS".equals(response)) {
                     System.out.println("No more tasks available");
                     shouldExit = true;
